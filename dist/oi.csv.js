@@ -20,7 +20,7 @@
 	var path = s[s.length-1].src.replace(/([^\/]*)$/,'');
 
 	// The source of the mai script that we will only load when we need it
-	var editor = path+"oi.csveditor.js";
+	var editor = path+"oi.csv.editor.js";
 
 	// Create a list of DOM elements that have the 'data-oi-csv' attribute
 	function List(){
