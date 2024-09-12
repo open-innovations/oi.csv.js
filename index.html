@@ -41,7 +41,7 @@
 			<h2>Features</h2>
 			<ul>
 				<li>Basic CSV viewer/editor</li>
-				<li>Lightweight - ??kB required to view a CSV compared to 1.88MB (gzipped) for <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
+				<li>Lightweight - <span class="size">??</span>kB required to view a CSV compared to 1.88MB (gzipped) for <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
 				<li>Progressive enhancement</li>
 				<li>Open source</li>
 				<li>Easy to install</li>
@@ -58,7 +58,7 @@
 				</li>
 				<li>Done!</li>
 			</ol>
-			<p>The initial load (<a href="oi.csv.js">oi.csv.js</a>) is under 3kB. Only if someone clicks one of the links is the main script loaded (a further ??kB). By using standard anchor tags, if Javascript is disabled - or fails due to network issues - people will still get the CSV.</p>
+			<p>The initial load (<a href="oi.csv.js">oi.csv.js</a>) is <span class="size-initial">??</span>kB. Only if someone clicks one of the links is the main script loaded (a further <span class="size-editor">??</span>kB). By using standard anchor tags, if Javascript is disabled - or fails due to network issues - people will still get the CSV.</p>
 			<p>Try it by clicking <a href="test-data.csv" data-oi-csv>View CSV</a>.</p>
 		</div>
 	</div>
@@ -81,6 +81,18 @@ OI.CSVs.get();
 	</footer>
 	<script>
 	document.querySelectorAll('.v').forEach(function(el){ el.innerHTML = ' v'+OI.CSVs.version; });
+	function updateSize(file,q){
+		fetch(file,{}).then(response => {
+			if(!response.ok) throw new Error('Network response was not OK');
+			return response.text();
+		}).then(txt => {
+			document.querySelectorAll(q).forEach(function(el){ el.innerHTML = (txt.length/1000).toFixed(1); });
+		}).catch(e => {
+			console.error('There has been a problem loading '+file);
+		});
+	}
+	updateSize('dist/oi.csv.js','.size-initial');
+	updateSize('dist/oi.csveditor.js','.size-editor');
 	</script>
 </body>
 </html>
