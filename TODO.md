@@ -6,7 +6,8 @@ Functionality:
 
 * Save output
 * Add/Remove columns and rows entirely
-* A way of moving entire rows/columns
+* Moving entire columns
+* Moving entire rows
 
 Data:
 
