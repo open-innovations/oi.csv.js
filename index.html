@@ -41,7 +41,7 @@
 			<h2>Features</h2>
 			<ul>
 				<li>Basic CSV viewer/editor</li>
-				<li>Lightweight - <span class="size">??</span>kB required to view a CSV compared to 1.88MB (gzipped) for <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
+				<li>Lightweight - <span class="size-total">??</span>kB required to view a CSV compared to 1.88MB (gzipped) for <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
 				<li>Progressive enhancement</li>
 				<li>Open source</li>
 				<li>Easy to install</li>
@@ -81,18 +81,41 @@ OI.CSVs.get();
 	</footer>
 	<script>
 	document.querySelectorAll('.v').forEach(function(el){ el.innerHTML = ' v'+OI.CSVs.version; });
-	function updateSize(file,q){
+	function getSize(file,fn){
+		var size = 0,headers;
 		fetch(file,{}).then(response => {
 			if(!response.ok) throw new Error('Network response was not OK');
+			headers = response.headers;
 			return response.text();
 		}).then(txt => {
-			document.querySelectorAll(q).forEach(function(el){ el.innerHTML = (txt.length/1000).toFixed(1); });
+			size = headers['content-length']||txt.length;
+			if(typeof fn==="function") fn.call(this,size);
 		}).catch(e => {
 			console.error('There has been a problem loading '+file);
 		});
+		return this;
 	}
-	updateSize('dist/oi.csv.js','.size-initial');
-	updateSize('dist/oi.csveditor.js','.size-editor');
+	var total = 0;
+	getSize('dist/oi.csv.js',function(size){
+		total += size;
+		document.querySelectorAll('.size-initial').forEach(function(el){
+			el.innerHTML = (size/1000).toFixed(1);
+		});
+		updateTotal(total);
+	});
+	getSize('dist/oi.csveditor.js',function(size){
+		total += size;
+		document.querySelectorAll('.size-editor').forEach(function(el){
+			el.innerHTML = (size/1000).toFixed(1);
+		});
+		updateTotal(total);
+	});
+
+	function updateTotal(size){
+		document.querySelectorAll('.size-total').forEach(function(el){
+			el.innerHTML = (size/1000).toFixed(1);
+		});
+	}
 	</script>
 </body>
 </html>
