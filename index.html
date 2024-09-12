@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSV Editor | Open Innovations</title>
+	<link rel="icon" href="resources/oi-square-black.svg" />
+	<link rel="StyleSheet" href="resources/style.css" type="text/css" />
+	<style>
+	pre {
+		background: #efefef;
+		padding: 0.5rem;
+		overflow: auto;
+	}
+	.result {
+		border: 1px solid black;
+	}
+	ul,ol { margin-left: 2rem; }
+	ul { list-style: disc; }
+	ul + *, ol + * { margin-top: 1rem; }
+	
+	
+	.table-holder {
+		overflow: auto;
+		max-width: 100%;
+		max-height: 80vh;
+	}
+	</style>
+	<script src="dist/oi.csv.js"></script>
+</head>
+<body class="b1-bg">
+	<header>
+		<div class="b1-bg">
+			<div class="holder padded" style="text-align:center;">
+				<a href="https://open-innovations.org/"><svg width="80" height="80" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="#E6007C"><circle r="32" mask="url(#oi-person)"></circle></g></svg></a>
+				<h1>CSV Editor<span class="v"></span></h1>
+			</div>
+		</div>
+	</header>
+	<div class="b6-bg">
+		<div class="holder doublepadded">
+			<p>This is a prototype for a lightweight CSV Editor. At the moment it just loads the CSV content inline as a very basic demo.</p>
+			<h2>Features</h2>
+			<ul>
+				<li>Basic CSV viewer/editor</li>
+				<li>Lightweight - ??kB required to view a CSV compared to 1.88MB (gzipped) for <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
+				<li>Progressive enhancement</li>
+				<li>Open source</li>
+				<li>Easy to install</li>
+				<li>Self-hostable</li>
+				<li>No tracking analytics</li>
+			</ul>
+			<p>With just two lines of code, users will be able to open CSVs in a basic viewer/editor.</p>
+			<ol>
+				<li>Add anywhere
+					<pre>&lt;script src="<a href="oi.csv.js">oi.csv.js</a>"&gt;&lt;/script&gt;</pre>
+				</li>
+				<li>Add anywhere
+					<pre>&lt;a href="<a href="test-data.csv">test-data.csv</a>" data-oi-csv=""&gt;View CSV&lt;/a&gt;</pre>
+				</li>
+				<li>Done!</li>
+			</ol>
+			<p>The initial load (<a href="oi.csv.js">oi.csv.js</a>) is under 3kB. Only if someone clicks one of the links is the main script loaded (a further ??kB). By using standard anchor tags, if Javascript is disabled - or fails due to network issues - people will still get the CSV.</p>
+			<p>Try it by clicking <a href="test-data.csv" data-oi-csv>View CSV</a>.</p>
+		</div>
+	</div>
+<!--
+<script>
+a = document.createElement('a');
+a.href="test-data.csv" ;
+a.innerHTML = "Test";
+a.setAttribute('data-oi-csv','');
+document.body.appendChild(a);
+OI.CSVs.get();
+</script>
+-->
+	<footer class="b1-bg">
+		<div class="holder doublepadded">
+
+			<h2>Credits</h2>
+			<p>&copy; 2024 Stuart Lowe / Open Innovations (MIT licence).</p>
+		</div>
+	</footer>
+	<script>
+	document.querySelectorAll('.v').forEach(function(el){ el.innerHTML = ' v'+OI.CSVs.version; });
+	</script>
+</body>
+</html>
