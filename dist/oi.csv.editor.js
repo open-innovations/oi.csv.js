@@ -73,6 +73,11 @@
 			if(_open) this.close();
 			else this.open();
 		};
+		this.setFocus = function(i){
+			var col = table.querySelector('[data-col="'+i+'"]');
+			if(col) col.querySelector('.menu').focus();
+			return this;
+		};
 		this.delete = function(){
 			var c,r,changes = 0,lastdel = -1;
 			// Delete any rows
@@ -99,8 +104,6 @@
 			}
 			if(changes > 0){
 				this.updateTable();
-				var col = table.querySelector('[data-col="'+lastdel+'"]');
-				if(col) col.querySelector('.menu').focus();
 			}
 			return this;
 		};
@@ -160,7 +163,6 @@
 					}
 				}
 			}
-			if(menu && menu.el) menu.el.focus();
 			return this;
 		}
 		this.loadData = function(){
@@ -266,7 +268,9 @@
 					'icon': '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,7v-2h5v-5h2v5h5v2h-5v5h-2v-5z"/></svg>',
 					'this': this,
 					'fn': function(el){
-						this.select("col",getCol(el),false,false);
+						var c = getCol(el);
+						this.select("col",c,false,false);
+						this.setFocus(c);
 					}
 				},{
 					'type':'button',
@@ -275,7 +279,9 @@
 					'icon': '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,7v-2h12v2h-12z"/></svg>',
 					'this': this,
 					'fn': function(el){
-						this.deselect("col",getCol(el),false,false);
+						var c = getCol(el)
+						this.deselect("col",c,false,false);
+						this.setFocus(c);
 					}
 				},{
 					'type':'separator'
@@ -287,8 +293,10 @@
 					'this': this,
 					'fn': function(el){
 						this.deselectAll();
-						this.select("col",getCol(el),false,false);
+						var c = getCol(el);
+						this.select("col",c,false,false);
 						this.delete();
+						this.setFocus(c);
 					}
 				}]);
 			}else{
@@ -469,7 +477,6 @@
 		}
 		return data;
 	}
-
 	root.OI = OI||root.OI||{};
 
 })(window || this);
