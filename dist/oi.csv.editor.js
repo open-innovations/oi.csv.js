@@ -25,7 +25,7 @@
 	.oi-viz-table th, .oi-viz-table td { border-color: silver; }
 	.oi-viz-table tr:hover { background: var(--hover); }
 	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; }
-	.oi-viz-table th > div { display: flex; align-items: center; }
+	.oi-viz-table th > div { display: flex; align-items: center; position: relative; }
 	.oi-viz-table th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; }
 	.oi-viz-table th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
 	.oi-viz-table th .menu:focus { outline: 2px solid var(--select-border); }
@@ -307,7 +307,7 @@
 		};
 		this.updateByDom = function(e){
 			var pos = getPos(e);
-			var r,nc,old,update = false,v = e.innerHTML;
+			var r,nc,old,update = false,v = e.closest('th').querySelector('.heading').innerHTML;
 			if(isNaN(pos.row) || isNaN(pos.col)) return this;
 			// 0-index
 			pos.row--;
@@ -379,11 +379,9 @@
 			return this;
 		};
 		this.position = function(){
-			// Position menu
-			var bb1 = this.el.getBoundingClientRect();
-			var bb2 = holder.getBoundingClientRect();
-			ul.style.left = (bb1.left-bb2.left)+'px';
-			ul.style.top = (bb1.top-bb2.top+bb1.height)+'px';
+			ul.style.left = "100%";
+			ul.style.top = "100%";
+			ul.style.transform = "translate3d(-50%,0,0)";
 			return this;
 		};
 		this.addItems(items);
