@@ -1,5 +1,5 @@
 /**
-	Open Innovations CSV Editor v0.1 - initial loader
+	Open Innovations CSV Editor - initial loader
 
 	This creates a list of DOM elements with "data-oi-csv" attributes
 	and, if one is clicked, it loads the rest of the editor.
@@ -24,7 +24,7 @@
 
 	// Create a list of DOM elements that have the 'data-oi-csv' attribute
 	function List(){
-		this.version = "0.1";
+		this.version = "0.2";
 		var _obj = this;
 		this.list = [];
 		this.get = function(){
@@ -89,13 +89,17 @@
 					return this;
 				}
 				_processed = true;
-				this.editor = new OI.CSVEditor(this.el);
+				var opts = {};
+				this.el.getAttributeNames().forEach(e => {
+					if(e.indexOf('data-oi-csv-')==0) opts[e.substr(12)] = this.el.getAttribute(e);
+				});
+				this.editor = new OI.CSVEditor(this.el,opts);
 				this.editor.open();
 			}
 		};
 		el.addEventListener('click',function(e){
 			e.preventDefault();
-			if(_processed) _obj.editor.open();
+			if(_processed) _obj.editor.toggle();
 			else props.list.load(props.item);
 		})
 		return this;

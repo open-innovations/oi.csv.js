@@ -135,7 +135,6 @@ table { width: 100%; }
 table th { background: #ddd; color: black; font-weight: bold; font-family: Poppins; }
 table td, table th { border: 1px solid #222; padding: 0.25em 0.5em; color: black; vertical-align: top; }
 table td { font-family: monospace; }
-table tr:hover td { background: rgba(249, 188, 38,0.4); }
 td.num { text-align: center; }
 .sorted-dn::after { content: "▼"; }
 .sorted-up::after { content: "▲"; }
