@@ -32,7 +32,6 @@
 	.oi-viz-table .selected { background: var(--select); }
 	.oi-viz-table .selected:hover { background: var(--select-hover); }
 	.oi-viz-table-holder { position: relative; }
-
 	.oi-viz-table-holder ul[role=menu] { position: relative; z-index: 1100; list-style: none; margin: 0; padding: 4px; list-style: none; display: flex; flex-wrap: wrap; box-sizing: border-box; gap: 4px; background: #efefef; border: 1px solid rgba(0,0,0,0.3); border-radius: 4px; position: absolute; top: 0; left: 0; flex-direction: column; min-width: 192px; box-shadow: 1px 1px 4px rgba(0,0,0,0.2); }
 	.oi-viz-table-holder li[role=menuitem] { white-space: nowrap; display:block; cursor: pointer; background: transparent; }
 	.oi-viz-table-holder li[role=menuitem] .button { cursor: pointer; width: 100%; line-height: 1rem; margin-right: 1px; padding: 0.5em; text-align: left; display: flex; flex-direction: row; gap: 0.5rem; align-items: center; }
@@ -40,7 +39,7 @@
 	.oi-viz-table-holder .button svg { height: 1rem; width: 1rem; }
 	.oi-viz-table-holder .button .key { flex-grow: 1; text-align: right; color: #80868b; font-weight: bold; }
 	.oi-viz-table-holder .button:disabled, .oi-viz-table .button:disabled > * { opacity: 0.6; color: inherit!important; }
-	.oi-viz-table-holder ul[role=menu] li[role=menuitem]:focus .button:disabled,.oi-viz-table-holder ul[role=menu] li[role=menuitem]:hover .button:disabled { background: inherit!important; color: #000!important; cursor: auto; }
+	.oi-viz-table-holder ul[role=menu] li[role=menuitem] .button:focus { background: #222!important; color: #fff!important; cursor: auto; }
 	`;
 	document.head.prepend(styles);
 
@@ -75,7 +74,7 @@
 			else this.open();
 		};
 		this.delete = function(){
-			var c,r,changes = 0;
+			var c,r,changes = 0,lastdel = -1;
 			// Delete any rows
 			for(r = this.selected.row.length-1; r >= 0; r--){
 				if(this.selected.row[r]){
@@ -94,10 +93,15 @@
 					// Delete column in order
 					this.order.splice(c-1,1);
 					this.selected.col.splice(c,1);
+					lastdel = c;
 					changes++;
 				}
 			}
-			if(changes > 0) this.updateTable();
+			if(changes > 0){
+				this.updateTable();
+				var col = table.querySelector('[data-col="'+lastdel+'"]');
+				if(col) col.querySelector('.menu').focus();
+			}
 			return this;
 		};
 		this.toggleSelect = function(dir,i,shift,ctrl){
@@ -156,6 +160,7 @@
 					}
 				}
 			}
+			if(menu && menu.el) menu.el.focus();
 			return this;
 		}
 		this.loadData = function(){
@@ -254,7 +259,7 @@
 					_obj.updateByDom(e.target);
 				});
 
-				menu = new Menu(holder,[{
+				menu = new Menu('column-menu',holder,[{
 					'type':'button',
 					'id':'btn-select-column',
 					'title':'Select column',
@@ -333,10 +338,11 @@
 	function getCol(el){ var cel = (el.hasAttribute('data-col') ? el : el.closest('[data-col]'))||el; return parseInt(cel.getAttribute('data-col')); }
 	function getPos(el){ return {'col':getCol(el),'row':getRow(el)}; }
 
-	function Menu(holder,items){
+	function Menu(id,holder,items){
 		var ul = document.createElement('ul');
 		ul.setAttribute('role','menu');
 		ul.style.display = "none";
+		ul.id = id;
 		holder.appendChild(ul);
 		this.get = function(){ return ul; };
 		this.addItems = function(items){
