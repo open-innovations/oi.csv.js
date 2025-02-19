@@ -89,12 +89,10 @@
 					changes++;
 				}
 			}
-			for(c = this.order.length-1; c >= 0; c--){
+			for(c = this.selected.col.length-1; c >= 0; c--){
 				if(this.selected.col[c]){
 					// Delete column in data rows
-					for(r = 0; r < this.data.length; r++){
-						delete this.data[r][this.order[c-1]];
-					}
+					for(r = 0; r < this.data.length; r++) delete this.data[r][this.order[c-1]];
 					// Delete column in order
 					this.order.splice(c-1,1);
 					this.selected.col.splice(c,1);
@@ -375,13 +373,16 @@
 			}
 			el.after(ul);
 			this.el = el;
-			this.position();
+			this.setPosition();
 			return this;
 		};
-		this.position = function(){
+		this.setPosition = function(){
 			ul.style.left = "100%";
 			ul.style.top = "100%";
-			ul.style.transform = "translate3d(-50%,0,0)";
+			ul.style.transform = "translate3d(-1em,0,0)";
+			var bb = ul.getBoundingClientRect();
+			var bbh = holder.getBoundingClientRect();
+			if(bb.left+bb.width > holder.offsetWidth+bbh.left) ul.style.transform = 'translate3d(-100%,0,0)';
 			return this;
 		};
 		this.addItems(items);
