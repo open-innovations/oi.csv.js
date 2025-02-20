@@ -65,7 +65,7 @@
 				if(m<0) this.list.push(new ListItem(els[j],{'list':this,'item':this.list.length}));
 			}
 			for(i=0; i<this.list.length; i++){
-				if(this.list[i].opts.load || !this.list[i].opts._getdata) this.load(i);
+				if(this.list[i].opts.load || !this.list[i].opts._toggleable) this.load(i);
 			}
 		};
 		// Process all outstanding list items
@@ -89,7 +89,10 @@
 		this.el.getAttributeNames().forEach(e => {
 			if(e.indexOf('data-oi-csv-')==0) this.opts[e.substr(12)] = this.el.getAttribute(e)||true;
 		});
+		// Do we need to load the data from a file?
 		this.opts._getdata = (el.hasAttribute('href'));
+		// Does the input element act as a toggle to show/hide the table?
+		this.opts._toggleable = (el.hasAttribute('href') || this.opts.src);
 		this._init = function(){
 			if(!_processed){
 				if(typeof OI.CSVEditor!=="function"){
@@ -101,7 +104,7 @@
 				this.editor.open();
 			}
 		};
-		if(this.opts._getdata){
+		if(this.opts._toggleable){
 			el.addEventListener('click',function(e){
 				e.preventDefault();
 				if(_processed) _obj.editor.toggle();

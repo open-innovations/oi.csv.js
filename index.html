@@ -79,13 +79,13 @@
 			<div id="output1" style="background: #f9f9f9;display:block;line-height:3em;text-align:center;">CSV content will go here</div>
 			
 			<h3>Example 2</h3>
-			<p>In this example we create a button-link anchor tag that has <code>data-oi-csv-load</code> set to force the CSV to automatically load.</p>
+			<p>In this example we create an anchor tag that has <code>data-oi-csv-load</code> set to force the CSV file to be loaded automatically.</p>
 			<p><a href="test-data.csv" class="button c9-bg" data-oi-csv data-oi-csv-load data-oi-csv-collapse="Hide CSV" data-oi-csv-target="output2">Edit CSV</a></p>
 			<div id="output2"></div>
 
 			<h3>Example 3</h3>
-			<p>Include CSV content within a <code>&lt;textarea&gt;</code> and output the result to the page.</p>
-			<textarea data-oi-csv data-oi-csv-target="output3">
+			<p>Get CSV content from a <code>&lt;textarea&gt;</code> and output the result to the page.</p>
+			<textarea id="csv3">
 id,q,r,colour,lad19nmw,count_2018-19,count_2019-20,count_2020-21,count_2021-22,count_2022-23,sum_2018-19,sum_2019-20,sum_2020-21,sum_2021-22,sum_2022-23,las,Date
 Hartlepool,8,19,#D60303,,6,3,4,4,2,99185,64466,66050,85981,77000,Hartlepool,14 February 2025
 Middlesbrough,9,18,#D60303,,8,6,1,12,3,189670,88515,6090,394960,106770,Middlesbrough,20 February 2025
@@ -462,6 +462,7 @@ Monmouthshire,-1,8,#0DBC37,Sir Fynwy,,1,,2,,,14986,,3500,,Monmouthshire,
 Newport,-1,5,#0DBC37,Casnewydd,1,1,,,,14900,14913,,,,Newport,
 Powys,-1,9,#0DBC37,Powys,,,,2,1,,,,35000,10563,Powys,
 </textarea>
+			<button data-oi-csv data-oi-csv-src="csv3" data-oi-csv-target="output3" data-oi-csv-collapse="Hide CSV" class="c9-bg">Edit CSV</button>
 			<div id="output3"></div>
 		</div>
 	</div>

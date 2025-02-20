@@ -59,8 +59,8 @@
 		// Add a note after
 		this.open = function(){
 			_open = true;
-			if(opts._getdata) this.loadData();
-			else this.processData(lnk.innerHTML);
+			if(!opts._getdata) _url = null;
+			this.loadData();
 			if(opts.collapse) lnk.innerHTML = opts.collapse;
 			if(holder) holder.style.display = "";
 		};
@@ -186,6 +186,15 @@
 				}else{
 					msg.info('Already got data');
 				}
+			}else{
+				var a = lnk;
+				if(typeof raw==="undefined"){
+					if(opts.src && document.getElementById(opts.src)){
+						a = document.getElementById(opts.src);
+					}
+					raw = a.innerHTML;
+					this.processData(raw);
+				}
 			}
 			return this;
 		};
@@ -199,7 +208,7 @@
 				lnk.after(el);
 			}
 			el.classList.add('result');
-			el.innerHTML = 'Got data from '+_url+' <pre>'+raw+'</pre>';
+			el.innerHTML = 'Got data from '+(_url||"local")+' <pre>'+raw+'</pre>';
 			return this.updateData(raw);
 		};
 		this.updateData = function(csv){
