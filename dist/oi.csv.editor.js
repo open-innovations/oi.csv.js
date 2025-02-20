@@ -26,7 +26,7 @@
 	.oi-viz-table tr:hover { background: var(--hover); }
 	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; }
 	.oi-viz-table th > div { display: flex; align-items: center; position: relative; }
-	.oi-viz-table th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; }
+	.oi-viz-table th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; white-space: nowrap; }
 	.oi-viz-table th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
 	.oi-viz-table th .menu:focus { outline: 2px solid var(--select-border); }
 	.oi-viz-table .selected { background: var(--select); }
