@@ -191,8 +191,12 @@
 				if(typeof raw==="undefined"){
 					if(opts.src && document.getElementById(opts.src)){
 						a = document.getElementById(opts.src);
+						a.addEventListener('change',function(e){
+							// Update the data
+							_obj.updateData(e.target.value);
+						});
 					}
-					raw = a.innerHTML;
+					raw = a.value||a.innerHTML;
 					this.processData(raw);
 				}
 			}
@@ -220,7 +224,7 @@
 			for(r = 0; r < data.length; r++) data[r] = {'values':data[r]};
 			this.order = [];
 			for(c = 0; c < this.data[0].order.length; c++){
-				o = {'value':this.data[0].order[c],'type':'string'};
+				o = {'value':this.data[0].order[c]};
 				this.order.push(o);
 			}
 			this.data = data;
@@ -401,7 +405,7 @@
 			}else{
 				msg.log('No data loaded.');
 			}
-
+			this.updateCSV();
 			return this;
 		};
 		this.updateByDom = function(e){
@@ -425,14 +429,43 @@
 						this.data[r].values[v] = this.data[r].values[old];
 						delete this.data[r].values[old];
 					}
+					this.updateCSV();
 				}
 			}else{
 				if(this.data[pos.row].values[this.order[pos.col].value] != v){
 					update = true;
 					this.data[pos.row].values[this.order[pos.col].value] = v;
+					this.updateCSV();
 				}
 			}
 			return this;
+		};
+		this.updateCSV = function(){
+			this._csv = this.buildCSV();
+			
+			// Update original source
+			if(opts.src && document.getElementById(opts.src)){
+				var a = document.getElementById(opts.src);
+				a.value = this._csv;
+			}
+
+			return this;
+		};
+		this.buildCSV = function(){
+			var csv = '',c,r,v,needsquotes;
+			for(c = 0; c < this.order.length; c++){
+				csv += (c > 0 ? ',':'')+this.order[c].value;
+			}
+			csv += '\n';
+			for(r = 0; r < this.data.length; r++){
+				for(c = 0; c < this.order.length; c++){
+					v = this.data[r].values[this.order[c].value];
+					needsquotes = (typeof v==="string" && v.indexOf(",")>=0);
+					csv += (c > 0 ? ',':'')+(needsquotes ? '"':'')+this.data[r].values[this.order[c].value]+(needsquotes ? '"':'');
+				}
+				csv += '\n';
+			}
+			return csv;
 		};
 		this.toggleMenu = function(e){
 			return menu.toggle(e);
