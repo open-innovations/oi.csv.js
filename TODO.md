@@ -23,28 +23,28 @@ Happy for these to be moved about.
 
 Must have
 
-- Filter rows by value in single column
-- Filter rows by pattern of single column
-- Sort rows by value in single column (ascending / descending)
-- Download current view of CSV as file
-- Remove / hide column
+- [x] Download current view of CSV as file
+- [x] Sort rows by value in single column (ascending / descending)
+- [x] Remove / hide column
 
 Should have
 
-- Reorder columns
-- Remove / hide row
-- Data type selection for columns (probably limit to: string = default, number, datetime)
-- Filter rows by column numerical range (iff column contains numerical data)
-- Filter rows by column date range (iff colummns)
-- Add new column (e.g. for additional custom filtering, notes)
+- [x] Reorder columns
+- [x] Remove / hide row
+- [ ] Data type selection for columns (probably limit to: string = default, number, datetime)
+- [ ] Filter rows by column numerical range (iff column contains numerical data)
+- [ ] Filter rows by column date range (iff colummns)
+- [ ] Filter rows by value in single column
+- [ ] Filter rows by pattern of single column
+- [ ] Add new column (e.g. for additional custom filtering, notes)
 
 Could have
 
-- Add new row
-- Reorder rows /!\ WARNING possible thorny interaction with sort
-- Sort rows by multiple columns
-- Data type inference for columns, based on content of columns
-- Save current CSV customisation so can be re-applied later. /!\ WARNING Very likely to be complet, given the wide possibility of changes. Maybe just sort / filter settings? /!\
+- [ ] Add new row
+- [ ] Reorder rows /!\ WARNING possible thorny interaction with sort
+- [ ] Sort rows by multiple columns
+- [ ] Data type inference for columns, based on content of columns
+- [ ] Save current CSV customisation so can be re-applied later. /!\ WARNING Very likely to be complet, given the wide possibility of changes. Maybe just sort / filter settings? /!\
 
 Won't have
 
