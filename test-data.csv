@@ -1,375 +1,392 @@
-id,q,r,colour,count 2018-19,count 2019-20,count 2020-21,count 2021-22,count 2022-23,sum 2018-19,sum 2019-20,sum 2020-21,sum 2021-22,sum 2022-23,las,Date
-Amber Valley,7,11,#00B6FF,6,5,5,3,3,97371,127286,74171,206532,124866,Amber Valley,7 July 2024
-"Kingston upon Hull, City of",10,15,#F9BC26,22,28,14,24,6,1047006,768705,558058,953743,156990,"Kingston upon Hull, City of",6 October 2024
-Adur,8,-2,#67E767,8,4,8,6,1,102671,85623,92545,109438,29993,Adur,13 October 2024
-East Riding of Yorkshire,11,16,#F9BC26,10,14,4,8,3,214853,273350,46950,94771,145813,East Riding of Yorkshire,11 November 2024
-Stockton-on-Tees,8,18,#D60303,15,14,8,12,4,299616,504270,119724,319909,185110,Stockton-on-Tees,31 January 2025
-Redcar and Cleveland,9,19,#D60303,4,8,3,12,3,82731,169430,65535,595171,155026,Redcar and Cleveland,3 February 2025
-Hartlepool,8,19,#D60303,6,3,4,4,2,99185,64466,66050,85981,77000,Hartlepool,14 February 2025
-Middlesbrough,9,18,#D60303,8,6,1,12,3,189670,88515,6090,394960,106770,Middlesbrough,20 February 2025
-Aberdeen City,4,26,#2254F4,,,,,,,,,,,,
-Aberdeenshire,3,26,#2254F4,,,,,,,,,,,,
-Allerdale,4,18,#1DD3A7,11,6,5,4,1,122921,81456,111541,52953,29988,Allerdale,
-Angus,2,25,#2254F4,,,,,,,,,,,,
-Antrim and Newtownabbey,-4,16,#722EA5,,,,,,,,,,,,
-Ards and North Down,-3,16,#722EA5,,,,,,,,,,,,
-Argyll and Bute,0,24,#2254F4,,,,,,,,,,,,
-"Armagh City, Banbridge and Craigavon",-5,16,#722EA5,,,,,,,,,,,,
-Arun,6,-2,#67E767,,3,1,2,2,,38647,13685,54230,37250,Arun,
-Ashfield,8,11,#00B6FF,2,3,2,2,1,16509,116984,30491,27259,30398,Ashfield,
-Ashford,12,-1,#67E767,12,6,1,9,1,219874,156449,15000,447373,6205,Ashford,
-Babergh,14,8,#FF6700,,2,2,2,,,28326,18102,22369,,Babergh,
-Barking and Dagenham,13,3,#D73058,11,5,7,8,1,150741,53887,149280,144187,13976,Barking and Dagenham,
-Barnet,10,5,#D73058,25,29,19,19,6,301769,472459,256055,292794,136593,Barnet,
-Barnsley,8,14,#F9BC26,8,9,3,14,3,596677,173674,79867,598386,79369,Barnsley,
-Barrow-in-Furness,2,17,#1DD3A7,,5,4,7,2,,197136,57150,156680,125600,Barrow-in-Furness,
-Basildon,14,5,#FF6700,1,2,2,1,,8750,24532,22571,250000,,Basildon,
-Basingstoke and Deane,2,1,#67E767,6,7,2,5,2,91705,103060,29717,178111,57451,Basingstoke and Deane,
-Bassetlaw,10,13,#00B6FF,1,3,2,2,,10000,121050,21938,253976,,Bassetlaw,
-Bath and North East Somerset,1,3,#178CFF,21,21,9,18,8,482782,464337,151324,423418,343791,Bath and North East Somerset,
-Bedford,9,7,#FF6700,11,15,7,7,3,111589,233088,79961,153179,73787,Bedford,
-Belfast,-4,17,#722EA5,,,,1,1,,,,4926,33106,Belfast,
-Bexley,12,1,#D73058,2,6,3,7,4,18640,57826,41613,191318,134026,Bexley,
-Birmingham,5,8,#E6007C,110,111,74,101,42,2346670,2858517,1630871,3620410,1534503,Birmingham,
-Blaby,7,7,#00B6FF,1,2,2,1,3,6000,39000,23804,14785,49941,Blaby,
-Blackburn with Darwen,4,15,#1DD3A7,8,9,5,10,1,171810,144933,64996,524582,47710,Blackburn with Darwen,
-Blackpool,2,15,#1DD3A7,4,4,2,4,2,47005,59495,21250,155076,152600,Blackpool,
-Blaenau Gwent,0,9,#0DBC37,,,,,,,,,,,,
-Bolsover,10,12,#00B6FF,4,2,2,4,1,82725,33398,29982,74160,30994,Bolsover,
-Bolton,4,14,#1DD3A7,5,7,3,5,4,47534,95847,36656,140152,87989,Bolton,
-Boston,12,12,#00B6FF,,1,1,1,2,,15000,3500,14776,48924,Boston,
-"Bournemouth, Christchurch and Poole",0,0,#178CFF,14,15,6,7,5,260218,254506,70166,136523,92526,"Bournemouth, Christchurch and Poole",
-Bracknell Forest,4,2,#67E767,1,,1,,,14700,,15000,,,Bracknell Forest,
-Bradford,7,16,#F9BC26,26,27,16,21,7,655156,1857838,448094,650112,213926,Bradford,
-Braintree,14,7,#FF6700,4,5,3,8,3,48639,33600,26860,70267,18700,Braintree,
-Breckland,14,10,#FF6700,2,5,2,3,1,29972,89579,17070,45420,17895,Breckland,
-Brent,10,4,#D73058,25,19,17,22,8,413828,466399,214776,1223332,128460,Brent,
-Brentwood,13,5,#FF6700,4,5,,4,,47666,66238,,122019,,Brentwood,
-Bridgend,-3,6,#0DBC37,,,,,,,,,,,,
-Brighton and Hove,9,-2,#67E767,113,126,85,110,34,2092508,2689669,1518333,2669149,997209,Brighton and Hove,
-"Bristol, City of",0,3,#178CFF,130,138,84,119,28,2914638,2910169,1569670,3116641,1070802,"Bristol, City of",
-Broadland,15,12,#FF6700,5,3,4,3,,49600,36546,54855,42210,,Broadland,
-Bromley,11,0,#D73058,24,24,11,21,7,379037,379567,136911,350621,106389,Bromley,
-Bromsgrove,2,7,#E6007C,2,3,,1,1,16870,34992,,11360,29950,Bromsgrove,
-Broxbourne,12,6,#FF6700,1,1,,2,,25363,7000,,29900,,Broxbourne,
-Broxtowe,7,10,#00B6FF,6,14,4,6,3,69912,235257,164007,284463,81187,Broxtowe,
-Buckinghamshire,5,5,#67E767,12,10,10,18,2,233299,110536,125014,730366,44636,Buckinghamshire,
-Burnley,6,15,#1DD3A7,3,3,,1,,43777,44196,,14990,,Burnley,
-Bury,5,14,#1DD3A7,10,14,7,9,5,135858,192053,113525,205265,138806,Bury,
-Caerphilly,-2,6,#0DBC37,,,,,,,,,,,,
-Calderdale,7,15,#F9BC26,25,19,9,21,8,626742,312606,122238,346340,200676,Calderdale,
-Cambridge,12,8,#FF6700,32,35,10,18,7,591630,470239,168423,447999,257203,Cambridge,
-Camden,11,4,#D73058,78,78,40,73,22,1207174,1280453,971327,1976320,1924097,Camden,
-Cannock Chase,3,9,#E6007C,,,,,,,,,,,,
-Canterbury,15,0,#67E767,20,18,4,18,7,340985,538687,50480,251439,135070,Canterbury,
-Cardiff,-2,5,#0DBC37,12,7,2,3,2,177879,92409,28515,129350,49202,Cardiff,
-Carlisle,4,19,#1DD3A7,7,3,2,5,,98177,30981,17634,575145,,Carlisle,
-Carmarthenshire,-4,6,#0DBC37,1,,,,,13456,,,,,Carmarthenshire,
-Castle Point,15,5,#FF6700,2,2,,,,29400,29850,,,,Castle Point,
-Causeway Coast and Glens,-5,18,#722EA5,,,,,,,,,,,,
-Central Bedfordshire,9,6,#FF6700,7,13,4,8,3,229387,275638,85883,171226,61076,Central Bedfordshire,
-Ceredigion,-2,9,#0DBC37,,1,1,,,,7845,15000,,,Ceredigion,
-Charnwood,8,9,#00B6FF,4,6,9,10,1,49806,98861,131709,188264,100000,Charnwood,
-Chelmsford,14,6,#FF6700,5,6,6,4,5,90322,115174,105119,60774,108162,Chelmsford,
-Cheltenham,1,5,#178CFF,11,7,6,3,,123624,203477,104868,36506,,Cheltenham,
-Cherwell,4,5,#67E767,6,6,4,9,3,149972,69274,48050,241541,66500,Cherwell,
-Cheshire East,4,11,#1DD3A7,10,13,11,12,,180888,258772,161381,267309,,Cheshire East,
-Cheshire West and Chester,3,11,#1DD3A7,7,12,6,10,,95294,158103,67892,519668,,Cheshire West and Chester,
-Chesterfield,9,12,#00B6FF,1,3,5,5,3,7769,24670,96940,78815,74205,Chesterfield,
-Chichester,5,-1,#67E767,11,16,7,9,4,157878,205263,103364,184284,74619,Chichester,
-Chorley,3,14,#1DD3A7,4,4,2,5,,65653,56828,29731,59784,,Chorley,
-City of Edinburgh,4,22,#2254F4,2,5,,1,,53635,66456,,12348,,City of Edinburgh,
-City of London,11,2,#D73058,6,9,4,5,2,96549,266774,50600,149980,80000,City of London,
-Clackmannanshire,2,24,#2254F4,,,,,,,,,,,,
-Colchester,15,8,#FF6700,18,20,17,17,8,370879,417116,322687,428194,258863,Colchester,
-Conwy,-1,10,#0DBC37,,,,,,,,,,,,
-Copeland,3,18,#1DD3A7,2,5,2,7,1,28679,92531,29440,112623,4949,Copeland,
-Cornwall,-5,-2,#178CFF,57,73,43,62,12,1165837,2303253,970699,1426917,362189,Cornwall,
-Cotswold,2,5,#178CFF,,4,3,4,4,,56264,79797,59558,90527,Cotswold,
-County Durham,6,18,#D60303,22,21,11,15,6,359968,365595,148903,306605,177029,County Durham,
-Coventry,5,6,#E6007C,18,29,28,42,6,474101,555491,1711590,2331339,881836,Coventry,
-Craven,6,17,#F9BC26,3,7,4,5,2,173290,234042,45243,163808,121740,Craven,
-Crawley,8,-1,#67E767,8,7,6,8,3,162700,102478,74415,175255,89946,Crawley,
-Croydon,10,0,#D73058,24,31,15,33,17,519496,565728,400050,816318,382829,Croydon,
-Dacorum,8,6,#FF6700,6,10,7,5,,98841,178007,101817,96737,,Dacorum,
-Darlington,7,18,#D60303,3,7,3,3,2,40914,145330,35533,87567,43500,Darlington,
-Dartford,13,1,#67E767,,2,3,4,,,29160,40433,83090,,Dartford,
-Denbighshire,0,10,#0DBC37,,,,1,,,,,8454,,Denbighshire,
-Derby,6,11,#00B6FF,12,17,9,21,6,485588,1942727,235860,669790,131322,Derby,
-Derbyshire Dales,7,12,#00B6FF,8,9,2,9,3,168933,115579,40673,316623,67835,Derbyshire Dales,
-Derry City and Strabane,-6,17,#722EA5,,,,,,,,,,,,
-Doncaster,9,14,#F9BC26,5,12,3,6,1,116319,238907,43994,381586,1447,Doncaster,
-Dorset,-1,0,#178CFF,15,25,12,17,2,270346,1208253,151608,335258,25450,Dorset,
-Dover,14,-1,#67E767,7,4,3,5,2,88749,106023,40295,101978,59995,Dover,
-Dudley,1,7,#E6007C,5,2,6,15,5,60646,23992,76090,365548,164911,Dudley,
-Dumfries and Galloway,4,20,#2254F4,2,,,1,,21732,,,14950,,Dumfries and Galloway,
-Dundee City,3,25,#2254F4,,,,,,,,,,,,
-Ealing,9,4,#D73058,15,15,9,16,3,168186,226731,109471,256409,49000,Ealing,
-East Ayrshire,3,20,#2254F4,,,,,,,,,,,,
-East Cambridgeshire,12,9,#FF6700,1,5,1,6,1,40000,182867,15000,125634,30970,East Cambridgeshire,
-East Devon,-2,-1,#178CFF,9,6,6,10,4,107678,102707,133690,164296,97090,East Devon,
-East Dunbartonshire,1,23,#2254F4,,,,,,,,,,,,
-East Hampshire,4,0,#67E767,5,2,7,4,1,83050,28361,62679,40162,29620,East Hampshire,
-East Hertfordshire,13,8,#FF6700,3,3,4,4,2,37656,71223,165524,134980,60000,East Hertfordshire,
-East Lindsey,12,13,#00B6FF,2,1,,4,,15947,13850,,72264,,East Lindsey,
-East Lothian,5,22,#2254F4,,,,,,,,,,,,
-East Renfrewshire,2,20,#2254F4,,1,,,,,15000,,,,East Renfrewshire,
-East Staffordshire,5,11,#E6007C,1,1,,,,15000,15000,,,,East Staffordshire,
-East Suffolk,16,10,#FF6700,13,23,20,23,9,263837,557119,254947,507768,198030,East Suffolk,
-Eastbourne,10,-2,#67E767,7,4,6,11,4,82573,51619,171453,181472,190677,Eastbourne,
-Eastleigh,3,0,#67E767,4,5,2,7,1,61168,101635,60439,191560,44895,Eastleigh,
-Eden,5,18,#1DD3A7,4,4,2,8,1,74132,58848,21870,242343,20000,Eden,
-Elmbridge,7,2,#67E767,9,7,4,5,,88658,162363,100960,65074,,Elmbridge,
-Enfield,11,5,#D73058,14,26,11,20,4,255282,513240,167002,537809,81082,Enfield,
-Epping Forest,12,5,#FF6700,2,5,2,1,,23355,69564,23650,100000,,Epping Forest,
-Epsom and Ewell,8,0,#67E767,9,7,6,6,,140599,111865,89980,133371,,Epsom and Ewell,
-Erewash,7,9,#00B6FF,,2,1,3,,,29936,14565,94771,,Erewash,
-Exeter,-3,-1,#178CFF,22,36,13,32,7,394189,672550,281513,1001439,240631,Exeter,
-Falkirk,2,23,#2254F4,,,,,,,,,,,,
-Fareham,2,-1,#67E767,3,3,3,2,,29024,28699,39364,23874,,Fareham,
-Fenland,13,10,#FF6700,1,2,1,3,1,7000,22200,6000,62016,29000,Fenland,
-Fermanagh and Omagh,-6,16,#722EA5,,1,,,,,6750,,,,Fermanagh and Omagh,
-Fife,3,24,#2254F4,1,,,,,14979,,,,,Fife,
-Flintshire,0,11,#0DBC37,,,,,,,,,,,,
-Folkestone and Hythe,13,-1,#67E767,18,21,11,22,3,817987,440317,233224,474757,72548,Folkestone and Hythe,
-Forest of Dean,-1,6,#178CFF,3,4,2,4,,50824,37967,58490,56739,,Forest of Dean,
-Fylde,4,16,#1DD3A7,3,2,1,4,,43653,29140,7515,81600,,Fylde,
-Gateshead,6,19,#D60303,25,23,2,18,3,423544,405936,23375,404084,130033,Gateshead,
-Gedling,9,10,#00B6FF,10,11,2,4,1,112483,138056,45315,93972,17650,Gedling,
-Glasgow City,1,21,#2254F4,7,1,1,4,1,91445,16200,9358,95825,14686,Glasgow City,
-Gloucester,0,6,#178CFF,5,6,4,9,1,88695,240531,202327,357362,29500,Gloucester,
-Gosport,3,-1,#67E767,2,5,2,1,2,101030,66794,17135,14995,39056,Gosport,
-Gravesham,14,1,#67E767,1,3,,2,2,5211,38316,,29500,44250,Gravesham,
-Great Yarmouth,15,11,#FF6700,7,6,2,3,2,79982,111591,29800,33480,33850,Great Yarmouth,
-Greenwich,11,1,#D73058,24,29,16,28,7,1693232,516864,282240,527652,517919,Greenwich,
-Guildford,5,1,#67E767,7,9,2,4,2,94819,122395,29922,74474,50104,Guildford,
-Gwynedd,-2,10,#0DBC37,,,,,,,,,,,,
-Hackney,12,3,#D73058,145,161,82,118,36,2235783,2410263,1334161,3179856,1140162,Hackney,
-Halton,1,11,#1DD3A7,1,4,3,1,,5875,37774,184720,15000,,Halton,
-Hambleton,10,18,#F9BC26,4,5,1,2,3,96610,127307,14860,40248,56310,Hambleton,
-Hammersmith and Fulham,8,3,#D73058,24,20,11,25,8,356241,295718,159743,442786,142499,Hammersmith and Fulham,
-Harborough,8,7,#00B6FF,1,4,2,4,,14800,70567,29759,81359,,Harborough,
-Haringey,12,4,#D73058,78,84,47,66,19,1003273,1145571,748036,1509891,474514,Haringey,
-Harlow,13,6,#FF6700,2,3,1,4,4,63871,69745,15000,64081,183965,Harlow,
-Harrogate,8,17,#F9BC26,7,8,3,7,1,162233,146370,44348,149689,16327,Harrogate,
-Harrow,8,4,#D73058,6,7,7,10,4,47615,253686,92120,220717,208257,Harrow,
-Hart,3,2,#67E767,,1,1,,,,6000,75820,,,Hart,
-Hastings,13,-2,#67E767,24,38,15,33,7,445124,746101,291690,1271702,247932,Hastings,
-Havant,5,0,#67E767,,3,,2,,,60620,,26948,,Havant,
-Havering,14,3,#D73058,8,10,5,7,,115111,153837,59869,87701,,Havering,
-"Herefordshire, County of",0,8,#E6007C,9,17,4,15,6,676518,599684,120020,507480,271456,"Herefordshire, County of",
-Hertsmere,9,5,#FF6700,,1,4,4,3,,9000,30895,59395,89117,Hertsmere,
-High Peak,7,13,#00B6FF,7,7,3,6,3,194679,224826,100201,148610,53175,High Peak,
-Highland,1,26,#2254F4,,1,,,,,14800,,,,Highland,
-Hillingdon,7,4,#D73058,5,5,3,4,6,46352,52217,39715,80458,92838,Hillingdon,
-Hinckley and Bosworth,7,8,#00B6FF,1,1,1,2,,14049,14889,14387,114986,,Hinckley and Bosworth,
-Horsham,6,-1,#67E767,5,8,1,4,,60019,96167,16519,50281,,Horsham,
-Hounslow,7,3,#D73058,9,15,3,6,2,109532,296201,59860,73444,67317,Hounslow,
-Huntingdonshire,10,8,#FF6700,5,3,3,4,3,63393,42107,39550,53484,54690,Huntingdonshire,
-Hyndburn,5,15,#1DD3A7,1,1,2,1,,8284,15000,25734,15000,,Hyndburn,
-Inverclyde,0,21,#2254F4,,,,,,,,,,,,
-Ipswich,15,9,#FF6700,15,17,7,16,2,301408,375787,105596,563922,61299,Ipswich,
-Isle of Anglesey,-2,12,#0DBC37,,,,,,,,,,,,
-Isle of Wight,1,-2,#67E767,8,14,4,12,5,96071,442569,47562,315783,170729,Isle of Wight,
-Isles of Scilly,-7,-3,#178CFF,1,,,1,,13000,,,90000,,Isles of Scilly,
-Islington,11,3,#D73058,89,102,43,78,22,1262545,3368744,845755,1945311,772380,Islington,
-Kensington and Chelsea,9,3,#D73058,38,31,12,15,8,536290,390112,180398,242149,177046,Kensington and Chelsea,
-King's Lynn and West Norfolk,13,11,#FF6700,5,4,,1,,95591,103959,,15500,,King's Lynn and West Norfolk,
-Kingston upon Thames,7,1,#D73058,9,15,8,14,4,140620,297377,181848,464022,239775,Kingston upon Thames,
-Kirklees,8,15,#F9BC26,23,25,22,34,9,435066,501974,347751,932877,307924,Kirklees,
-Knowsley,2,12,#1DD3A7,5,5,1,2,2,162569,140789,49957,273701,115385,Knowsley,
-Lambeth,10,2,#D73058,96,105,54,79,21,1580535,1942063,2026783,3059758,1633234,Lambeth,
-Lancaster,3,17,#1DD3A7,23,16,9,18,7,475739,339862,128029,386630,280046,Lancaster,
-Leeds,8,16,#F9BC26,92,97,46,91,29,2147451,2195194,1029324,2418792,1134961,Leeds,
-Leicester,8,8,#00B6FF,52,46,34,41,6,871247,1020673,616590,1661159,123094,Leicester,
-Lewes,10,-1,#67E767,20,20,12,17,5,414207,393981,202422,282577,134279,Lewes,
-Lewisham,10,1,#D73058,73,107,59,88,13,1158825,2716916,972945,2095546,371997,Lewisham,
-Lichfield,4,9,#E6007C,1,6,4,2,1,13671,138119,49561,22274,14855,Lichfield,
-Lincoln,11,12,#00B6FF,20,9,6,8,2,315782,331889,85341,128912,58146,Lincoln,
-Lisburn and Castlereagh,-5,15,#722EA5,,,,,,,,,,,,
-Liverpool,1,13,#1DD3A7,56,57,39,53,18,950728,952698,568349,1224184,503612,Liverpool,
-Luton,10,7,#FF6700,20,16,12,19,5,278497,365328,163267,325921,116098,Luton,
-Maidstone,14,0,#67E767,7,9,4,4,2,186166,149978,43768,61960,114289,Maidstone,
-Maldon,15,7,#FF6700,3,1,,1,,97004,49897,,29219,,Maldon,
-Malvern Hills,-1,7,#E6007C,3,6,2,3,1,81928,76739,22032,89680,30000,Malvern Hills,
-Manchester,5,12,#1DD3A7,141,142,86,112,39,2670139,3327274,1658246,3121424,1152709,Manchester,
-Mansfield,9,11,#00B6FF,1,1,1,1,1,14457,59270,14644,52928,40910,Mansfield,
-Medway,15,1,#67E767,11,10,7,13,9,194136,198295,130068,448118,398151,Medway,
-Melton,11,10,#00B6FF,,1,,1,1,,14565,,14775,26200,Melton,
-Mendip,0,1,#178CFF,18,17,7,20,1,246259,303961,88448,308477,19956,Mendip,
-Merthyr Tydfil,-2,8,#0DBC37,,,,,,,,,,,,
-Merton,8,1,#D73058,16,19,11,13,7,166841,405143,125041,220954,100064,Merton,
-Mid and East Antrim,-4,18,#722EA5,,,,,,,,,,,,
-Mid Devon,-2,0,#178CFF,6,2,3,3,3,81813,21614,31950,92652,47388,Mid Devon,
-Mid Suffolk,14,9,#FF6700,3,5,6,5,1,42653,61085,139240,214485,24550,Mid Suffolk,
-Mid Sussex,7,-1,#67E767,4,7,5,5,2,132458,84431,87375,88062,49665,Mid Sussex,
-Mid Ulster,-5,17,#722EA5,,,,,,,,,,,,
-Midlothian,3,21,#2254F4,,,,,,,,,,,,
-Milton Keynes,6,5,#67E767,9,11,5,10,4,217029,338703,112966,290264,112432,Milton Keynes,
-Mole Valley,6,1,#67E767,2,1,,1,1,53000,11533,,15000,29712,Mole Valley,
-Monmouthshire,-1,8,#0DBC37,,1,,2,,,14986,,3500,,Monmouthshire,
-Moray,2,26,#2254F4,,1,,,,,14994,,,,Moray,
-Na h-Eileanan Siar,-1,27,#2254F4,,,,,,,,,,,,
-Neath Port Talbot,-3,5,#0DBC37,,,,,,,,,,,,
-New Forest,1,0,#67E767,8,10,6,4,1,196036,132510,196405,90558,16905,New Forest,
-Newark and Sherwood,10,11,#00B6FF,3,1,2,3,1,180000,15000,29895,48974,22024,Newark and Sherwood,
-Newcastle upon Tyne,5,19,#D60303,65,85,42,69,16,1702208,1560159,630349,1866272,555091,Newcastle upon Tyne,
-Newcastle-under-Lyme,2,10,#E6007C,3,9,2,5,,105047,192744,61767,154218,,Newcastle-under-Lyme,
-Newham,13,2,#D73058,24,36,25,23,15,329728,552847,405910,564878,430378,Newham,
-Newport,-1,5,#0DBC37,1,1,,,,14900,14913,,,,Newport,
-"Newry, Mourne and Down",-4,15,#722EA5,,,,,,,,,,,,
-North Ayrshire,1,20,#2254F4,,,,,,,,,,,,
-North Devon,-3,1,#178CFF,4,2,4,6,6,57000,20190,47319,395342,143947,North Devon,
-North East Derbyshire,8,12,#00B6FF,1,3,1,2,1,4480,33650,14524,26662,13500,North East Derbyshire,
-North East Lincolnshire,11,14,#F9BC26,9,5,3,4,5,217875,102263,43465,135521,214855,North East Lincolnshire,
-North Hertfordshire,11,7,#FF6700,2,5,7,6,3,16783,60919,83477,249434,72640,North Hertfordshire,
-North Kesteven,11,11,#00B6FF,9,7,4,5,2,169067,477168,129409,150977,39586,North Kesteven,
-North Lanarkshire,2,22,#2254F4,,,,,,,,,,,,
-North Lincolnshire,10,14,#F9BC26,5,9,,5,,108326,108833,,131410,,North Lincolnshire,
-North Norfolk,14,12,#FF6700,2,5,4,8,2,21557,92984,49406,115504,19353,North Norfolk,
-North Northamptonshire,9,9,#00B6FF,,,,6,2,,,,142635,129500,North Northamptonshire,
-North Somerset,0,2,#178CFF,9,15,10,14,5,150817,402090,193880,401884,158781,North Somerset,
-North Tyneside,6,20,#D60303,15,13,10,12,5,191147,217157,128074,242102,129440,North Tyneside,
-North Warwickshire,6,8,#E6007C,,1,1,,,,14850,14956,,,North Warwickshire,
-North West Leicestershire,6,9,#00B6FF,8,5,4,4,2,208966,118934,96649,49359,51914,North West Leicestershire,
-Northumberland,5,20,#D60303,20,22,13,22,6,428753,478216,333135,672560,125992,Northumberland,
-Norwich,14,11,#FF6700,38,61,29,38,10,562415,1638124,509745,1155792,283166,Norwich,
-Nottingham,8,10,#00B6FF,51,55,35,48,11,743269,1089429,624387,1457097,265586,Nottingham,
-Nuneaton and Bedworth,6,7,#E6007C,3,4,2,1,,78935,93095,25870,23325,,Nuneaton and Bedworth,
-Oadby and Wigston,9,8,#00B6FF,2,1,,2,1,29977,15000,,113055,30000,Oadby and Wigston,
-Oldham,5,13,#1DD3A7,11,7,1,6,1,414550,95744,14573,110581,22086,Oldham,
-Orkney Islands,4,28,#2254F4,,1,,,,,13394,,,,Orkney Islands,
-Oxford,4,4,#67E767,34,36,25,33,5,570961,786167,398273,792274,127479,Oxford,
-Pembrokeshire,-5,6,#0DBC37,,,,,,,,,,,,
-Pendle,6,16,#1DD3A7,1,2,1,1,1,4820,23900,13115,36464,19950,Pendle,
-Perth and Kinross,1,25,#2254F4,,,,,,,,,,,,
-Peterborough,11,9,#FF6700,10,9,5,7,5,311766,220587,60075,420990,183270,Peterborough,
-Plymouth,-4,-2,#178CFF,19,24,9,17,6,1052655,1182424,158782,449305,133800,Plymouth,
-Portsmouth,4,-1,#67E767,10,9,6,13,6,129179,90721,162786,427341,172183,Portsmouth,
-Powys,-1,9,#0DBC37,,,,2,1,,,,35000,10563,Powys,
-Preston,5,16,#1DD3A7,9,17,6,9,,168183,376209,67487,328924,,Preston,
-Reading,2,3,#67E767,11,18,15,18,7,142009,324894,218940,266711,184481,Reading,
-Redbridge,14,4,#D73058,13,13,7,13,3,161741,255386,161399,228983,60079,Redbridge,
-Redditch,4,7,#E6007C,1,2,,1,1,14845,30943,,48468,45423,Redditch,
-Reigate and Banstead,7,0,#67E767,3,2,,4,,38727,28387,,42212,,Reigate and Banstead,
-Renfrewshire,1,22,#2254F4,,,,,,,,,,,,
-Rhondda Cynon Taf,-3,7,#0DBC37,,2,1,,,,29955,5100,,,Rhondda Cynon Taf,
-Ribble Valley,5,17,#1DD3A7,2,5,1,3,1,36510,60835,14660,36780,18975,Ribble Valley,
-Richmond upon Thames,8,2,#D73058,14,15,9,12,7,217479,210958,91668,198911,140658,Richmond upon Thames,
-Richmondshire,7,17,#F9BC26,1,2,2,1,,38290,42369,20632,43614,,Richmondshire,
-Rochdale,7,14,#1DD3A7,7,9,4,10,3,64957,115797,158303,220113,88082,Rochdale,
-Rochford,15,6,#FF6700,1,2,1,4,,14900,20175,14526,73900,,Rochford,
-Rossendale,6,14,#1DD3A7,5,2,2,3,,51789,18879,22803,89100,,Rossendale,
-Rother,12,-2,#67E767,3,3,1,10,5,37333,40529,12400,208763,101244,Rother,
-Rotherham,9,13,#F9BC26,6,3,3,4,4,105374,129938,67938,217679,245358,Rotherham,
-Rugby,6,6,#E6007C,3,3,2,1,2,37196,35113,59749,20110,24659,Rugby,
-Runnymede,5,3,#67E767,,2,,,1,,54569,,,26694,Runnymede,
-Rushcliffe,10,10,#00B6FF,8,13,5,6,5,89908,301479,71755,156164,130784,Rushcliffe,
-Rushmoor,4,1,#67E767,4,1,2,1,1,49975,14997,29055,28900,29988,Rushmoor,
-Rutland,10,9,#00B6FF,2,2,1,,,14358,22577,5450,,,Rutland,
-Ryedale,10,16,#F9BC26,5,3,3,6,1,62924,143941,26795,153925,20468,Ryedale,
-Salford,4,13,#1DD3A7,22,22,14,33,8,401921,541736,249077,931020,430589,Salford,
-Sandwell,3,7,#E6007C,16,19,7,17,3,309108,413627,192850,657359,67335,Sandwell,
-Scarborough,10,17,#F9BC26,6,8,3,8,,109380,165263,35068,274558,,Scarborough,
-Scottish Borders,4,21,#2254F4,,,,,,,,,,,,
-Sedgemoor,-1,2,#178CFF,3,2,2,3,2,59568,48023,21385,68441,45797,Sedgemoor,
-Sefton,2,14,#1DD3A7,7,9,6,6,3,70854,206192,94205,122230,97969,Sefton,
-Selby,9,16,#F9BC26,1,1,1,4,3,69984,14537,14910,69277,82302,Selby,
-Sevenoaks,12,0,#67E767,4,4,1,4,2,89179,57488,14337,85940,22210,Sevenoaks,
-Sheffield,8,13,#F9BC26,59,64,36,62,14,1176185,1315796,702459,1674804,363597,Sheffield,
-Shetland Islands,5,30,#2254F4,,,,,,,,,,,,
-Shropshire,1,9,#E6007C,21,18,16,17,6,334116,264286,305426,608406,112341,Shropshire,
-Slough,6,4,#67E767,7,9,3,7,,85794,181691,44678,290713,,Slough,
-Solihull,5,7,#E6007C,8,5,5,7,1,81894,86060,71545,152867,20000,Solihull,
-Somerset West and Taunton,-2,1,#178CFF,20,10,10,12,4,322573,195034,236669,252998,149825,Somerset West and Taunton,
-South Ayrshire,1,19,#2254F4,,,,,,,,,,,,
-South Cambridgeshire,11,8,#FF6700,4,9,3,14,1,44588,194410,32783,300898,55728,South Cambridgeshire,
-South Derbyshire,6,10,#00B6FF,2,,3,2,1,29686,,43403,32997,12000,South Derbyshire,
-South Gloucestershire,1,4,#178CFF,9,11,4,8,2,190931,270470,56757,127135,34613,South Gloucestershire,
-South Hams,-4,-3,#178CFF,11,9,2,4,,133082,125887,29975,49674,,South Hams,
-South Holland,12,11,#00B6FF,,2,2,1,2,,11999,28380,9561,37346,South Holland,
-South Kesteven,12,10,#00B6FF,,2,2,1,3,,29074,29500,14990,118953,South Kesteven,
-South Lakeland,4,17,#1DD3A7,11,16,6,12,7,302790,280709,81820,361432,250221,South Lakeland,
-South Lanarkshire,2,21,#2254F4,1,,,,,24848,,,,,South Lanarkshire,
-South Norfolk,15,10,#FF6700,7,9,8,7,3,153529,292893,122580,106694,132225,South Norfolk,
-South Oxfordshire,5,4,#67E767,5,8,2,6,2,71128,140839,27985,73459,38000,South Oxfordshire,
-South Ribble,3,15,#1DD3A7,1,1,2,2,,17060,15000,18994,19110,,South Ribble,
-South Somerset,-1,1,#178CFF,5,8,5,6,3,86190,198517,136248,184016,91352,South Somerset,
-South Staffordshire,2,8,#E6007C,1,2,,2,,28760,41259,,28500,,South Staffordshire,
-South Tyneside,7,20,#D60303,4,7,5,4,3,53488,275775,68595,76761,47299,South Tyneside,
-Southampton,2,0,#67E767,10,12,3,11,5,325886,474047,62287,658178,173912,Southampton,
-Southend-on-Sea,16,6,#FF6700,12,14,8,14,3,136125,219367,122024,238961,59426,Southend-on-Sea,
-Southwark,9,1,#D73058,99,74,49,83,30,1784135,1930465,764896,2336260,713120,Southwark,
-Spelthorne,6,3,#67E767,3,,1,1,2,27879,,14980,49930,18263,Spelthorne,
-St Albans,10,6,#FF6700,4,11,8,10,7,48400,180339,102511,183501,303406,St Albans,
-St. Helens,3,12,#1DD3A7,2,4,4,,,28848,118651,122480,,,St. Helens,
-Stafford,4,10,#E6007C,1,4,1,3,,14900,67373,14960,129495,,Stafford,
-Staffordshire Moorlands,5,10,#E6007C,1,1,2,,,6000,13080,27612,,,Staffordshire Moorlands,
-Stevenage,12,7,#FF6700,1,6,1,2,1,13000,108535,10040,25555,28795,Stevenage,
-Stirling,1,24,#2254F4,,,,,,,,,,,,
-Stockport,6,12,#1DD3A7,8,15,6,13,3,158354,302421,84764,170871,88666,Stockport,
-Stoke-on-Trent,3,10,#E6007C,10,16,7,10,4,253612,684616,215435,216208,160296,Stoke-on-Trent,
-Stratford-on-Avon,3,6,#E6007C,11,4,3,4,5,458514,93249,43884,106860,1403858,Stratford-on-Avon,
-Stroud,0,5,#178CFF,9,16,11,11,4,90013,259080,152668,330242,167330,Stroud,
-Sunderland,7,19,#D60303,12,9,10,12,8,207795,202840,318489,250899,261603,Sunderland,
-Surrey Heath,5,2,#67E767,,1,2,2,,,10137,29670,31300,,Surrey Heath,
-Sutton,9,0,#D73058,5,8,4,7,,86452,104598,46296,197313,,Sutton,
-Swale,16,0,#67E767,8,3,4,6,3,170824,38368,59606,121428,77653,Swale,
-Swansea,-4,5,#0DBC37,,,1,1,,,,6400,24335,,Swansea,
-Swindon,2,4,#178CFF,9,5,5,4,5,274121,70460,112584,109679,156427,Swindon,
-Tameside,6,13,#1DD3A7,8,10,8,7,4,127490,121068,107512,147770,101964,Tameside,
-Tamworth,5,9,#E6007C,1,2,,1,1,15000,41200,,38500,29300,Tamworth,
-Tandridge,9,-1,#67E767,5,7,3,4,,153378,144659,36138,80513,,Tandridge,
-Teignbridge,-2,-2,#178CFF,15,9,4,10,3,144856,125589,46365,235734,114938,Teignbridge,
-Telford and Wrekin,2,9,#E6007C,,3,,1,1,,39305,,7171,13463,Telford and Wrekin,
-Tendring,16,8,#FF6700,2,5,6,5,2,27404,99617,84978,112181,52453,Tendring,
-Test Valley,1,1,#67E767,3,3,7,5,,99658,94327,72742,68412,,Test Valley,
-Tewkesbury,1,6,#178CFF,,5,5,1,,,79053,51318,14800,,Tewkesbury,
-Thanet,15,-1,#67E767,38,40,17,43,12,775900,687072,250074,917559,276787,Thanet,
-Three Rivers,7,5,#FF6700,4,3,2,5,1,44121,40420,22894,105890,14513,Three Rivers,
-Thurrock,15,4,#FF6700,6,10,5,4,2,96217,135485,65645,88330,33056,Thurrock,
-Tonbridge and Malling,13,0,#67E767,2,1,2,5,2,29924,15000,19180,105672,42782,Tonbridge and Malling,
-Torbay,-3,-2,#178CFF,8,6,3,5,1,219761,80829,70535,143625,19912,Torbay,
-Torfaen,-2,7,#0DBC37,,,,,,,,,,,,
-Torridge,-4,-1,#178CFF,2,2,1,,1,29600,56686,14985,,29947,Torridge,
-Tower Hamlets,12,2,#D73058,63,87,35,77,21,1206515,2218815,583517,1822065,447921,Tower Hamlets,
-Trafford,4,12,#1DD3A7,22,32,16,16,8,311593,617140,320642,347637,277813,Trafford,
-Tunbridge Wells,11,-1,#67E767,6,10,1,4,1,107150,657009,15000,72205,17234,Tunbridge Wells,
-Uttlesford,13,7,#FF6700,3,1,2,6,1,67818,9462,29500,96301,12479,Uttlesford,
-Vale of Glamorgan,-2,4,#0DBC37,,1,,1,,,11720,,14476,,Vale of Glamorgan,
-Vale of White Horse,3,4,#67E767,2,2,1,4,3,24003,23236,9244,87158,51566,Vale of White Horse,
-Wakefield,9,15,#F9BC26,10,11,8,9,2,164318,263948,96268,1032323,61001,Wakefield,
-Walsall,4,8,#E6007C,3,5,,3,1,74970,99014,,34670,30000,Walsall,
-Waltham Forest,13,4,#D73058,49,56,31,45,10,747930,795891,428509,758682,266579,Waltham Forest,
-Wandsworth,9,2,#D73058,33,31,17,19,7,425423,593946,697665,358970,185977,Wandsworth,
-Warrington,2,11,#1DD3A7,4,3,2,7,3,81233,67947,26562,119749,87651,Warrington,
-Warwick,4,6,#E6007C,16,19,16,14,1,416971,375403,224761,503642,30000,Warwick,
-Watford,8,5,#FF6700,8,4,4,5,1,160398,168372,63310,65661,17000,Watford,
-Waverley,6,0,#67E767,12,10,9,10,2,255316,192107,196340,207831,57920,Waverley,
-Wealden,11,-2,#67E767,7,8,9,7,2,229533,198611,108819,198710,39466,Wealden,
-Welwyn Hatfield,11,6,#FF6700,2,6,2,3,2,21556,114172,64808,246652,22140,Welwyn Hatfield,
-West Berkshire,2,2,#67E767,5,4,5,2,3,131660,55474,70906,23795,84745,West Berkshire,
-West Devon,-3,0,#178CFF,4,3,1,2,2,37142,124790,9500,27085,33011,West Devon,
-West Dunbartonshire,0,23,#2254F4,,,,,,,,,,,,
-West Lancashire,2,13,#1DD3A7,3,1,1,2,1,33026,14500,15000,34876,27500,West Lancashire,
-West Lindsey,11,13,#00B6FF,2,3,2,2,1,23694,124736,31498,31898,25994,West Lindsey,
-West Lothian,3,22,#2254F4,,,,,,,,,,,,
-West Northamptonshire,7,6,#00B6FF,,,,12,6,,,,283843,207399,West Northamptonshire,
-West Oxfordshire,3,5,#67E767,7,4,4,7,2,128846,123817,35739,139901,78249,West Oxfordshire,
-West Suffolk,13,9,#FF6700,10,7,6,7,2,145779,197665,107311,116580,9829,West Suffolk,
-Westminster,10,3,#D73058,56,59,28,54,13,3099895,1641445,2530154,4062448,771122,Westminster,
-Wigan,3,13,#1DD3A7,5,3,5,3,9,54786,858964,149157,76057,170481,Wigan,
-Wiltshire,1,2,#178CFF,23,27,12,24,3,378334,407419,215278,509703,113424,Wiltshire,
-Winchester,3,1,#67E767,9,7,3,9,2,111220,107512,54233,385855,59979,Winchester,
-Windsor and Maidenhead,4,3,#67E767,2,5,3,3,1,29946,93643,41230,67432,22657,Windsor and Maidenhead,
-Wirral,1,12,#1DD3A7,8,9,9,6,4,203029,148771,116208,107661,114107,Wirral,
-Woking,6,2,#67E767,4,4,3,1,,49204,51330,42593,13049,,Woking,
-Wokingham,3,3,#67E767,6,6,2,5,,131648,86582,24100,69622,,Wokingham,
-Wolverhampton,3,8,#E6007C,11,9,9,9,5,233415,120159,209412,215724,170337,Wolverhampton,
-Worcester,0,7,#E6007C,9,9,3,14,5,234949,188716,123695,332280,130211,Worcester,
-Worthing,7,-2,#67E767,10,12,5,7,2,131685,180566,73559,144893,55230,Worthing,
-Wrexham,1,10,#0DBC37,1,,1,1,,8014,,11998,12855,,Wrexham,
-Wychavon,2,6,#E6007C,1,5,1,2,,5000,96723,33324,21720,,Wychavon,
-Wyre,3,16,#1DD3A7,4,3,2,6,,32179,80485,28080,145699,,Wyre,
-Wyre Forest,1,8,#E6007C,2,,,2,1,28817,,,23244,35750,Wyre Forest,
-York,9,17,#F9BC26,14,18,10,12,4,202898,756701,121329,308399,72620,York,
+ONS Code,Council name,Website,Status,CO2 emissions (g),Website carbon link,Date last checked
+S12000033,Aberdeen City Council,https://www.aberdeencity.gov.uk,,0.81,,2025-02-11
+S12000034,Aberdeenshire Council,https://www.aberdeenshire.gov.uk,,0.99,,2025-02-11
+E07000223,Adur and Worthing Borough Council,http://www.adur-worthing.gov.uk/,,0.16,,2025-02-11
+E07000032,Amber Valley Borough Council,http://www.ambervalley.gov.uk/,,0.91,,2025-02-11
+S12000041,Angus Council,https://www.angus.gov.uk,,0.26,,2025-02-11
+N09000001,Antrim and Newtownabbey,https://antrimandnewtownabbey.gov.uk/,,1.14,,2025-02-11
+N09000011,Ards and North Down,http://www.ardsandnorthdown.gov.uk/,,0.40,,2025-02-11
+S12000035,Argyll and Bute Council,https://www.argyll-bute.gov.uk,,0.40,,2025-02-11
+N09000002,"Armagh City, Banbridge and Craigavon",https://www.armaghbanbridgecraigavon.gov.uk/,,0.76,,2025-02-11
+E07000224,Arun District Council,http://www.arun.gov.uk/,,0.44,,2025-02-11
+E07000170,Ashfield District Council,http://www.ashfield-dc.gov.uk/,,0.32,,2025-02-11
+E07000105,Ashford Borough Council,https://www.ashford.gov.uk/,,0.53,,2025-02-11
+E07000200,Babergh District Council,http://www.babergh.gov.uk/,,0.82,,2025-02-11
+E08000016,Barnsley Metropolitan Borough Council,http://www.barnsley.gov.uk/,,1.14,,2025-02-11
+E07000066,Basildon Borough Council,https://www.basildon.gov.uk/,,0.58,,2025-02-11
+E07000084,Basingstoke and Deane Borough Council,http://www.basingstoke.gov.uk/,,0.42,,2025-02-11
+E07000171,Bassetlaw District Council,https://www.bassetlaw.gov.uk/,,0.25,,2025-02-11
+E06000022,Bath and North East Somerset Council,http://www.bathnes.gov.uk/,,0.27,,2025-02-11
+E06000055,Bedford Borough Council,http://www.bedford.gov.uk/,,0.37,,2025-02-11
+N09000003,Belfast,https://www.belfastcity.gov.uk/,,0.42,,2025-02-11
+E08000025,Birmingham City Council,https://www.birmingham.gov.uk,,0.97,,2025-02-11
+E07000129,Blaby District Council,http://www.blaby.gov.uk/,,0.45,,2025-02-11
+E06000008,Blackburn with Darwen Borough Council,http://www.blackburn.gov.uk/,,0.55,,2024-10-16
+E06000009,Blackpool Borough Council,https://www.blackpool.gov.uk/,,0.99,,2025-02-11
+W06000019,Blaenau Gwent County Borough Council,https://www.blaenau-gwent.gov.uk/cy/hafan/,,0.71,,2025-02-11
+E07000033,Bolsover District Council,http://www.bolsover.gov.uk/,,0.66,,2024-11-07
+E08000001,Bolton Metropolitan Borough Council,https://www.bolton.gov.uk/,,0.37,,2025-02-11
+E07000095,Borough of Broxbourne,http://www.broxbourne.gov.uk/,,0.21,,2025-02-11
+E07000136,Boston Borough Council,https://www.mybostonuk.com/,,0.31,,2025-02-11
+E06000058,"Bournemouth, Christchurch and Poole",https://www.bcpcouncil.gov.uk/Home.aspx,,0.19,,2025-02-11
+E06000036,Bracknell Forest Council,http://www.bracknell-forest.gov.uk/,,0.23,,2025-02-11
+E08000032,Bradford Metropolitan District Council,http://www.bradford.gov.uk/,,0.45,,2024-11-07
+E07000067,Braintree District Council,https://www.braintree.gov.uk/,,0.62,,2025-02-11
+E07000143,Breckland District Council,https://www.breckland.gov.uk/,,1.06,,2025-02-11
+E07000068,Brentwood Borough Council,https://www.brentwood.gov.uk/,,0.52,,2025-02-11
+W06000013,Bridgend County Borough Council,https://www.bridgend.gov.uk/cy,,2.66,,2025-02-11
+E06000043,Brighton and Hove City Council,http://www.brighton-hove.gov.uk/,,0.05,,2025-02-11
+E06000023,Bristol City Council,http://www.bristol.gov.uk/,,4.11,,2025-02-11
+E07000144,Broadland District Council,https://www.southnorfolkandbroadland.gov.uk/,,0.26,,2025-02-11
+E07000234,Bromsgrove District Council,https://www.bromsgrove.gov.uk/,,1.15,,2025-02-11
+E07000172,Broxtowe Borough Council,https://www.broxtowe.gov.uk/,,0.95,,2025-02-11
+E06000060,Buckinghamshire County Council,http://www.buckscc.gov.uk/,,0.19,,2025-02-11
+E07000117,Burnley Borough Council,http://www.burnley.gov.uk/,,0.51,,2024-10-16
+E08000002,Bury Metropolitan Borough Council,https://www.bury.gov.uk/,,0.18,,2025-02-11
+W06000018,Caerphilly County Borough Council,https://www.caerffili.gov.uk/main.aspx?lang=cy-GB,,0.37,,2024-10-16
+E08000033,Calderdale Metropolitan Borough Council,https://www.calderdale.gov.uk/,,1.00,,2025-02-11
+E07000008,Cambridge City Council,https://www.cambridge.gov.uk/,,0.52,,2025-02-11
+E10000003,Cambridgeshire County Council,https://www.cambridgeshire.gov.uk/,,0.22,,2025-02-11
+E47000008,Cambridgeshire and Peterborough,https://cambridgeshirepeterborough-ca.gov.uk/,,1.16,,2025-02-11
+E07000192,Cannock Chase District Council,http://www.cannockchasedc.gov.uk/,,0.46,,2025-02-11
+E07000106,Canterbury City Council,https://www.canterbury.gov.uk/,,0.12,,2025-02-11
+W06000015,Cardiff Council,https://www.cardiff.gov.uk/CYM/Hafan/Pages/default.aspx,,0.86,,2024-10-16
+W06000010,Carmarthenshire County Council,https://www.carmarthenshire.gov.wales/,,0.29,,2025-02-11
+E07000069,Castle Point Borough Council,https://www.castlepoint.gov.uk/,,0.27,,2025-02-11
+N09000004,Causeway Coast and Glens,https://www.causewaycoastandglens.gov.uk/,,0.47,,2025-02-11
+E06000056,Central Bedfordshire Council,https://www.centralbedfordshire.gov.uk/,,0.99,,2025-02-11
+W06000008,Ceredigion County Council,http://www.ceredigion.gov.uk/,,0.33,,2025-02-11
+E07000130,Charnwood Borough Council,https://www.charnwood.gov.uk/,,0.88,,2025-02-11
+E07000070,Chelmsford City Council,https://www.chelmsford.gov.uk/,,0.87,,2024-10-16
+E07000078,Cheltenham Borough Council,https://www.cheltenham.gov.uk/,,0.32,,2025-02-11
+E07000177,Cherwell District Council,https://www.cherwell.gov.uk/,,0.57,,2025-02-11
+E06000049,Cheshire East Council (Unitary),https://www.cheshireeast.gov.uk/,,0.29,,2025-02-11
+E06000050,Cheshire West and Chester Council,https://www.cheshirewestandchester.gov.uk/,,1.16,,2025-02-11
+E07000034,Chesterfield Borough Council,https://www.chesterfield.gov.uk/,,0.36,,2025-02-11
+E07000225,Chichester District Council,https://www.chichester.gov.uk/,,0.20,,2025-02-11
+E07000118,Chorley Council,https://www.chorley.gov.uk/,,1.18,,2025-02-11
+S12000036,City of Edinburgh Council,https://www.edinburgh.gov.uk,,0.38,,2025-02-11
+E07000138,City of Lincoln Council,https://www.lincoln.gov.uk/,,0.37,,2025-02-11
+E09000001,City of London,https://www.cityoflondon.gov.uk/,,0.29,,2025-02-11
+E06000014,City of York Council,https://www.york.gov.uk/,,0.44,,2025-02-11
+S12000005,Clackmannanshire Council,https://www.clacks.gov.uk/,,0.12,,2025-02-11
+E07000071,Colchester Borough Council,https://www.colchester.gov.uk/,,1.51,,2025-02-11
+S12000013,Comhairle nan Eilean Siar,https://www.cne-siar.gov.uk,,1.66,,2025-02-11
+W06000003,Conwy County Borough Council,http://www.conwy.gov.uk/cy/Resident/Resident.aspx,,0.64,,2025-02-11
+E06000052,Cornwall Council,https://www.cornwall.gov.uk/,,0.47,,2025-02-11
+E07000079,Cotswold District Council,https://www.cotswold.gov.uk/,,0.25,,2025-02-11
+E08000026,Coventry City Council,https://www.coventry.gov.uk/,,1.53,,2025-02-11
+E07000226,Crawley Borough Council,https://crawley.gov.uk/,,0.15,,2025-02-11
+E06000063,Cumberland,https://www.cumberland.gov.uk/,,0.20,,2025-02-11
+E07000096,Dacorum Council,https://www.dacorum.gov.uk/,,0.60,,2024-10-16
+E06000005,Darlington Borough Council,https://www.darlington.gov.uk/,,0.22,,2025-02-11
+E07000107,Dartford Borough Council,https://www.dartford.gov.uk/,,1.54,,2025-02-11
+W06000004,Denbighshire County Council,https://www.denbighshire.gov.uk/,,0.19,,2025-02-11
+E06000015,Derby City Council,https://www.derby.gov.uk/,,1.03,,2025-02-11
+E10000007,Derbyshire County Council,https://www.derbyshire.gov.uk/,,0.22,,2025-02-11
+E07000035,Derbyshire Dales District Council,https://www.derbyshiredales.gov.uk/,,0.23,,2024-11-07
+N09000005,Derry City and Strabane,https://www.derrystrabane.com/,,1.76,,2025-02-11
+E10000008,Devon County Council,https://www.devon.gov.uk/,,0.49,,2025-02-11
+E08000017,Doncaster Metropolitan Borough Council,https://www.doncaster.gov.uk/,,0.38,,2025-02-11
+E06000059,Dorset Council,https://www.dorsetcouncil.gov.uk/,,1.74,,2025-02-11
+E07000108,Dover District Council,https://www.dover.gov.uk/,,0.23,,2025-02-11
+E08000027,Dudley Metropolitan Borough Council,https://www.dudley.gov.uk/residents/,,1.20,,2024-12-10
+S12000006,Dumfries and Galloway Council,https://www.dumgal.gov.uk/,,0.17,,2025-02-11
+S12000042,Dundee City Council,https://www.dundeecity.gov.uk,,0.31,,2025-02-11
+E06000047,Durham County Council,https://www.durham.gov.uk/,,0.22,,2025-02-11
+S12000008,East Ayrshire Council,https://www.east-ayrshire.gov.uk,,0.27,,2025-02-11
+E07000009,East Cambridgeshire District Council,https://www.eastcambs.gov.uk/,,0.60,,2025-02-11
+E07000040,East Devon District Council,https://www.eastdevon.gov.uk/,,0.32,,2024-12-10
+S12000045,East Dunbartonshire Council,https://www.eastdunbarton.gov.uk,,0.23,,2025-02-11
+E07000085,East Hampshire District Council,https://www.easthants.gov.uk/,,0.38,,2025-02-11
+E07000242,East Hertfordshire District Council,https://www.eastherts.gov.uk/,,0.75,,2025-02-11
+E07000137,East Lindsey District Council,https://www.e-lindsey.gov.uk/,,0.57,,2025-02-11
+S12000010,East Lothian Council,https://www.eastlothian.gov.uk,,0.44,,2025-02-11
+S12000011,East Renfrewshire Council,https://www.eastrenfrewshire.gov.uk/,,0.27,,2025-02-11
+E06000011,East Riding of Yorkshire Council,https://www.eastriding.gov.uk/,,0.91,,2025-02-11
+E07000193,East Staffordshire Borough Council,https://www.eaststaffsbc.gov.uk/,,0.17,,2025-01-07
+E07000244,East Suffolk Council,https://www.eastsuffolk.gov.uk/,,0.58,,2025-02-11
+E10000011,East Sussex County Council,https://www.eastsussex.gov.uk/,,0.18,,2025-02-11
+E07000061,Eastbourne Borough Council,https://www.lewes-eastbourne.gov.uk/,,0.57,,2025-02-11
+E07000086,Eastleigh Borough Council,https://www.eastleigh.gov.uk/,,0.24,,2025-02-11
+E07000207,Elmbridge Borough Council,https://www.elmbridge.gov.uk/,,0.33,,2025-02-11
+E07000072,Epping Forest District Council,https://www.eppingforestdc.gov.uk/,,0.41,,2025-02-11
+E07000208,Epsom and Ewell Borough Council,https://www.epsom-ewell.gov.uk/,,0.48,,2025-02-11
+E07000036,Erewash Borough Council,https://www.erewash.gov.uk/,,1.03,,2025-02-11
+E10000012,Essex County Council,https://www.essex.gov.uk/,,0.14,,2025-02-11
+E07000041,Exeter City Council,https://exeter.gov.uk/,,0.82,,2024-10-16
+S12000014,Falkirk Council,https://www.falkirk.gov.uk,,0.10,,2025-02-11
+E07000087,Fareham Borough Council,https://www.fareham.gov.uk/,,1.80,,2025-02-11
+E07000010,Fenland District Council,https://www.fenland.gov.uk/,,0.22,,2025-02-11
+N09000006,Fermanagh and Omagh,https://www.fermanaghomagh.com/,,0.67,,2025-02-11
+S12000015,Fife Council,https://www.fife.gov.uk,,0.20,,2025-02-11
+W06000005,Flintshire County Council,https://www.siryfflint.gov.uk/cy/Home.aspx,,1.05,,2025-02-11
+E07000112,Folkestone and Hythe,https://www.folkestone-hythe.gov.uk/,,0.75,,2025-02-11
+E07000080,Forest of Dean District Council,https://www.fdean.gov.uk/,,0.26,,2025-02-11
+E07000119,Fylde Borough Council,https://new.fylde.gov.uk/,,0.31,,2025-02-11
+E08000037,Gateshead Metropolitan Borough Council,https://www.gateshead.gov.uk/,,0.80,,2025-02-11
+E07000173,Gedling Borough Council,https://www.gedling.gov.uk/,,0.32,,2025-02-11
+S12000046,Glasgow City Council,https://www.glasgow.gov.uk,,0.24,,2025-02-11
+E07000081,Gloucester City Council,https://www.gloucester.gov.uk/,,1.21,,2025-02-11
+E10000013,Gloucestershire County Council,https://www.gloucestershire.gov.uk/,,2.01,,2025-02-11
+E07000088,Gosport Borough Council,https://www.gosport.gov.uk/,,0.29,,2025-02-11
+E07000109,Gravesham Borough Council,https://www.gravesham.gov.uk/,,0.82,,2025-02-11
+E07000145,Great Yarmouth Borough Council,https://www.great-yarmouth.gov.uk/,,1.57,,2025-02-11
+E47000001,Greater Manchester,https://www.greatermanchester-ca.gov.uk/,,1.42,,2025-02-11
+E07000209,Guildford Borough Council,https://www.guildford.gov.uk/,,1.06,,2025-02-11
+W06000002,Gwynedd County Council,https://www.gwynedd.llyw.cymru/cy/Trigolion/Trigolion.aspx,,0.16,,2025-02-11
+E06000006,Halton Borough Council,https://www3.halton.gov.uk/,,0.41,,2025-02-11
+E10000014,Hampshire County Council,https://www.hants.gov.uk/,,0.50,,2025-02-11
+E07000131,Harborough District Council,https://www.harborough.gov.uk/,,1.54,,2025-02-11
+E07000073,Harlow Council,https://www.harlow.gov.uk/,,0.19,,2025-02-11
+E07000089,Hart District Council,https://www.hart.gov.uk/,,1.37,,2025-02-11
+E06000001,Hartlepool Borough Council,https://www.hartlepool.gov.uk/,,0.10,,2025-02-11
+E07000062,Hastings Borough Council,https://www.hastings.gov.uk/,,0.33,,2025-02-11
+E07000090,Havant Borough Council,https://www.havant.gov.uk/,,0.62,,2025-02-11
+E06000019,Hertfordshire County Council,https://www.hertfordshire.gov.uk/,,1.00,,2025-02-11
+E07000098,Hertsmere Borough Council,https://www.hertsmere.gov.uk/,,0.27,,2025-02-11
+E07000037,High Peak Borough Council,https://www.highpeak.gov.uk/,,0.30,,2025-02-11
+S12000017,Highland Council,https://www.highland.gov.uk,,0.23,,2025-02-11
+E07000132,Hinckley and Bosworth Borough Council,https://www.hinckley-bosworth.gov.uk,,0.38,,2025-02-11
+E07000227,Horsham District Council,https://www.horsham.gov.uk/,,0.42,,2025-02-11
+E07000011,Huntingdonshire District Council,https://www.huntingdonshire.gov.uk/,,0.71,,2025-02-11
+E07000120,Hyndburn Borough Council,https://www.hyndburnbc.gov.uk/,,0.78,,2025-02-11
+S12000018,Inverclyde Council,https://www.inverclyde.gov.uk,,0.52,,2025-02-11
+E07000202,Ipswich Borough Council,https://www.ipswich.gov.uk/,,0.25,,2025-02-11
+W06000001,Isle of Anglesey County Council,https://www.ynysmon.gov.uk/cy/Trigolion/Trigolion.aspx,,0.90,,2025-02-11
+E06000046,Isle of Wight Council,https://www.iow.gov.uk/,,0.63,,2025-02-11
+E06000053,Isles of Scilly,https://www.scilly.gov.uk/,,0.22,,2025-02-11
+E10000016,Kent County Council,https://www.kent.gov.uk/,,0.08,,2025-02-11
+E07000146,King's Lynn and West Norfolk Borough Council,https://www.west-norfolk.gov.uk/,,1.26,,2025-02-11
+E06000010,Kingston-upon-Hull City Council,https://www.hull.gov.uk/,,0.41,,2025-02-11
+E08000034,Kirklees Council,https://www.kirklees.gov.uk/,,0.44,,2025-02-11
+E08000011,Knowsley Metropolitan Borough Council,https://publicpreview.knowsley.gov.uk/,,0.56,,2025-02-11
+E10000017,Lancashire County Council,https://www.lancashire.gov.uk/,,0.24,,2025-02-11
+E07000121,Lancaster City Council,https://www.lancaster.gov.uk/,,0.77,,2025-02-11
+E08000035,Leeds City Council,https://www.leeds.gov.uk/,,1.10,,2025-02-11
+E06000016,Leicester City Council,https://www.leicester.gov.uk/,,0.25,,2025-02-11
+E10000018,Leicestershire County Council,https://www.leicestershire.gov.uk/,,1.22,,2025-02-11
+E07000063,Lewes District Council,https://www.lewes-eastbourne.gov.uk/,,0.57,,2025-02-11
+E07000194,Lichfield District Council,https://www.lichfielddc.gov.uk/,,0.86,,2025-02-11
+E10000019,Lincolnshire County Council,https://www.lincolnshire.gov.uk/,,1.69,,2025-02-11
+N09000007,Lisburn and Castlereagh,https://www.lisburncastlereagh.gov.uk/,,0.98,,2025-02-11
+E08000012,Liverpool City Council,https://liverpool.gov.uk/,,0.35,,2025-02-11
+E47000004,Liverpool City Region,https://www.liverpoolcityregion-ca.gov.uk/,,3.48,,2025-02-11
+E09000002,London Borough of Barking and Dagenham,https://www.lbbd.gov.uk/,,0.97,,2025-02-11
+E09000003,London Borough of Barnet,https://www.barnet.gov.uk/,,0.27,,2025-02-11
+E09000004,London Borough of Bexley,https://www.bexley.gov.uk/,,0.95,,2025-02-11
+E09000005,London Borough of Brent,https://www.brent.gov.uk/,,0.50,,2025-02-11
+E09000006,London Borough of Bromley,https://www.bromley.gov.uk,,0.36,,2025-02-11
+E09000007,London Borough of Camden,https://www.camden.gov.uk/,,1.33,,2025-02-11
+E09000008,London Borough of Croydon,https://new.croydon.gov.uk/,,0.39,,2025-02-11
+E09000009,London Borough of Ealing,https://www.ealing.gov.uk/,,0.36,,2025-02-11
+E09000010,London Borough of Enfield,https://new.enfield.gov.uk/,,1.12,,2025-02-11
+E09000012,London Borough of Hackney,https://hackney.gov.uk/,,1.11,,2025-02-11
+E09000013,London Borough of Hammersmith & Fulham,https://www.lbhf.gov.uk/,,0.68,,2025-02-11
+E09000014,London Borough of Haringey,https://www.haringey.gov.uk/,,0.65,,2025-02-11
+E09000015,London Borough of Harrow,https://www.harrow.gov.uk/,,4.05,,2025-02-11
+E09000016,London Borough of Havering,https://www.havering.gov.uk/,,0.70,,2025-02-11
+E09000017,London Borough of Hillingdon,https://www.hillingdon.gov.uk/,,0.46,,2025-02-11
+E09000018,London Borough of Hounslow,https://www.hounslow.gov.uk/,,0.69,,2025-02-11
+E09000019,London Borough of Islington,https://www.islington.gov.uk/,,1.07,,2025-02-11
+E09000022,London Borough of Lambeth,https://beta.lambeth.gov.uk/,,0.41,,2025-02-11
+E09000023,London Borough of Lewisham,https://lewisham.gov.uk/,,0.54,,2025-02-11
+E09000024,London Borough of Merton,https://www.merton.gov.uk/,,0.31,,2025-02-11
+E09000025,London Borough of Newham,https://www.newham.gov.uk/,,1.49,,2025-02-11
+E09000026,London Borough of Redbridge,https://www.redbridge.gov.uk/,,1.90,,2025-02-11
+E09000027,London Borough of Richmond upon Thames,https://www.richmond.gov.uk/,,0.39,,2025-02-11
+E09000028,London Borough of Southwark,https://www.southwark.gov.uk/,,0.40,,2025-02-11
+E09000029,London Borough of Sutton,https://www.sutton.gov.uk/,,1.94,,2025-02-11
+E09000030,London Borough of Tower Hamlets,https://www.towerhamlets.gov.uk/,,0.47,,2025-02-11
+E09000031,London Borough of Waltham Forest,https://www.walthamforest.gov.uk/,,0.48,,2025-02-11
+E09000032,London Borough of Wandsworth,https://www.wandsworth.gov.uk/,,0.26,,2025-02-11
+E06000032,Luton Borough Council,https://m.luton.gov.uk/,,0.12,,2025-02-11
+E07000110,Maidstone Borough Council,https://maidstone.gov.uk/,,0.72,,2025-02-11
+E07000074,Maldon District Council,https://www.maldon.gov.uk/,,0.59,,2025-02-11
+E07000235,Malvern Hills District Council,https://www.malvernhills.gov.uk/,,0.38,,2025-02-11
+E08000003,Manchester City Council,https://www.manchester.gov.uk/,,0.61,,2025-02-11
+E07000174,Mansfield District Council,https://www.mansfield.gov.uk/,,0.13,,2025-02-11
+E06000035,Medway Council,https://www.medway.gov.uk/,,0.52,,2025-02-11
+E07000133,Melton Borough Council,https://www.melton.gov.uk/,,0.83,,2025-02-11
+W06000024,Merthyr Tydfil County Borough Council,https://www.merthyr.gov.uk/resident/?lang=cy-GB,,0.30,,2025-02-11
+E07000042,Mid Devon District Council,https://www.middevon.gov.uk/,,0.12,,2025-02-11
+E07000203,Mid Suffolk District Council,https://www.midsuffolk.gov.uk/,,0.93,,2025-02-11
+E07000228,Mid Sussex District Council,https://www.midsussex.gov.uk/,,0.30,,2025-02-11
+N09000009,Mid Ulster,https://www.midulstercouncil.org/,,0.54,,2025-02-11
+N09000008,Mid and East Antrim,https://www.midandeastantrim.gov.uk/,,0.58,,2025-02-11
+E06000002,Middlesbrough Borough Council,https://www.middlesbrough.gov.uk/,,0.86,,2024-10-16
+S12000019,Midlothian Council,https://www.midlothian.gov.uk,,0.14,,2025-02-11
+E06000042,Milton Keynes,https://www.milton-keynes.gov.uk/,,0.54,,2025-02-11
+E07000210,Mole Valley District Council,https://www.molevalley.gov.uk/,,0.40,,2025-02-11
+W06000021,Monmouthshire County Council,https://www.monmouthshire.gov.uk/,,0.75,,2025-02-11
+S12000020,Moray Council,http://www.moray.gov.uk,,0.45,,2025-02-11
+W06000012,Neath Port Talbot County Borough Council,https://www.npt.gov.uk/,,1.36,,2025-02-11
+E07000091,New Forest District Council,https://newforest.gov.uk/,,0.77,,2025-02-11
+E07000175,Newark and Sherwood District Council,https://www.newark-sherwooddc.gov.uk/,,0.34,,2025-02-11
+E07000195,Newcastle-Under-Lyme District Council,https://www.newcastle-staffs.gov.uk/,,0.73,,2025-02-11
+E08000021,Newcastle-upon-Tyne City Council,https://www.newcastle.gov.uk/,,0.79,,2025-02-11
+W06000022,Newport City Council,http://www.newport.gov.uk/cy/Hafan.aspx,,0.25,,2025-02-11
+N09000010,"Newry, Mourne and Down",https://www.newrymournedown.org/,,0.46,,2025-02-11
+E10000020,Norfolk County Council,https://www.norfolk.gov.uk/,,0.32,,2025-02-11
+S12000021,North Ayrshire Council,https://www.north-ayrshire.gov.uk,,0.93,,2025-02-11
+E07000043,North Devon Council,https://www.northdevon.gov.uk/,,1.76,,2025-02-11
+E47000010,North East,https://northeastca.gov.uk/,,1.08,,2024-11-07
+E07000038,North East Derbyshire District Council,https://www.ne-derbyshire.gov.uk/,,0.11,,2024-10-16
+E06000012,North East Lincolnshire Council,https://www.nelincs.gov.uk/,,1.49,,2025-02-11
+E07000099,North Hertfordshire District Council,https://www.north-herts.gov.uk/,,0.42,,2025-02-11
+E07000139,North Kesteven District Council,https://www.n-kesteven.gov.uk/,,1.56,,2025-02-11
+S12000044,North Lanarkshire Council,https://www.northlanarkshire.gov.uk/,,1.28,,2025-02-11
+E06000013,North Lincolnshire Council,https://www.northlincs.gov.uk/,,0.42,,2025-02-11
+E07000147,North Norfolk District Council,https://www.north-norfolk.gov.uk/,,3.06,,2025-02-11
+E06000061,North Northamptonshire,https://www.northnorthants.gov.uk/,,0.34,,2025-02-11
+E06000024,North Somerset Council,http://www.n-somerset.gov.uk/,,0.33,,2025-02-11
+E08000022,North Tyneside Metropolitan Borough Council,https://my.northtyneside.gov.uk/,,0.19,,2025-02-11
+E07000218,North Warwickshire Borough Council,https://www.northwarks.gov.uk/,,0.19,,2025-02-11
+E07000134,North West Leicestershire District Council,https://www.nwleics.gov.uk/,,0.41,,2025-02-11
+E06000065,North Yorkshire Council,https://www.northyorks.gov.uk/,,0.42,,2025-02-11
+E47000011,North of Tyne,https://www.northoftyne-ca.gov.uk/,,0.65,,2024-11-07
+E06000057,Northumberland Council,https://www.northumberland.gov.uk/,,0.41,,2025-02-11
+E07000148,Norwich City Council,https://www.norwich.gov.uk/site/,,0.19,,2025-02-11
+E06000018,Nottingham City Council,http://www.nottinghamcity.gov.uk/,,0.29,,2025-02-11
+E10000024,Nottinghamshire County Council,https://www.nottinghamshire.gov.uk/,,0.35,,2025-02-11
+E07000219,Nuneaton and Bedworth Borough Council,https://www.nuneatonandbedworth.gov.uk/,,0.58,,2025-02-11
+E07000135,Oadby and Wigston District Council,https://www.oadby-wigston.gov.uk/,,0.48,,2025-02-11
+E08000004,Oldham Metropolitan Borough Council,https://www.oldham.gov.uk/,,0.41,,2025-02-11
+S12000023,Orkney Islands Council,https://www.orkney.gov.uk,,1.16,,2025-02-11
+E07000178,Oxford City Council,https://www.oxford.gov.uk/,,0.38,,2025-02-11
+E10000025,Oxfordshire County Council,https://www.oxfordshire.gov.uk/,,1.38,,2025-02-11
+W06000009,Pembrokeshire County Council,http://www.pembrokeshire.gov.uk/,,0.21,,2025-02-11
+E07000122,Pendle Borough Council,https://www.pendle.gov.uk/,,0.27,,2025-02-11
+S12000024,Perth and Kinross Council,http://www.pkc.gov.uk/,,0.68,,2025-02-11
+E06000031,Peterborough City Council,http://www.pkc.gov.uk/,,0.68,,2025-02-11
+E06000026,Plymouth City Council,https://www.plymouth.gov.uk/,,0.25,,2025-02-11
+E06000044,Portsmouth City Council,https://www.portsmouth.gov.uk/,,0.76,,2024-11-07
+W06000023,Powys County Council,https://cy.powys.gov.uk/?ccp=true,,0.54,,2025-02-11
+E07000123,Preston City Council,https://www.preston.gov.uk/,,0.27,,2025-02-11
+E06000038,Reading Borough Council,https://www.reading.gov.uk/,,3.88,,2025-02-11
+E06000003,Redcar and Cleveland Council,https://www.redcar-cleveland.gov.uk/,,0.20,,2025-02-11
+E07000236,Redditch Borough Council,https://www.redditchbc.gov.uk/,,0.70,,2025-02-11
+E07000211,Reigate & Banstead Borough Council,https://www.reigate-banstead.gov.uk/,,0.63,,2025-02-11
+S12000038,Renfrewshire Council,http://www.renfrewshire.gov.uk/,,0.20,,2025-02-11
+W06000016,Rhondda Cynon Taf County Borough Council,https://www.rctcbc.gov.uk/CY/Resident/Resident.aspx,,0.67,,2025-02-11
+E07000124,Ribble Valley Borough Council,https://www.ribblevalley.gov.uk/,,0.89,,2025-02-11
+E08000005,Rochdale Metropolitan Borough Council,http://www.rochdale.gov.uk/,,0.34,,2025-02-11
+E07000075,Rochford District Council,http://www.rochford.gov.uk/,,1.25,,2025-02-11
+E07000125,Rossendale Borough Council,http://www.rossendale.gov.uk/,,0.53,,2025-02-11
+E07000064,Rother District Council,http://www.rother.gov.uk/,,0.41,,2025-02-11
+E08000018,Rotherham Metropolitan Borough Council,http://www.rotherham.gov.uk/,,0.56,,2025-02-11
+E09000011,Royal Borough of Greenwich,https://www.royalgreenwich.gov.uk/,,0.27,,2025-02-11
+E09000020,Royal Borough of Kensington and Chelsea,http://www.rbkc.gov.uk/,,0.32,,2025-02-11
+E09000021,Royal Borough of Kingston upon Thames,https://www.kingston.gov.uk/,,0.89,,2025-02-11
+E06000040,Royal Borough of Windsor and Maidenhead,http://www.rbwm.gov.uk/,,0.29,,2025-02-11
+E07000220,Rugby Borough Council,https://www.rugby.gov.uk/,,0.64,,2025-02-11
+E07000212,Runnymede Borough Council,http://www.runnymede.gov.uk/,,2.11,,2025-02-11
+E07000176,Rushcliffe Borough Council,https://www.rushcliffe.gov.uk/,,0.50,,2025-02-11
+E07000092,Rushmoor Borough Council,http://www.rushmoor.gov.uk/,,0.87,,2025-02-11
+E06000017,Rutland County Council,http://www.rutland.gov.uk/,,1.05,,2025-02-11
+E08000006,Salford City Council,https://www.salford.gov.uk/,,0.20,,2024-10-16
+E08000028,Sandwell Metropolitan Borough Council,http://www.sandwell.gov.uk/,,2.32,,2025-02-11
+S12000026,Scottish Borders Council,https://www.scotborders.gov.uk,,0.13,,2025-02-11
+E08000014,Sefton Metropolitan Borough Council,http://www.sefton.gov.uk/,,0.64,,2025-02-11
+E07000111,Sevenoaks District Council,http://www.sevenoaks.gov.uk/,,0.32,,2025-02-11
+E08000019,Sheffield City Council,http://www.sheffield.gov.uk/,,0.48,,2025-02-11
+S12000027,Shetland Islands Council,https://www.shetland.gov.uk,,0.45,,2025-02-11
+E06000051,Shropshire Council - Unitary,https://www.shropshire.gov.uk/,,0.22,,2025-02-11
+E06000039,Slough Borough Council,http://www.slough.gov.uk/,,0.58,,2025-02-11
+E08000029,Solihull Metropolitan Borough Council,http://www.solihull.gov.uk/,,1.24,,2025-02-11
+E06000066,Somerset Council,https://www.somerset.gov.uk/,,0.68,,2025-02-11
+E10000027,Somerset County Council,http://www.somerset.gov.uk/,,0.68,,2025-02-11
+S12000028,South Ayrshire Council,https://www.south-ayrshire.gov.uk,,0.29,,2025-02-11
+E07000012,South Cambridgeshire District Council,http://www.scambs.gov.uk/,,0.66,,2025-02-11
+E07000039,South Derbyshire District Council,https://www.southderbyshire.gov.uk/,,0.92,,2025-02-11
+E06000025,South Gloucestershire Council,http://www.southglos.gov.uk/,,0.50,,2025-02-11
+E07000044,South Hams District Council,http://www.southhams.gov.uk/,,0.36,,2025-02-11
+E07000140,South Holland District Council,https://www.sholland.gov.uk/,,0.50,,2025-02-11
+E07000141,South Kesteven District Council,http://www.southkesteven.gov.uk/,,1.26,,2025-02-11
+S12000029,South Lanarkshire Council,https://www.southlanarkshire.gov.uk,,0.51,,2025-02-11
+E07000149,South Norfolk District Council,https://www.southnorfolkandbroadland.gov.uk/,,0.26,,2025-02-11
+E07000179,South Oxfordshire District Council,https://www.southoxon.gov.uk/,,0.24,,2025-02-11
+E07000126,South Ribble Borough Council,http://www.southribble.gov.uk/,,0.86,,2025-02-11
+E07000196,South Staffordshire Council,https://www.sstaffs.gov.uk/,,0.63,,2025-02-11
+E08000023,South Tyneside Council,https://www.southtyneside.gov.uk/,,0.40,,2025-02-11
+E47000002,South Yorkshire Mayoral Combined Authority,https://southyorkshire-ca.gov.uk/,,0.51,,2025-02-11
+E06000045,Southampton City Council,https://www.southampton.gov.uk/,,0.37,,2025-02-11
+E06000033,Southend-on-Sea Borough Council,http://www.southend.gov.uk/,,1.45,,2025-02-11
+E07000213,Spelthorne Borough Council,http://www.spelthorne.gov.uk/,,0.36,,2025-02-11
+E07000240,St Albans City and District Council,http://www.stalbans.gov.uk/,,1.39,,2025-02-11
+E08000013,St Helens Metropolitan Borough Council,http://www.sthelens.gov.uk/,,0.59,,2025-02-11
+E07000197,Stafford Borough Council,http://www.staffordbc.gov.uk/,,0.32,,2025-02-11
+E10000028,Staffordshire County Council,http://www.staffordshire.gov.uk/,,0.59,,2025-02-11
+E07000198,Staffordshire Moorlands District Council,http://www.staffsmoorlands.gov.uk/,,0.20,,2025-02-11
+E07000243,Stevenage Borough Council,http://www.stevenage.gov.uk/,,0.61,,2025-02-11
+S12000030,Stirling Council,https://www.stirling.gov.uk,,0.19,,2025-02-11
+E08000007,Stockport Metropolitan Borough Council,http://www.stockport.gov.uk/,,0.29,,2024-11-07
+E06000004,Stockton-on-Tees Borough Council,http://www.stockton.gov.uk/,,1.75,,2025-02-11
+E06000021,Stoke-on-Trent City Council,https://www.stoke.gov.uk/,,0.28,,2025-02-11
+E07000221,Stratford-on-Avon District Council,http://www.stratford.gov.uk/,,0.56,,2025-02-11
+E07000082,Stroud District Council,https://www.stroud.gov.uk/,,0.78,,2025-02-11
+E10000029,Suffolk County Council,http://www.suffolk.gov.uk/,,0.68,,2025-02-11
+E08000024,Sunderland City Council,http://www.sunderland.gov.uk/,,0.98,,2025-02-11
+E10000030,Surrey County Council,http://www.surreycc.gov.uk/,,0.25,,2025-02-11
+E07000214,Surrey Heath Borough Council,http://www.surreyheath.gov.uk/,,1.51,,2025-02-11
+E07000113,Swale Borough Council,http://www.swale.gov.uk/,,1.51,,2025-02-11
+W06000011,Swansea City and Borough Council,https://www.swansea.gov.uk/residents,,0.18,,2025-02-11
+E06000030,Swindon Borough Council,https://www.swindon.gov.uk/,,0.36,,2025-02-11
+E08000008,Tameside Metropolitan Borough Council,http://www.tameside.gov.uk/,,0.76,,2024-10-16
+E07000199,Tamworth Borough Council,http://www.tamworth.gov.uk/,,1.14,,2025-02-11
+E07000215,Tandridge District Council,https://www.tandridge.gov.uk/,,2.91,,2025-02-11
+E47000006,Tees Valley,https://teesvalley-ca.gov.uk/,,1.88,,2025-02-11
+E07000045,Teignbridge District Council,https://www.teignbridge.gov.uk/,,0.40,,2024-12-10
+E06000020,Telford & Wrekin Council,http://www.telford.gov.uk/,,1.33,,2025-02-11
+E07000076,Tendring District Council,https://www.tendringdc.gov.uk/,,4.89,,2025-02-11
+E07000093,Test Valley Borough Council,http://www.testvalley.gov.uk/,,0.70,,2025-02-11
+E07000083,Tewkesbury Borough Council,http://tewkesbury.gov.uk/,,1.12,,2025-02-11
+E07000114,Thanet District Council,http://thanet.gov.uk/,,0.45,,2025-02-11
+E07000102,Three Rivers District Council,http://www.threerivers.gov.uk/,,0.79,,2025-02-11
+E06000034,Thurrock Council,http://www.thurrock.gov.uk/,,0.26,,2025-02-11
+E07000115,Tonbridge and Malling Borough Council,http://www.tmbc.gov.uk/,,0.60,,2024-10-16
+E06000027,Torbay Council,http://www.torbay.gov.uk/,,0.03,,2025-02-11
+W06000020,Torfaen County Borough Council,https://www.torfaen.gov.uk/cy/Home.aspx,,0.67,,2025-02-11
+E07000046,Torridge District Council,http://www.torridge.gov.uk/,,0.31,,2025-02-11
+E08000009,Trafford Metropolitan Borough Council,https://www.trafford.gov.uk/,,0.44,,2024-10-16
+E07000116,Tunbridge Wells Borough Council,http://www.tunbridgewells.gov.uk/,,1.10,,2025-02-11
+E07000077,Uttlesford District Council,http://www.uttlesford.gov.uk/,,0.28,,2025-02-11
+W06000014,Vale of Glamorgan Council,https://www.valeofglamorgan.gov.uk/,,0.15,,2025-02-11
+E07000180,Vale of White Horse District Council,http://www.whitehorsedc.gov.uk/,,0.37,,2025-02-11
+E08000036,Wakefield Metropolitan District Council,http://www.wakefield.gov.uk/,,1.28,,2025-02-11
+E08000030,Walsall Metropolitan Borough Council,https://go.walsall.gov.uk/,,0.47,,2025-02-11
+E06000007,Warrington Borough Council,http://www.warrington.gov.uk/,,0.45,,2025-02-11
+E07000222,Warwick District Council,http://www.warwickdc.gov.uk/,,0.25,,2025-02-11
+E10000031,Warwickshire County Council,http://www.warwickshire.gov.uk/,,1.84,,2025-02-11
+E07000103,Watford Borough Council,https://www.watford.gov.uk/,,0.57,,2025-02-11
+E07000216,Waverley Borough Council,http://www.waverley.gov.uk/,,0.60,,2025-02-11
+E07000065,Wealden District Council,https://www.wealden.gov.uk/,,1.06,,2025-02-11
+E07000241,Welwyn Hatfield Council,https://www.welhat.gov.uk/,,2.86,,2025-02-11
+E06000037,West Berkshire Council,http://www.westberks.gov.uk/,,0.50,,2025-02-11
+E07000047,West Devon Borough Council,http://www.westdevon.gov.uk/,,0.41,,2025-02-11
+S12000039,West Dunbartonshire Council,https://www.west-dunbarton.gov.uk,,0.21,,2024-10-16
+E07000127,West Lancashire Borough Council,http://www.westlancs.gov.uk/,,0.38,,2025-02-11
+E07000142,West Lindsey District Council,http://www.west-lindsey.gov.uk/,,1.15,,2025-02-11
+S12000040,West Lothian Council,https://www.westlothian.gov.uk,,0.29,,2025-02-11
+E47000007,West Midlands,https://www.wmca.org.uk/,,0.34,,2025-02-11
+E06000062,West Northamptonshire,https://www.westnorthants.gov.uk/,,1.09,,2025-02-11
+E07000181,West Oxfordshire District Council,http://www.westoxon.gov.uk/,,0.34,,2025-02-11
+E07000245,West Suffolk,https://www.westsuffolk.gov.uk/,,0.17,,2025-02-11
+E10000032,West Sussex County Council,https://www.westsussex.gov.uk/,,0.37,,2025-02-11
+E47000003,West Yorkshire Combined Authority,https://www.westyorks-ca.gov.uk/,,1.11,,2025-02-11
+E47000009,West of England,https://www.westofengland-ca.gov.uk/,,1.37,,2025-02-11
+E09000033,Westminster City Council,http://www.westminster.gov.uk/,,0.55,,2025-02-11
+E06000064,Westmorland and Furness,https://www.westmorlandandfurness.gov.uk/,,0.25,,2025-02-11
+E08000010,Wigan Metropolitan Borough Council,http://www.wigan.gov.uk/,,0.29,,2025-02-11
+E06000054,Wiltshire Council,https://www.wiltshire.gov.uk/,,0.30,,2025-02-11
+E07000094,Winchester City Council,http://www.winchester.gov.uk/,,0.97,,2025-02-11
+E08000015,Wirral Council,http://www.wirral.gov.uk/,,0.51,,2025-02-11
+E07000217,Woking Borough Council,http://www.woking.gov.uk/,,1.49,,2025-02-11
+E06000041,Wokingham Borough Council,http://www.wokingham.gov.uk/,,0.92,,2025-02-11
+E08000031,Wolverhampton City Council,http://www.wolverhampton.gov.uk/,,0.76,,2025-02-11
+E07000237,Worcester City Council,https://www.worcester.gov.uk/,,0.12,,2025-02-11
+E10000034,Worcestershire County Council,http://www.worcestershire.gov.uk/,,1.06,,2025-02-11
+W06000006,Wrexham County Borough Council,https://www.wrecsam.gov.uk/preswylwyr,,0.30,,2025-02-11
+E07000238,Wychavon District Council,https://www.wychavon.gov.uk/,,0.30,,2025-02-11
+E07000128,Wyre Council,http://www.wyre.gov.uk/,,0.23,,2025-02-11
+E07000239,Wyre Forest District Council,https://www.wyreforestdc.gov.uk/,,1.39,,2025-02-11

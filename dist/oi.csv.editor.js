@@ -17,15 +17,18 @@
 	// Add default CSS
 	var styles = document.createElement('style');
 	styles.innerHTML = `
-	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
+	.oi-viz-wrapper { --bg: #efefef; --border: silver; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
+	.oi-menu-bar { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); }
+	.oi-menu-bar button { font-size:1em; padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
+	.oi-menu-bar button svg { width: 1.5rem; height: 1.5rem; vertical-align: -.125em; }
+	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh; }
 	.oi-viz-table { border-collapse: separate; }
-	.oi-viz-table td { border-top: 0; }
 	.oi-viz-table td.row { text-align: right; }
-	.oi-viz-table td, .oi-viz-table th { border-right: 0; }
+	.oi-viz-table td, .oi-viz-table th { border-right: 0; border-top: 0; border-color: var(--border); }
 	.oi-viz-table thead { position: sticky; top: 0; }
-	.oi-viz-table th, .oi-viz-table td { border-color: silver; }
+	.oi-viz-table th, .oi-viz-table td { border-color: var(--border); }
 	.oi-viz-table tr:hover { background: var(--hover); }
-	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; background: #dddddd; }
+	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; background: var(--bg); }
 	.oi-viz-table th > div { display: flex; align-items: center; position: relative; }
 	.oi-viz-table th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; white-space: nowrap; }
 	.oi-viz-table th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
@@ -45,7 +48,7 @@
 	document.head.prepend(styles);
 
 	OI.CSVEditor = function(lnk,opts){
-		var n,v,raw,msg,_url,el,loading,table,menu,holder,_obj,_open = false;
+		var n,v,raw,msg,_url,el,loading,table,menu,holder,wrapper,_obj,_open = false;
 		if(!opts) opts = {};
 
 		n = "OI CSVEditor";
@@ -63,12 +66,12 @@
 			if(!opts._getdata) _url = null;
 			this.loadData();
 			if(opts.collapse) lnk.innerHTML = opts.collapse;
-			if(holder) holder.style.display = "";
+			if(wrapper) wrapper.style.display = "";
 		};
 		this.close = function(){
 			_open = false;
 			lnk.innerHTML = _original;
-			if(holder) holder.style.display = "none";
+			if(wrapper) wrapper.style.display = "none";
 		};
 		this.toggle = function(){
 			if(_open) this.close();
@@ -291,9 +294,16 @@
 			var c,r,th,tr,nc,html;
 
 			if(!table){
-				el.innerHTML = '<div class="oi-viz-table-holder"><table class="oi-viz-table"></table></div>';
+				el.innerHTML = '<div class="oi-viz-wrapper"><div class="oi-menu-bar"></div><div class="oi-viz-table-holder"><table class="oi-viz-table"></table></div></div>';
 				table = el.querySelector('table');
 				holder = el.querySelector('.oi-viz-table-holder');
+				wrapper = el.querySelector('.oi-viz-wrapper');
+				// Create a save button
+				var save = document.createElement('button');
+				save.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7.5l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-7.5zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV';
+				save.setAttribute('aria-label','Save CSV');
+				save.addEventListener('click',function(){ _obj.saveCSV(); });
+				el.querySelector('.oi-menu-bar').appendChild(save);
 			}
 
 			html = '';
@@ -489,6 +499,30 @@
 				csv += '\n';
 			}
 			return csv;
+		};
+		this.saveCSV = function(){
+			var str,file,type,c,r,m,cols;
+			file = _url||"test.csv";
+			file = file.substring(file.lastIndexOf("\/")+1,);
+			type = "text/csv";
+
+			var textFileAsBlob = new Blob([this._csv||""], {type:type});
+			function destroyClickedElement(event){ document.body.removeChild(event.target); }
+			var dl = document.createElement("a");
+			dl.download = file;
+			dl.innerHTML = "Download File";
+			if(window.webkitURL != null){
+				// Chrome allows the link to be clicked without actually adding it to the DOM.
+				dl.href = window.webkitURL.createObjectURL(textFileAsBlob);
+			}else{
+				// Firefox requires the link to be added to the DOM before it can be clicked.
+				dl.href = window.URL.createObjectURL(textFileAsBlob);
+				dl.onclick = destroyClickedElement;
+				dl.style.display = "none";
+				document.body.appendChild(dl);
+			}
+			dl.click();
+			return this;
 		};
 		this.toggleMenu = function(e){
 			return menu.toggle(e);
