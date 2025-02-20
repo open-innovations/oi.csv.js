@@ -101,7 +101,7 @@
 				this.editor.open();
 			}
 		};
-		if(!this.opts._getdata){
+		if(this.opts._getdata){
 			el.addEventListener('click',function(e){
 				e.preventDefault();
 				if(_processed) _obj.editor.toggle();
