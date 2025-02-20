@@ -66,7 +66,6 @@
 		};
 		this.close = function(){
 			_open = false;
-			msg.info('Close CSV');
 			lnk.innerHTML = _original;
 			if(holder) holder.style.display = "none";
 		};
@@ -454,7 +453,9 @@
 		this.buildCSV = function(){
 			var csv = '',c,r,v,needsquotes;
 			for(c = 0; c < this.order.length; c++){
-				csv += (c > 0 ? ',':'')+this.order[c].value;
+				v = this.order[c].value;
+				needsquotes = (typeof v==="string" && v.indexOf(",")>=0);
+				csv += (c > 0 ? ',':'')+(needsquotes ? '"':'')+v+(needsquotes ? '"':'');
 			}
 			csv += '\n';
 			for(r = 0; r < this.data.length; r++){
