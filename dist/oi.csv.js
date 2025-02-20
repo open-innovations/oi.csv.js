@@ -65,7 +65,7 @@
 				if(m<0) this.list.push(new ListItem(els[j],{'list':this,'item':this.list.length}));
 			}
 			for(i=0; i<this.list.length; i++){
-				if(this.list[i].opts.load) this.load(i);
+				if(this.list[i].opts.load || !this.list[i].opts._getdata) this.load(i);
 			}
 		};
 		// Process all outstanding list items
@@ -89,6 +89,7 @@
 		this.el.getAttributeNames().forEach(e => {
 			if(e.indexOf('data-oi-csv-')==0) this.opts[e.substr(12)] = this.el.getAttribute(e)||true;
 		});
+		this.opts._getdata = (el.hasAttribute('href'));
 		this._init = function(){
 			if(!_processed){
 				if(typeof OI.CSVEditor!=="function"){
@@ -100,11 +101,13 @@
 				this.editor.open();
 			}
 		};
-		el.addEventListener('click',function(e){
-			e.preventDefault();
-			if(_processed) _obj.editor.toggle();
-			else props.list.load(props.item);
-		});
+		if(!this.opts._getdata){
+			el.addEventListener('click',function(e){
+				e.preventDefault();
+				if(_processed) _obj.editor.toggle();
+				else props.list.load(props.item);
+			});
+		}
 		return this;
 	}
 

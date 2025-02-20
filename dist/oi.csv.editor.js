@@ -18,6 +18,10 @@
 	var styles = document.createElement('style');
 	styles.innerHTML = `
 	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
+	.oi-viz-table { border-collapse: separate; }
+	.oi-viz-table td { border-top: 0; }
+	.oi-viz-table td, .oi-viz-table th { border-right: 0; }
+	.oi-viz-table thead { position: sticky; top: 0; }
 	.oi-viz-table th, .oi-viz-table td { border-color: silver; }
 	.oi-viz-table tr:hover { background: var(--hover); }
 	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; }
@@ -55,7 +59,8 @@
 		// Add a note after
 		this.open = function(){
 			_open = true;
-			this.loadData();
+			if(opts._getdata) this.loadData();
+			else this.processData(lnk.innerHTML);
 			if(opts.collapse) lnk.innerHTML = opts.collapse;
 			if(holder) holder.style.display = "";
 		};
@@ -173,9 +178,8 @@
 						if(!response.ok) throw new Error('Network response was not OK');
 						return response.text();
 					}).then(txt => {
-						raw = txt;
 						loading = false;
-						this.processData();
+						this.processData(txt);
 					}).catch(e => {
 						msg.error('There has been a problem loading CSV data from <em>%c'+url+'%c</em>. It may not be publicly accessible or have some other issue.','font-style:italic;','font-style:normal;');
 					});
@@ -185,7 +189,8 @@
 			}
 			return this;
 		};
-		this.processData = function(){
+		this.processData = function(txt){
+			raw = txt;
 			if(opts.target && document.getElementById(opts.target)){
 				el = document.getElementById(opts.target);
 			}
@@ -273,7 +278,7 @@
 				for(c = 0; c < nc; c++){
 					th += '<th data-col="'+(c+1)+'"><div><span class="heading" tabindex="0" contenteditable>'+this.order[c].value+'</span><span class="menu" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span></div></th>';
 				}
-				html += '<tr data-row="0">'+th+'</tr>';
+				html += '<thead><tr data-row="0">'+th+'</tr></thead><tbody>';
 				for(r = 0; r < this.data.length; r++){
 					tr = '<td class="row" tabindex="0">'+(r+1)+'</td>';
 					for(c = 0; c < nc; c++){
@@ -281,6 +286,7 @@
 					}
 					html += '<tr data-row="'+(r+1)+'">'+tr+'</tr>';
 				}
+				html += '</tbody>';
 
 				table.innerHTML = html;
 				table.querySelectorAll('th').forEach(function(el,i){
