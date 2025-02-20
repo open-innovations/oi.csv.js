@@ -63,7 +63,6 @@
 			_open = false;
 			msg.info('Close CSV');
 			lnk.innerHTML = _original;
-			console.log('close',el);
 			if(holder) holder.style.display = "none";
 		};
 		this.toggle = function(){
@@ -219,15 +218,22 @@
 				var o = this.order[i-1].value;
 				this.data = this.data.sort((a,b)=>{
 					var a2,b2;
+
+					// If we have values for only one cell we return
+					if(a[o]=="" && b[o]) return 1;
+					if(b[o]=="" && a[o]) return -1;
+
 					// Check if numeric, string-like or date-like
 					a2 = parseFloat(a[o]);
 					b2 = parseFloat(b[o]);
+
 					if(a2==a[o] && b2==b[o]){
 						// Keep as numbers
 					}else{
-						if(a[o].match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/) && b[o].match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/)){
-							a2 = new Date(a[o]);
-							b2 = new Date(b[o]);
+						a2 = new Date(a[o]);
+						b2 = new Date(b[o]);
+						if(!isNaN(a2) && !isNaN(b2)){
+							// Keep dates
 						}else{
 							// Back to strings
 							a2 = a[o].toUpperCase();
