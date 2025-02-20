@@ -18,9 +18,9 @@
 	var styles = document.createElement('style');
 	styles.innerHTML = `
 	.oi-viz-wrapper { --bg: #efefef; --border: silver; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
-	.oi-menu-bar { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); }
+	.oi-menu-bar { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); text-align: left; display: flex; gap: 0.25em; }
 	.oi-menu-bar button { font-size:1em; padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
-	.oi-menu-bar button svg { width: 1.5rem; height: 1.5rem; vertical-align: -.125em; }
+	.oi-menu-bar button svg { width: 1em; height: 1em; vertical-align: -.125em; }
 	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh; }
 	.oi-viz-table { border-collapse: separate; }
 	.oi-viz-table td.row { text-align: right; }
@@ -48,7 +48,7 @@
 	document.head.prepend(styles);
 
 	OI.CSVEditor = function(lnk,opts){
-		var n,v,raw,msg,_url,el,loading,table,menu,holder,wrapper,_obj,_open = false;
+		var n,v,raw,msg,_url,el,loading,table,menu,holder,wrapper,_obj,_open = false,memory = [],_memory = 0;
 		if(!opts) opts = {};
 
 		n = "OI CSVEditor";
@@ -290,7 +290,7 @@
 			}
 			return this;
 		};
-		this.updateTable = function(){
+		this.updateTable = function(nosave){
 			var c,r,th,tr,nc,html;
 
 			if(!table){
@@ -298,12 +298,10 @@
 				table = el.querySelector('table');
 				holder = el.querySelector('.oi-viz-table-holder');
 				wrapper = el.querySelector('.oi-viz-wrapper');
-				// Create a save button
-				var save = document.createElement('button');
-				save.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7.5l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-7.5zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV';
-				save.setAttribute('aria-label','Save CSV');
-				save.addEventListener('click',function(){ _obj.saveCSV(); });
-				el.querySelector('.oi-menu-bar').appendChild(save);
+				menubar = el.querySelector('.oi-menu-bar');
+				var save = addButton(menubar,{'label':'Save CSV','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7.5l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-7.5zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV','click':function(){ _obj.saveCSV(); }});
+				var undo = addButton(menubar,{'label':'Undo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M14,8v-2.5l-1,-1h-6.5l-1,1v5l1,1h3.5l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-4l-2,-2v-6l2,-2h8l2,2v3z" /></svg> Undo','click':function(){_obj.loadMemory(1);}});
+				var redo = addButton(menubar,{'label':'Redo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,8v-3l2,-2h8l2,2v6l-2,2h-3.5l1,1 -1,1 -3,-2.75 3,-2.75 1,1 -1,1h3l1,-1v-5l-1,-1h-7l-1,1v3z" /></svg> Redo','click':function(){_obj.loadMemory(-1);}});
 			}
 
 			html = '';
@@ -436,7 +434,7 @@
 			}else{
 				msg.log('No data loaded.');
 			}
-			this.updateCSV();
+			this.updateCSV(nosave);
 			return this;
 		};
 		this.updateByDom = function(e){
@@ -471,7 +469,7 @@
 			}
 			return this;
 		};
-		this.updateCSV = function(){
+		this.updateCSV = function(nosave){
 			this._csv = this.buildCSV();
 			
 			// Update original source
@@ -480,6 +478,18 @@
 				a.value = this._csv;
 			}
 
+			if(!nosave){
+				// Store memory
+				if(_memory > 0){
+					// Remove any memory before the current location (like over-write)
+					//memory = memory.slice(_memory,);
+					console.log('remove memory',_memory);
+				}
+				// Store the current situation
+				memory.unshift({'data':clone(this.data),'order':clone(this.order)});
+				// Remove old steps
+				if(memory.length > 20) memory = memory.slice(0,20);
+			}
 			return this;
 		};
 		this.buildCSV = function(){
@@ -502,7 +512,7 @@
 		};
 		this.saveCSV = function(){
 			var str,file,type,c,r,m,cols;
-			file = _url||"test.csv";
+			file = _url||"data.csv";
 			file = file.substring(file.lastIndexOf("\/")+1,);
 			type = "text/csv";
 
@@ -527,6 +537,23 @@
 		this.toggleMenu = function(e){
 			return menu.toggle(e);
 		};
+		this.loadMemory = function(delta){
+			_memory += delta;
+			if(_memory < 0){
+				_memory = 0;
+				delta = 0;
+			}else if(_memory >= memory.length){
+				_memory = memory.length-1;
+				delta = 0;
+			}
+			if(delta != 0){
+				// Load memory
+				this.data = clone(memory[_memory].data);
+				this.order = clone(memory[_memory].order);
+				this.updateTable(true);
+			}
+			return this;
+		}
 		addEventListener('keydown',function(e){
 			if(e.key=="Delete") _obj.delete();
 		});
@@ -536,6 +563,17 @@
 	function getRow(el){ return parseInt((el.hasAttribute('data-row') ? el : el.closest('[data-row]')).getAttribute('data-row')); }
 	function getCol(el){ var cel = (el.hasAttribute('data-col') ? el : el.closest('[data-col]'))||el; return parseInt(cel.getAttribute('data-col')); }
 	function getPos(el){ return {'col':getCol(el),'row':getRow(el)}; }
+	function clone(d){ return JSON.parse(JSON.stringify(d)); }
+	function addButton(el,opt){
+		if(!opt) opt = {};
+		var btn = document.createElement('button');
+		btn.innerHTML = opt.html||'Button';
+		if(opt.label) btn.setAttribute('aria-label',opt.label);
+		if(typeof opt.click) btn.addEventListener('click',opt.click);
+		el.appendChild(btn);
+		return btn;
+	}
+
 
 	function Menu(id,holder,items){
 		var ul = document.createElement('ul');
