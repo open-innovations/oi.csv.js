@@ -321,7 +321,7 @@
 					'type':'button',
 					'id':'btn-select-column',
 					'title':'Select column',
-					'icon': '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,7v-2h5v-5h2v5h5v2h-5v5h-2v-5z"/></svg>',
+					'icon': '<path d="M2,7v-2h5v-5h2v5h5v2h-5v5h-2v-5z"/>',
 					'this': this,
 					'fn': function(el){
 						var c = getCol(el);
@@ -332,7 +332,7 @@
 					'type':'button',
 					'id':'btn-deselect-column',
 					'title':'Deselect column',
-					'icon': '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,7v-2h12v2h-12z"/></svg>',
+					'icon': '<path d="M2,7v-2h12v2h-12z"/>',
 					'this': this,
 					'fn': function(el){
 						var c = getCol(el);
@@ -345,7 +345,7 @@
 					'type':'button',
 					'id':'btn-sort-a-z-column',
 					'title':'Sort table (increasing)',
-					'icon': '<path d="M4,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM8.5,7.5 l2,-5.5h1l2,5.5h-1.5l-0.5,-1.5h-1.5l-0.5,1.5h-1.5m2,-2.5h1l-0.5,-1l-0.5,1zM9,8.5h4.5v1.5l-3,2.5h3v1.5h-4.5v-1.5l3,-2.5h-3v-1.5z"/>',
+					'icon': '<path d="M3,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM7,2h3.5v1.5h-3.5zM7,5h5v1.5h-5zM7,8h6.5v1.5h-6.5zM7,11h8v1.5h-8z"/>',
 					'this': this,
 					'fn': function(el){
 						var c = getCol(el);
@@ -355,7 +355,7 @@
 					'type':'button',
 					'id':'btn-sort-z-a-column',
 					'title':'Sort table (decreasing)',
-					'icon': '<path d="M4,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM8.5,14 l2,-5.5h1l2,5.5h-1.5l-0.5,-1.5h-1.5l-0.5,1.5h-1.5m2,-2.5h1l-0.5,-1l-0.5,1zM9,2h4.5v1.5l-3,2.5h3v1.5h-4.5v-1.5l3,-2.5h-3v-1.5z"/>',
+					'icon': '<path d="M3,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM7,2h8v1.5h-8zM7,5h6.5v1.5h-6.5zM7,8h5v1.5h-5zM7,11h3.5v1.5h-3.5z"/>',
 					'this': this,
 					'fn': function(el){
 						var c = getCol(el);
