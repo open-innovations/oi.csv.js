@@ -19,7 +19,7 @@
 	var s = document.getElementsByTagName("script");
 	var path = s[s.length-1].src.replace(/([^\/]*)$/,'');
 
-	// The source of the mai script that we will only load when we need it
+	// The source of the main script that we will only load when we need it
 	var editor = path+"oi.csv.editor.js";
 
 	// Create a list of DOM elements that have the 'data-oi-csv' attribute
@@ -27,17 +27,6 @@
 		this.version = "0.2";
 		var _obj = this;
 		this.list = [];
-		this.get = function(){
-			var i,j,m,els;
-			els = document.querySelectorAll('[data-oi-csv]');
-			for(i=0; i<els.length; i++){
-				m = -1;
-				for(j=0; j < this.list.length; j++){
-					if(this.list[j].el==els[i]){ m = j; continue; }
-				}
-				if(m<0) this.list.push(new ListItem(els[j],{'list':this,'item':this.list.length}));
-			}
-		};
 		var loaded = false;
 		var loading = false;
 		var todo = [];
@@ -59,17 +48,31 @@
 					var script = document.createElement('script');
 					script.type = 'text/javascript';
 					script.src = editor;
-					script.onload = function(){ loaded = true; _obj.process(); }
+					script.onload = function(){ loaded = true; _obj.process(); };
 					document.head.appendChild(script);
 				}
 			}
 			return this;
 		};
+		this.get = function(){
+			var i,j,m,els;
+			els = document.querySelectorAll('[data-oi-csv]');
+			for(i=0; i<els.length; i++){
+				m = -1;
+				for(j=0; j < this.list.length; j++){
+					if(this.list[j].el==els[i]){ m = j; continue; }
+				}
+				if(m<0) this.list.push(new ListItem(els[j],{'list':this,'item':this.list.length}));
+			}
+			for(i=0; i<this.list.length; i++){
+				if(this.list[i].opts.load) this.load(i);
+			}
+		};
 		// Process all outstanding list items
 		this.process = function(){
 			for(var i=todo.length-1; i>=0; i--){
 				this.list[todo[i]]._init();
-				todo.splice(todo[i]);
+				todo.splice(i,1);
 			}
 			return this;
 		};
@@ -82,6 +85,10 @@
 		this.el = el;
 		var _obj = this;
 		var _processed = false;
+		this.opts = {};
+		this.el.getAttributeNames().forEach(e => {
+			if(e.indexOf('data-oi-csv-')==0) this.opts[e.substr(12)] = this.el.getAttribute(e)||true;
+		});
 		this._init = function(){
 			if(!_processed){
 				if(typeof OI.CSVEditor!=="function"){
@@ -89,11 +96,7 @@
 					return this;
 				}
 				_processed = true;
-				var opts = {};
-				this.el.getAttributeNames().forEach(e => {
-					if(e.indexOf('data-oi-csv-')==0) opts[e.substr(12)] = this.el.getAttribute(e);
-				});
-				this.editor = new OI.CSVEditor(this.el,opts);
+				this.editor = new OI.CSVEditor(this.el,this.opts);
 				this.editor.open();
 			}
 		};
@@ -101,7 +104,7 @@
 			e.preventDefault();
 			if(_processed) _obj.editor.toggle();
 			else props.list.load(props.item);
-		})
+		});
 		return this;
 	}
 

@@ -1,7 +1,8 @@
 /**
 	Open Innovations tool for editing CSV files in the browser
-	Version 0.1
+	Version 0.2
  */
+/*jshint esversion: 6 */
 (function(root){
 
 	var OI = root.OI || {};
@@ -61,13 +62,14 @@
 			_open = true;
 			this.loadData();
 			if(opts.collapse) lnk.innerHTML = opts.collapse;
-			if(el) el.style.display = "";
+			if(holder) holder.style.display = "";
 		};
 		this.close = function(){
 			_open = false;
 			msg.info('Close CSV');
 			lnk.innerHTML = _original;
-			if(el) el.style.display = "none";
+			console.log('close',el);
+			if(holder) holder.style.display = "none";
 		};
 		this.toggle = function(){
 			if(_open) this.close();
@@ -106,11 +108,11 @@
 			return this;
 		};
 		this.toggleSelect = function(dir,i,shift,ctrl){
-			var tr,c,r,colgroup,group;
+			var j,d;
 			if(!shift){
 				if(!ctrl){
 					for(d in this.selected){
-						for(var j = 0; j < this.selected[dir].length; j++){
+						for(j = 0; j < this.selected[dir].length; j++){
 							if(j!==i) this.selected[dir][j] = false;
 						}
 					}
@@ -122,7 +124,6 @@
 			return this.updateSelection();
 		};
 		this.select = function(dir,i,shift,ctrl){
-			var tr,c,r,colgroup,group;
 			this.selected[dir][i] = true;
 			return this.updateSelection();
 		};
@@ -131,14 +132,16 @@
 			return this.updateSelection();
 		};
 		this.deselectAll = function(){
+			var dir,j;
 			for(dir in this.selected){
-				for(var j = 0; j < this.selected[dir].length; j++){
+				for(j = 0; j < this.selected[dir].length; j++){
 					this.selected[dir][j] = false;
 				}
 			}
 			return this.updateSelection();
 		};
 		this.updateSelection = function(){
+			var colgroup,group,c,r,tr;
 			if(table){
 				// Update column styles
 				colgroup = table.querySelector('colgroup');
@@ -162,7 +165,7 @@
 				}
 			}
 			return this;
-		}
+		};
 		this.loadData = function(){
 			var url,m;
 			if(_url){
@@ -206,7 +209,7 @@
 
 			// Reshape the data
 			var data = new Array(this.data.length);
-			for(r = 0; r < this.data.length; r++) data[r] = this.data[r].cols;
+			for(var r = 0; r < this.data.length; r++) data[r] = this.data[r].cols;
 			this.order = this.data[0].order;
 			this.data = data;
 			this.selected = {'row':new Array(this.data.length),'col':new Array(this.order.length)};
@@ -277,7 +280,7 @@
 					'icon': '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,7v-2h12v2h-12z"/></svg>',
 					'this': this,
 					'fn': function(el){
-						var c = getCol(el)
+						var c = getCol(el);
 						this.deselect("col",c,false,false);
 						this.setFocus(c);
 					}
@@ -338,7 +341,7 @@
 			if(e.key=="Delete") _obj.delete();
 		});
 		return this;
-	}
+	};
 
 	function getRow(el){ return parseInt((el.hasAttribute('data-row') ? el : el.closest('[data-row]')).getAttribute('data-row')); }
 	function getCol(el){ var cel = (el.hasAttribute('data-col') ? el : el.closest('[data-col]'))||el; return parseInt(cel.getAttribute('data-col')); }
@@ -352,8 +355,8 @@
 		holder.appendChild(ul);
 		this.get = function(){ return ul; };
 		this.addItems = function(items){
-			var str = '',i,li;
-			for(i = 0; i < items.length; i++) new MenuItem(this,items[i]);
+			var i,a;
+			for(i = 0; i < items.length; i++) a = new MenuItem(this,items[i]);
 			return this;
 		};
 		this.show = function(){
@@ -390,9 +393,7 @@
 	}
 
 	function MenuItem(menu,opt){
-		var _obj = this;
-		var ul = menu.get();
-		var li = document.createElement('li');
+		var _obj = this, ul = menu.get(), li = document.createElement('li'), btn;
 		if(opt.type=="button"){
 			li.setAttribute('role','menuitem');
 			li.setAttribute('aria-label',opt.title);
@@ -431,7 +432,6 @@
 		OI.logger = function(title,attr){
 			if(!attr) attr = {};
 			title = title||"OI Logger";
-			var ms = {};
 			this.logging = (location.search.indexOf('debug=true') >= 0);
 			if(console && typeof console.log==="function"){
 				this.log = function(){ if(this.logging){ console.log.apply(null,getParam(arguments)); } };

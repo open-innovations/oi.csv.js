@@ -5,12 +5,14 @@
 	<link rel="icon" href="resources/oi-square-black.svg" />
 	<link rel="StyleSheet" href="resources/style.css" type="text/css" />
 	<style>
-	pre {
+	code,pre {
 		background: #efefef;
+		padding-inline: 0.25em;
+	}
+	pre {
 		padding: 0.5rem;
 		overflow: auto;
 	}
-	.result { border: 1px solid black; }
 	ul,ol { margin-left: 2rem; }
 	ul { list-style: disc; }
 	</style>
@@ -53,12 +55,26 @@
 				</ol>
 			</div>
 			<p>The initial load (<a href="dist/oi.csv.js">oi.csv.js</a>) is <span class="size-initial">??</span>kB. We only load the rest of the code - a further <span class="size-editor">??</span>kB - if someone starts viewing a CSV. By using standard anchor tags, if Javascript is disabled - or fails due to network issues - people will still get the CSV.</p>
-			<p>You could also add <code>data-oi-csv-target="output"</code> as an attribute to the link to send the output to a page element with <code>id="output"</code>.</p>
-			<p>Try it by clicking <a href="test-data.csv" data-oi-csv data-oi-csv-collapse="hide CSV" data-oi-csv-target="output">edit CSV</a>.</p>
-			<div id="output"></div>
+			<p>Try it by <a href="test-data.csv" data-oi-csv data-oi-csv-collapse="hiding the CSV" data-oi-csv-target="output1">editing a CSV</a> below.</p>
+			<div id="output1" style="border: 2px dotted grey;min-height:2em;display:block;line-height:2em;text-align:center;">CSV content will go here</div>
 
 			<h2>Self-hosting</h2>
 			<p>To host it yourself, you need <a href="dist/oi.csv.js">oi.csv.js</a> and <a href="dist/oi.csv.editor.js">oi.csv.editor.js</a> stored in the same directory.</p>
+
+			<h2>Options</h2>
+			<ul>
+				<li><code>data-oi-csv-target="output"</code> - provide the ID of a page element to add the output to</li>
+				<li><code>data-oi-csv-collapse="Hide CSV"</code> - replacement text for the opening link when the editor is open</li>
+				<li><code>data-oi-csv-load</code> - activate the link to load the editor straight-away</li>
+			</ul>
+
+			<h2>Examples</h2>
+			<h3>Example 1</h3>
+			<p>In this example we create a button-link anchor tag that has <code>data-oi-csv-load</code> set to force the CSV to automatically load.</p>
+			<p><a href="test-data.csv" class="button c9-bg" data-oi-csv data-oi-csv-load data-oi-csv-collapse="Hide CSV" data-oi-csv-target="output2">Edit CSV</a></p>
+			<div id="output2"></div>
+
+
 		</div>
 	</div>
 <!--
