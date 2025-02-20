@@ -232,9 +232,7 @@
 					}else{
 						a2 = new Date(a[o]);
 						b2 = new Date(b[o]);
-						if(!isNaN(a2) && !isNaN(b2)){
-							// Keep dates
-						}else{
+						if(isNaN(a2) || isNaN(b2)){
 							// Back to strings
 							a2 = a[o].toUpperCase();
 							b2 = b[o].toUpperCase();
