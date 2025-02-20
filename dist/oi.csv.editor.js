@@ -59,6 +59,7 @@
 
 		if(lnk.tagName=="A") _url = lnk.getAttribute('href');
 		var _original = lnk.innerHTML;
+		this._focussed = false;
 
 		// Add a note after
 		this.open = function(){
@@ -302,6 +303,8 @@
 				var save = addButton(menubar,{'label':'Save CSV','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7.5l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-7.5zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV','click':function(){ _obj.saveCSV(); }});
 				var undo = addButton(menubar,{'label':'Undo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M14,8v-2.5l-1,-1h-6.5l-1,1v5l1,1h3.5l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-4l-2,-2v-6l2,-2h8l2,2v3z" /></svg> Undo','click':function(){_obj.loadMemory(1);}});
 				var redo = addButton(menubar,{'label':'Redo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,8v-3l2,-2h8l2,2v6l-2,2h-3.5l1,1 -1,1 -3,-2.75 3,-2.75 1,1 -1,1h3l1,-1v-5l-1,-1h-7l-1,1v3z" /></svg> Redo','click':function(){_obj.loadMemory(-1);}});
+				table.addEventListener('mouseover',function(){ _obj._focussed = true; });
+				table.addEventListener('mouseout',function(){ _obj._focussed = false; });
 			}
 
 			html = '';
@@ -555,7 +558,12 @@
 			return this;
 		}
 		addEventListener('keydown',function(e){
-			if(e.key=="Delete") _obj.delete();
+			if(_obj._focussed){
+				if(e.key=="Delete") _obj.delete();
+				if(e.key.toLowerCase()=="z" && e.ctrlKey){
+					_obj.loadMemory(e.shiftKey ? -1 : 1);
+				}
+			}
 		});
 		return this;
 	};
