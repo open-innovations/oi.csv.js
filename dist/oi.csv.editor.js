@@ -91,8 +91,6 @@
 			}
 			for(c = this.selected.col.length-1; c >= 0; c--){
 				if(this.selected.col[c]){
-					// Delete column in data rows
-					for(r = 0; r < this.data.length; r++) delete this.data[r].values[this.order[c-1].value];
 					// Delete column in order
 					this.order.splice(c-1,1);
 					this.selected.col.splice(c,1);
