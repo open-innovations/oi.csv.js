@@ -88,7 +88,7 @@
 			for(c = this.selected.col.length-1; c >= 0; c--){
 				if(this.selected.col[c]){
 					// Delete column in data rows
-					for(r = 0; r < this.data.length; r++) delete this.data[r][this.order[c-1].value];
+					for(r = 0; r < this.data.length; r++) delete this.data[r].values[this.order[c-1].value];
 					// Delete column in order
 					this.order.splice(c-1,1);
 					this.selected.col.splice(c,1);
@@ -203,6 +203,7 @@
 			// Reshape the data
 			data = new Array(this.data.length);
 			for(r = 0; r < this.data.length; r++) data[r] = this.data[r].cols;
+			for(r = 0; r < data.length; r++) data[r] = {'values':data[r]};
 			this.order = [];
 			for(c = 0; c < this.data[0].order.length; c++){
 				o = {'value':this.data[0].order[c],'type':'string'};
@@ -220,22 +221,22 @@
 					var a2,b2;
 
 					// If we have values for only one cell we return
-					if(a[o]=="" && b[o]) return 1;
-					if(b[o]=="" && a[o]) return -1;
+					if(a.values[o]=="" && b.values[o]) return 1;
+					if(b.values[o]=="" && a.values[o]) return -1;
 
 					// Check if numeric, string-like or date-like
-					a2 = parseFloat(a[o]);
-					b2 = parseFloat(b[o]);
+					a2 = parseFloat(a.values[o]);
+					b2 = parseFloat(b.values[o]);
 
-					if(a2==a[o] && b2==b[o]){
+					if(a2==a.values[o] && b2==b.values[o]){
 						// Keep as numbers
 					}else{
-						a2 = new Date(a[o]);
-						b2 = new Date(b[o]);
+						a2 = new Date(a.values[o]);
+						b2 = new Date(b.values[o]);
 						if(isNaN(a2) || isNaN(b2)){
 							// Back to strings
-							a2 = a[o].toUpperCase();
-							b2 = b[o].toUpperCase();
+							a2 = a.values[o].toUpperCase();
+							b2 = b.values[o].toUpperCase();
 						}
 					}
 					if(a2 < b2) return (asc ? 1 : -1);
@@ -276,7 +277,7 @@
 				for(r = 0; r < this.data.length; r++){
 					tr = '<td class="row" tabindex="0">'+(r+1)+'</td>';
 					for(c = 0; c < nc; c++){
-						tr += '<td data-col="'+(c+1)+'" contenteditable>'+this.data[r][this.order[c].value]+'</td>';
+						tr += '<td data-col="'+(c+1)+'" contenteditable>'+this.data[r].values[this.order[c].value]+'</td>';
 					}
 					html += '<tr data-row="'+(r+1)+'">'+tr+'</tr>';
 				}
@@ -345,6 +346,8 @@
 						this.sortBy("col",c,true);
 					}
 				},{
+					'type':'separator'
+				},{
 					'type':'button',
 					'id':'btn-shift-left-column',
 					'title':'Move column left',
@@ -404,14 +407,14 @@
 					nc = this.order.length;
 					// Loop over data and rename variables
 					for(r = 0; r < this.data.length; r++){
-						this.data[r][v] = this.data[r][old];
-						delete this.data[r][old];
+						this.data[r].values[v] = this.data[r].values[old];
+						delete this.data[r].values[old];
 					}
 				}
 			}else{
-				if(this.data[pos.row][this.order[pos.col].value] != v){
+				if(this.data[pos.row].values[this.order[pos.col].value] != v){
 					update = true;
-					this.data[pos.row][this.order[pos.col].value] = v;
+					this.data[pos.row].values[this.order[pos.col].value] = v;
 				}
 			}
 			return this;
