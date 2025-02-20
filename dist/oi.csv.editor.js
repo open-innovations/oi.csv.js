@@ -20,11 +20,12 @@
 	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
 	.oi-viz-table { border-collapse: separate; }
 	.oi-viz-table td { border-top: 0; }
+	.oi-viz-table td.row { text-align: right; }
 	.oi-viz-table td, .oi-viz-table th { border-right: 0; }
 	.oi-viz-table thead { position: sticky; top: 0; }
 	.oi-viz-table th, .oi-viz-table td { border-color: silver; }
 	.oi-viz-table tr:hover { background: var(--hover); }
-	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; }
+	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; background: #dddddd; }
 	.oi-viz-table th > div { display: flex; align-items: center; position: relative; }
 	.oi-viz-table th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; white-space: nowrap; }
 	.oi-viz-table th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
@@ -264,12 +265,26 @@
 		};
 		this.shiftBy = function(dir,c,by){
 			c--;
-			// Need to reorder the columns
-			var newc = c+by;
-			if(newc<0) newc = 0;
-			if(newc>=this.order.length) newc = this.order.length-1;
-			this.order.splice(newc, 0, this.order.splice(c, 1)[0]);
-			this.updateTable();
+			if(dir=="col"){
+				// Need to reorder the columns
+				var newc = c+by;
+				if(newc<0) newc = 0;
+				if(newc>=this.order.length) newc = this.order.length-1;
+				this.order.splice(newc, 0, this.order.splice(c, 1)[0]);
+				this.updateTable();
+			}
+			return this;
+		};
+		this.strip = function(dir,c,regex){
+			c--;
+			if(dir=="col"){
+				if(c >= 0 && c < this.order.length){
+					for(r = 0; r < this.data.length; r++){
+						this.data[r].values[this.order[c].value] = ((this.data[r].values[this.order[c].value]||"")+"").replace(regex,'');
+					}
+					this.updateTable();
+				}
+			}
 			return this;
 		};
 		this.updateTable = function(){
@@ -385,6 +400,15 @@
 					}
 				},{
 					'type':'separator'
+				},{
+					'type':'button',
+					'id':'btn-strip-non-numeric-column',
+					'title':'Strip non-numeric characters',
+					'this': this,
+					'fn': function(el){
+						var c = getCol(el);
+						this.strip("col",c,/[^0-9\.\-\+]/g);
+					}
 				},{
 					'type':'button',
 					'id':'btn-delete-column',
