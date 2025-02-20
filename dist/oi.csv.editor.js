@@ -17,12 +17,7 @@
 	// Add default CSS
 	var styles = document.createElement('style');
 	styles.innerHTML = `
-	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh;
-		--hover: rgba(249, 188, 38,0.4);
-		--select: rgba(11, 87, 208, 0.2);
-		--select-hover: rgba(11, 87, 208, 0.4);
-		--select-border: rgba(11, 87, 208, 1);
-	}
+	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
 	.oi-viz-table th, .oi-viz-table td { border-color: silver; }
 	.oi-viz-table tr:hover { background: var(--hover); }
 	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; }
@@ -36,11 +31,11 @@
 	.oi-viz-table-holder ul[role=menu] { position: relative; z-index: 1100; list-style: none; margin: 0; padding: 4px; list-style: none; display: flex; flex-wrap: wrap; box-sizing: border-box; gap: 4px; background: #efefef; border: 1px solid rgba(0,0,0,0.3); border-radius: 4px; position: absolute; top: 0; left: 0; flex-direction: column; min-width: 192px; box-shadow: 1px 1px 4px rgba(0,0,0,0.2); }
 	.oi-viz-table-holder li[role=menuitem] { white-space: nowrap; display:block; cursor: pointer; background: transparent; }
 	.oi-viz-table-holder li[role=menuitem] .button { cursor: pointer; width: 100%; line-height: 1rem; margin-right: 1px; padding: 0.5em; text-align: left; display: flex; flex-direction: row; gap: 0.5rem; align-items: center; }
+	.oi-viz-table-holder li[role=menuitem] .button:focus { background: #222!important; color: #fff!important; cursor: auto; }
+	.oi-viz-table-holder li[role=menuitem] .button svg { height: 1rem; width: 1rem; }
+	.oi-viz-table-holder li[role=menuitem] .button .key { flex-grow: 1; text-align: right; color: #80868b; font-weight: bold; }
+	.oi-viz-table-holder li[role=menuitem] .button:disabled, .oi-viz-table-holder li[role=menuitem] .button:disabled > * { opacity: 0.6; color: inherit!important; }
 	.oi-viz-table-holder li.separator { line-height: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.3); }
-	.oi-viz-table-holder .button svg { height: 1rem; width: 1rem; }
-	.oi-viz-table-holder .button .key { flex-grow: 1; text-align: right; color: #80868b; font-weight: bold; }
-	.oi-viz-table-holder .button:disabled, .oi-viz-table .button:disabled > * { opacity: 0.6; color: inherit!important; }
-	.oi-viz-table-holder ul[role=menu] li[role=menuitem] .button:focus { background: #222!important; color: #fff!important; cursor: auto; }
 	`;
 	document.head.prepend(styles);
 
@@ -94,7 +89,7 @@
 			for(c = this.selected.col.length-1; c >= 0; c--){
 				if(this.selected.col[c]){
 					// Delete column in data rows
-					for(r = 0; r < this.data.length; r++) delete this.data[r][this.order[c-1]];
+					for(r = 0; r < this.data.length; r++) delete this.data[r][this.order[c-1].value];
 					// Delete column in order
 					this.order.splice(c-1,1);
 					this.selected.col.splice(c,1);
@@ -204,18 +199,57 @@
 			return this.updateData(raw);
 		};
 		this.updateData = function(csv){
-
+			var o,r,c,data;
 			this.data = CSV2JSON(csv);
-
 			// Reshape the data
-			var data = new Array(this.data.length);
-			for(var r = 0; r < this.data.length; r++) data[r] = this.data[r].cols;
-			this.order = this.data[0].order;
+			data = new Array(this.data.length);
+			for(r = 0; r < this.data.length; r++) data[r] = this.data[r].cols;
+			this.order = [];
+			for(c = 0; c < this.data[0].order.length; c++){
+				o = {'value':this.data[0].order[c],'type':'string'};
+				this.order.push(o);
+			}
 			this.data = data;
 			this.selected = {'row':new Array(this.data.length),'col':new Array(this.order.length)};
-
 			this.updateTable();
-	
+			return this;
+		};
+		this.sortBy = function(dir,i,asc){
+			if(dir=="col"){
+				var o = this.order[i-1].value;
+				this.data = this.data.sort((a,b)=>{
+					var a2,b2;
+					// Check if numeric, string-like or date-like
+					a2 = parseFloat(a[o]);
+					b2 = parseFloat(b[o]);
+					if(a2==a[o] && b2==b[o]){
+						// Keep as numbers
+					}else{
+						if(a[o].match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/) && b[o].match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/)){
+							a2 = new Date(a[o]);
+							b2 = new Date(b[o]);
+						}else{
+							// Back to strings
+							a2 = a[o].toUpperCase();
+							b2 = b[o].toUpperCase();
+						}
+					}
+					if(a2 < b2) return (asc ? 1 : -1);
+					if(a2 > b2) return (asc ? -1 : 1);
+					return 0;
+				});
+				this.updateTable();
+			}
+			return this;
+		};
+		this.shiftBy = function(dir,c,by){
+			c--;
+			// Need to reorder the columns
+			var newc = c+by;
+			if(newc<0) newc = 0;
+			if(newc>=this.order.length) newc = this.order.length-1;
+			this.order.splice(newc, 0, this.order.splice(c, 1)[0]);
+			this.updateTable();
 			return this;
 		};
 		this.updateTable = function(){
@@ -232,13 +266,13 @@
 				th = '<th class="row"></th>';
 				nc = this.order.length;
 				for(c = 0; c < nc; c++){
-					th += '<th data-col="'+(c+1)+'"><div><span class="heading" tabindex="0" contenteditable>'+this.order[c]+'</span><span class="menu" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span></div></th>';
+					th += '<th data-col="'+(c+1)+'"><div><span class="heading" tabindex="0" contenteditable>'+this.order[c].value+'</span><span class="menu" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span></div></th>';
 				}
 				html += '<tr data-row="0">'+th+'</tr>';
 				for(r = 0; r < this.data.length; r++){
 					tr = '<td class="row" tabindex="0">'+(r+1)+'</td>';
 					for(c = 0; c < nc; c++){
-						tr += '<td data-col="'+(c+1)+'" contenteditable>'+this.data[r][this.order[c]]+'</td>';
+						tr += '<td data-col="'+(c+1)+'" contenteditable>'+this.data[r][this.order[c].value]+'</td>';
 					}
 					html += '<tr data-row="'+(r+1)+'">'+tr+'</tr>';
 				}
@@ -288,9 +322,51 @@
 					'type':'separator'
 				},{
 					'type':'button',
+					'id':'btn-sort-a-z-column',
+					'title':'Sort table (increasing)',
+					'icon': '<path d="M4,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM8.5,7.5 l2,-5.5h1l2,5.5h-1.5l-0.5,-1.5h-1.5l-0.5,1.5h-1.5m2,-2.5h1l-0.5,-1l-0.5,1zM9,8.5h4.5v1.5l-3,2.5h3v1.5h-4.5v-1.5l3,-2.5h-3v-1.5z"/>',
+					'this': this,
+					'fn': function(el){
+						var c = getCol(el);
+						this.sortBy("col",c,false);
+					}
+				},{
+					'type':'button',
+					'id':'btn-sort-z-a-column',
+					'title':'Sort table (decreasing)',
+					'icon': '<path d="M4,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM8.5,14 l2,-5.5h1l2,5.5h-1.5l-0.5,-1.5h-1.5l-0.5,1.5h-1.5m2,-2.5h1l-0.5,-1l-0.5,1zM9,2h4.5v1.5l-3,2.5h3v1.5h-4.5v-1.5l3,-2.5h-3v-1.5z"/>',
+					'this': this,
+					'fn': function(el){
+						var c = getCol(el);
+						this.sortBy("col",c,true);
+					}
+				},{
+					'type':'button',
+					'id':'btn-shift-left-column',
+					'title':'Move column left',
+					'icon': '<path d="M2,8l3,-2.75 1,1 -1,1h9v1.5h-9l1,1 -1,1z"/>',
+					'this': this,
+					'fn': function(el){
+						var c = getCol(el);
+						this.shiftBy("col",c,-1);
+					}
+				},{
+					'type':'button',
+					'id':'btn-shift-right-column',
+					'title':'Move column right',
+					'icon': '<path d="M2,7.25h9l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-9v-1.5z"/>',
+					'this': this,
+					'fn': function(el){
+						var c = getCol(el);
+						this.shiftBy("col",c,1);
+					}
+				},{
+					'type':'separator'
+				},{
+					'type':'button',
 					'id':'btn-delete-column',
 					'title':'Delete column',
-					'icon': '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M1,2h5v-1h4v1h5v1.5h-1v11.5h-12v-11.5h1.5v10h9v-10h-11.5M5.5,5h1.5v7h-1.5v-7M9,5h1.5v7h-1.5v-7z"/></svg>',
+					'icon': '<path d="M1,2h5v-1h4v1h5v1.5h-1v11.5h-12v-11.5h1.5v10h9v-10h-11.5M5.5,5h1.5v7h-1.5v-7M9,5h1.5v7h-1.5v-7z"/>',
 					'this': this,
 					'fn': function(el){
 						this.deselectAll();
@@ -308,17 +384,19 @@
 		};
 		this.updateByDom = function(e){
 			var pos = getPos(e);
-			var r,nc,old,update = false,v = e.closest('th').querySelector('.heading').innerHTML;
+			var r,nc,old,update = false,v;
+			if(e.classList.contains('menu')) v = e.closest('th').querySelector('.heading').innerHTML;
+			else v = e.innerHTML;
 			if(isNaN(pos.row) || isNaN(pos.col)) return this;
 			// 0-index
 			pos.row--;
 			pos.col--;
 			if(pos.row==-1){
 				// Need to update the order and all the rows
-				old = this.order[pos.col];
+				old = this.order[pos.col].value;
 				if(old != v){
 					update = true;
-					this.order[pos.col] = v;
+					this.order[pos.col].value = v;
 					nc = this.order.length;
 					// Loop over data and rename variables
 					for(r = 0; r < this.data.length; r++){
@@ -327,9 +405,9 @@
 					}
 				}
 			}else{
-				if(this.data[pos.row][this.order[pos.col]] != v){
+				if(this.data[pos.row][this.order[pos.col].value] != v){
 					update = true;
-					this.data[pos.row][this.order[pos.col]] = v;
+					this.data[pos.row][this.order[pos.col].value] = v;
 				}
 			}
 			return this;
@@ -401,7 +479,7 @@
 			btn.setAttribute('id',opt.id);
 			btn.classList.add('button');
 			btn.setAttribute('tabindex','0');
-			btn.innerHTML = (opt.icon||'')+'<span class="label">'+opt.title+'</span>'+(opt.key ? '<span class="key">'+opt.key.label+'</span>' : '');
+			btn.innerHTML = (opt.icon ? '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">'+opt.icon+'</svg>' : '')+'<span class="label">'+opt.title+'</span>'+(opt.key ? '<span class="key">'+opt.key.label+'</span>' : '');
 			if(typeof opt.fn==="function"){
 				btn.addEventListener('click',function(e){
 					e.preventDefault();

@@ -56,7 +56,7 @@
 			</div>
 			<p>The initial load (<a href="dist/oi.csv.js">oi.csv.js</a>) is <span class="size-initial">??</span>kB. We only load the rest of the code - a further <span class="size-editor">??</span>kB - if someone starts viewing a CSV. By using standard anchor tags, if Javascript is disabled - or fails due to network issues - people will still get the CSV.</p>
 			<p>Try it by <a href="test-data.csv" data-oi-csv data-oi-csv-collapse="hiding the CSV" data-oi-csv-target="output1">editing a CSV</a> below.</p>
-			<div id="output1" style="border: 2px dotted grey;min-height:2em;display:block;line-height:2em;text-align:center;">CSV content will go here</div>
+			<div id="output1" style="background: #f9f9f9;display:block;line-height:3em;text-align:center;">CSV content will go here</div>
 
 			<h2>Self-hosting</h2>
 			<p>To host it yourself, you need <a href="dist/oi.csv.js">oi.csv.js</a> and <a href="dist/oi.csv.editor.js">oi.csv.editor.js</a> stored in the same directory.</p>
@@ -77,16 +77,7 @@
 
 		</div>
 	</div>
-<!--
-<script>
-a = document.createElement('a');
-a.href="test-data.csv" ;
-a.innerHTML = "Test";
-a.setAttribute('data-oi-csv','');
-document.body.appendChild(a);
-OI.CSVs.get();
-</script>
--->
+
 	<footer class="b1-bg">
 		<div class="holder doublepadded">
 
@@ -94,6 +85,7 @@ OI.CSVs.get();
 			<p>&copy; 2024 Stuart Lowe / Open Innovations (MIT licence).</p>
 		</div>
 	</footer>
+
 	<script>
 	document.querySelectorAll('.v').forEach(function(el){ el.innerHTML = ' v'+OI.CSVs.version; });
 	function getSize(file,fn){
@@ -125,7 +117,6 @@ OI.CSVs.get();
 		});
 		updateTotal(total);
 	});
-
 	function updateTotal(size){
 		document.querySelectorAll('.size-total').forEach(function(el){
 			el.innerHTML = (size/1000).toFixed(1);
