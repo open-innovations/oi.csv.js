@@ -711,6 +711,7 @@
 	}
 
 	function CSVToArray (CSV_string, delimiter) {
+		CSV_string = CSV_string.replace(/[\n\r]+$/g,"");
 		delimiter = (delimiter || ",");
 		var pattern = new RegExp(("(\\" + delimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + delimiter + "\\r\\n]*))"), "gi");
 		var rows = [[]];
