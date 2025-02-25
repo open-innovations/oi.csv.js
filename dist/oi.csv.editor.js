@@ -720,7 +720,7 @@
 			if(matched_delimiter.length && matched_delimiter !== delimiter) rows.push([]);
 			var matched_value;
 			matched_value = (matches[2]) ? matches[2].replace(new RegExp( "\"\"", "g" ), "\"") : matches[3];
-			rows[rows.length - 1].push(matched_value);
+			rows[rows.length - 1].push(matched_value||"");
 		}
 		return rows;
 	}
