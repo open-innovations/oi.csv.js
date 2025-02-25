@@ -1,6 +1,6 @@
 /**
 	Open Innovations tool for editing CSV files in the browser
-	Version 0.2
+	Version 0.2.1
  */
 /*jshint esversion: 6 */
 (function(root){
@@ -16,34 +16,37 @@
 
 	// Add default CSS
 	var styles = document.createElement('style');
+	var t = '.oi-viz-table';
+	var th = '.oi-viz-table-holder';
+	var mb = '.oi-menu-bar';
+	var mi = 'li[role=menuitem]';
 	styles.innerHTML = `
 	.oi-viz-wrapper { --bg: #efefef; --border: silver; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
-	.oi-menu-bar { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); text-align: left; display: flex; gap: 0.25em; }
-	.oi-menu-bar button { font-size:1em; padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
-	.oi-menu-bar button svg { width: 1em; height: 1em; vertical-align: -.125em; }
-	.oi-viz-table-holder { overflow: auto; max-width: 100%; max-height: 80vh; }
-	.oi-viz-table { border-collapse: separate; }
-	.oi-viz-table td.row { text-align: right; }
-	.oi-viz-table td, .oi-viz-table th { border-right: 0; border-top: 0; border-color: var(--border); }
-	.oi-viz-table thead { position: sticky; top: 0; }
-	.oi-viz-table th, .oi-viz-table td { border-color: var(--border); }
-	.oi-viz-table tr:hover { background: var(--hover); }
-	.oi-viz-table th, .oi-viz-table td.row { cursor: pointer; background: var(--bg); }
-	.oi-viz-table th > div { display: flex; align-items: center; position: relative; }
-	.oi-viz-table th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; white-space: nowrap; }
-	.oi-viz-table th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
-	.oi-viz-table th .menu:focus { outline: 2px solid var(--select-border); }
-	.oi-viz-table .selected { background: var(--select); }
-	.oi-viz-table .selected:hover { background: var(--select-hover); }
-	.oi-viz-table-holder { position: relative; }
-	.oi-viz-table-holder ul[role=menu] { position: relative; z-index: 1100; list-style: none; margin: 0; padding: 4px; list-style: none; display: flex; flex-wrap: wrap; box-sizing: border-box; gap: 4px; background: #efefef; border: 1px solid rgba(0,0,0,0.3); border-radius: 4px; position: absolute; top: 0; left: 0; flex-direction: column; min-width: 192px; box-shadow: 1px 1px 4px rgba(0,0,0,0.2); }
-	.oi-viz-table-holder li[role=menuitem] { white-space: nowrap; display:block; cursor: pointer; background: transparent; }
-	.oi-viz-table-holder li[role=menuitem] .button { cursor: pointer; width: 100%; line-height: 1rem; margin-right: 1px; padding: 0.5em; text-align: left; display: flex; flex-direction: row; gap: 0.5rem; align-items: center; }
-	.oi-viz-table-holder li[role=menuitem] .button:focus { background: #222!important; color: #fff!important; cursor: auto; }
-	.oi-viz-table-holder li[role=menuitem] .button svg { height: 1rem; width: 1rem; }
-	.oi-viz-table-holder li[role=menuitem] .button .key { flex-grow: 1; text-align: right; color: #80868b; font-weight: bold; }
-	.oi-viz-table-holder li[role=menuitem] .button:disabled, .oi-viz-table-holder li[role=menuitem] .button:disabled > * { opacity: 0.6; color: inherit!important; }
-	.oi-viz-table-holder li.separator { line-height: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.3); }
+	${mb} { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); text-align: left; display: flex; gap: 0.25em; }
+	${mb} button { font-size:1em; padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
+	${mb} button svg { width: 1em; height: 1em; vertical-align: -.125em; }
+	${t} { border-collapse: separate; }
+	${t} td.row { text-align: right; }
+	${t} td, ${t} th { border-right: 0; border-top: 0; border-color: var(--border); }
+	${t} thead { position: sticky; top: 0; }
+	${t} th, ${t} td { border-color: var(--border); }
+	${t} tr:hover { background: var(--hover); }
+	${t} th, ${t} td.row { cursor: pointer; background: var(--bg); }
+	${t} th > div { display: flex; align-items: center; position: relative; }
+	${t} th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; white-space: nowrap; }
+	${t} th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
+	${t} th .menu:focus { outline: 2px solid var(--select-border); }
+	${t} .selected { background: var(--select); }
+	${t} .selected:hover { background: var(--select-hover); }
+	${th} { overflow: auto; max-width: 100%; max-height: 80vh; position: relative; }
+	${th} ul[role=menu] { position: relative; z-index: 1100; list-style: none; margin: 0; padding: 4px; list-style: none; display: flex; flex-wrap: wrap; box-sizing: border-box; gap: 4px; background: #efefef; border: 1px solid rgba(0,0,0,0.3); border-radius: 4px; position: absolute; top: 0; left: 0; flex-direction: column; min-width: 192px; box-shadow: 1px 1px 4px rgba(0,0,0,0.2); }
+	${th} ${mi} { white-space: nowrap; display:block; cursor: pointer; background: transparent; }
+	${th} ${mi} .button { cursor: pointer; width: 100%; line-height: 1rem; margin-right: 1px; padding: 0.5em; text-align: left; display: flex; flex-direction: row; gap: 0.5rem; align-items: center; }
+	${th} ${mi} .button:focus { background: #222!important; color: #fff!important; cursor: auto; }
+	${th} ${mi} .button svg { height: 1rem; width: 1rem; }
+	${th} ${mi} .button .key { flex-grow: 1; text-align: right; color: #80868b; font-weight: bold; }
+	${th} ${mi} .button:disabled, ${th} ${mi} .button:disabled > * { opacity: 0.6; color: inherit!important; }
+	${th} li.separator { line-height: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.3); }
 	`;
 	document.head.prepend(styles);
 
@@ -52,7 +55,7 @@
 		if(!opts) opts = {};
 
 		n = "OI CSVEditor";
-		v = "0.2";
+		v = "0.2.1";
 		msg = new OI.logger(n+' v'+v,{});
 		msg.info('Init',lnk);
 		_obj = this;
@@ -283,7 +286,7 @@
 			c--;
 			if(dir=="col"){
 				if(c >= 0 && c < this.order.length){
-					for(r = 0; r < this.data.length; r++){
+					for(var r = 0; r < this.data.length; r++){
 						this.data[r].values[this.order[c].value] = ((this.data[r].values[this.order[c].value]||"")+"").replace(regex,'');
 					}
 					this.updateTable();
@@ -292,7 +295,7 @@
 			return this;
 		};
 		this.updateTable = function(nosave){
-			var c,r,th,tr,nc,html;
+			var c,r,th,tr,nc,html,menubar;
 
 			if(!table){
 				el.innerHTML = '<div class="oi-viz-wrapper"><div class="oi-menu-bar"></div><div class="oi-viz-table-holder"><table class="oi-viz-table"></table></div></div>';
@@ -300,9 +303,9 @@
 				holder = el.querySelector('.oi-viz-table-holder');
 				wrapper = el.querySelector('.oi-viz-wrapper');
 				menubar = el.querySelector('.oi-menu-bar');
-				var save = addButton(menubar,{'label':'Save CSV','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7.5l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-7.5zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV','click':function(){ _obj.saveCSV(); }});
-				var undo = addButton(menubar,{'label':'Undo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M14,8v-2.5l-1,-1h-6.5l-1,1v5l1,1h3.5l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-4l-2,-2v-6l2,-2h8l2,2v3z" /></svg> Undo','click':function(){_obj.loadMemory(1);}});
-				var redo = addButton(menubar,{'label':'Redo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,8v-3l2,-2h8l2,2v6l-2,2h-3.5l1,1 -1,1 -3,-2.75 3,-2.75 1,1 -1,1h3l1,-1v-5l-1,-1h-7l-1,1v3z" /></svg> Redo','click':function(){_obj.loadMemory(-1);}});
+				addButton(menubar,{'label':'Save CSV','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7.5l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-7.5zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV','click':function(){ _obj.saveCSV(); }});
+				addButton(menubar,{'label':'Undo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M14,8v-2.5l-1,-1h-6.5l-1,1v5l1,1h3.5l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-4l-2,-2v-6l2,-2h8l2,2v3z" /></svg> Undo','click':function(){_obj.loadMemory(1);}});
+				addButton(menubar,{'label':'Redo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,8v-3l2,-2h8l2,2v6l-2,2h-3.5l1,1 -1,1 -3,-2.75 3,-2.75 1,1 -1,1h3l1,-1v-5l-1,-1h-7l-1,1v3z" /></svg> Redo','click':function(){_obj.loadMemory(-1);}});
 				table.addEventListener('mouseover',function(){ _obj._focussed = true; });
 				table.addEventListener('mouseout',function(){ _obj._focussed = false; });
 			}
@@ -342,98 +345,7 @@
 				table.addEventListener('focusout',function(e){
 					_obj.updateByDom(e.target);
 				});
-
-				menu = new Menu('column-menu',holder,[{
-					'type':'button',
-					'id':'btn-select-column',
-					'title':'Select column',
-					'icon': '<path d="M2,7v-2h5v-5h2v5h5v2h-5v5h-2v-5z"/>',
-					'this': this,
-					'fn': function(el){
-						var c = getCol(el);
-						this.select("col",c,false,false);
-						this.setFocus(c);
-					}
-				},{
-					'type':'button',
-					'id':'btn-deselect-column',
-					'title':'Deselect column',
-					'icon': '<path d="M2,7v-2h12v2h-12z"/>',
-					'this': this,
-					'fn': function(el){
-						var c = getCol(el);
-						this.deselect("col",c,false,false);
-						this.setFocus(c);
-					}
-				},{
-					'type':'separator'
-				},{
-					'type':'button',
-					'id':'btn-sort-a-z-column',
-					'title':'Sort table (increasing)',
-					'icon': '<path d="M3,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM7,2h3.5v1.5h-3.5zM7,5h5v1.5h-5zM7,8h6.5v1.5h-6.5zM7,11h8v1.5h-8z"/>',
-					'this': this,
-					'fn': function(el){
-						var c = getCol(el);
-						this.sortBy("col",c,false);
-					}
-				},{
-					'type':'button',
-					'id':'btn-sort-z-a-column',
-					'title':'Sort table (decreasing)',
-					'icon': '<path d="M3,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM7,2h8v1.5h-8zM7,5h6.5v1.5h-6.5zM7,8h5v1.5h-5zM7,11h3.5v1.5h-3.5z"/>',
-					'this': this,
-					'fn': function(el){
-						var c = getCol(el);
-						this.sortBy("col",c,true);
-					}
-				},{
-					'type':'separator'
-				},{
-					'type':'button',
-					'id':'btn-shift-left-column',
-					'title':'Move column left',
-					'icon': '<path d="M2,8l3,-2.75 1,1 -1,1h9v1.5h-9l1,1 -1,1z"/>',
-					'this': this,
-					'fn': function(el){
-						var c = getCol(el);
-						this.shiftBy("col",c,-1);
-					}
-				},{
-					'type':'button',
-					'id':'btn-shift-right-column',
-					'title':'Move column right',
-					'icon': '<path d="M2,7.25h9l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-9v-1.5z"/>',
-					'this': this,
-					'fn': function(el){
-						var c = getCol(el);
-						this.shiftBy("col",c,1);
-					}
-				},{
-					'type':'separator'
-				},{
-					'type':'button',
-					'id':'btn-strip-non-numeric-column',
-					'title':'Strip non-numeric characters',
-					'this': this,
-					'fn': function(el){
-						var c = getCol(el);
-						this.strip("col",c,/[^0-9\.\-\+]/g);
-					}
-				},{
-					'type':'button',
-					'id':'btn-delete-column',
-					'title':'Delete column',
-					'icon': '<path d="M1,2h5v-1h4v1h5v1.5h-1v11.5h-12v-11.5h1.5v10h9v-10h-11.5M5.5,5h1.5v7h-1.5v-7M9,5h1.5v7h-1.5v-7z"/>',
-					'this': this,
-					'fn': function(el){
-						this.deselectAll();
-						var c = getCol(el);
-						this.select("col",c,false,false);
-						this.delete();
-						this.setFocus(c);
-					}
-				}]);
+				menu = (new Menu(holder)).addItems('select,deselect,sortup,sortdown,moveleft,moveright,stripnonnumeric,separator,delete',this);
 			}else{
 				msg.log('No data loaded.');
 			}
@@ -514,7 +426,7 @@
 			return csv;
 		};
 		this.saveCSV = function(){
-			var str,file,type,c,r,m,cols;
+			var file,type;
 			file = _url||"data.csv";
 			file = file.substring(file.lastIndexOf("\/")+1,);
 			type = "text/csv";
@@ -556,7 +468,7 @@
 				this.updateTable(true);
 			}
 			return this;
-		}
+		};
 		addEventListener('keydown',function(e){
 			if(_obj._focussed){
 				if(e.key=="Delete") _obj.delete();
@@ -582,17 +494,99 @@
 		return btn;
 	}
 
+	// Set our default column-menu items
+	if(!OI.CSVEditorMenuOptions) OI.CSVEditorMenuOptions = {};
+	function addMenu(list){
+		for(var id in list) OI.CSVEditorMenuOptions[id] = list[id];
+	}
+	addMenu({
+		'select': {
+			'type':'button','title':'Select column','icon': '<path d="M2,7v-2h5v-5h2v5h5v2h-5v5h-2v-5z"/>',
+			'fn': function(el){
+				var c = getCol(el);
+				this.select("col",c,false,false);
+				this.setFocus(c);
+			}
+		},
+		'deselect':{
+			'type':'button','title':'Deselect column','icon': '<path d="M2,7v-2h12v2h-12z"/>',
+			'fn': function(el){
+				var c = getCol(el);
+				this.deselect("col",c,false,false);
+				this.setFocus(c);
+			}
+		},
+		'sortup':{
+			'type':'button','title':'Sort table (increasing)','icon': '<path d="M3,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM7,2h3.5v1.5h-3.5zM7,5h5v1.5h-5zM7,8h6.5v1.5h-6.5zM7,11h8v1.5h-8z"/>',
+			'fn': function(el){
+				var c = getCol(el);
+				this.sortBy("col",c,false);
+			}
+		},
+		'sortdown':{
+			'type':'button','title':'Sort table (decreasing)','icon': '<path d="M3,2h1.5v9l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-9zM7,2h8v1.5h-8zM7,5h6.5v1.5h-6.5zM7,8h5v1.5h-5zM7,11h3.5v1.5h-3.5z"/>',
+			'fn': function(el){
+				var c = getCol(el);
+				this.sortBy("col",c,true);
+			}
+		},
+		'moveleft':{
+			'type':'button','title':'Move column left','icon': '<path d="M2,8l3,-2.75 1,1 -1,1h9v1.5h-9l1,1 -1,1z"/>',
+			'fn': function(el){
+				var c = getCol(el);
+				this.shiftBy("col",c,-1);
+			}
+		},
+		'moveright':{
+			'type':'button','title':'Move column right','icon': '<path d="M2,7.25h9l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-9v-1.5z"/>',
+			'fn': function(el){
+				var c = getCol(el);
+				this.shiftBy("col",c,1);
+			}
+		},
+		'stripnonnumeric':{
+			'type':'button','title':'Strip non-numeric characters',
+			'fn': function(el){
+				var c = getCol(el);
+				this.strip("col",c,/[^0-9\.\-\+]/g);
+			}
+		},
+		'delete':{
+			'type':'button','title':'Delete column','icon': '<path d="M1,2h5v-1h4v1h5v1.5h-1v11.5h-12v-11.5h1.5v10h9v-10h-11.5M5.5,5h1.5v7h-1.5v-7M9,5h1.5v7h-1.5v-7z"/>',
+			'fn': function(el){
+				this.deselectAll();
+				var c = getCol(el);
+				this.select("col",c,false,false);
+				this.delete();
+				this.setFocus(c);
+			}
+		},
+		'separator':{
+			'type':'separator'
+		}
+	});
 
-	function Menu(id,holder,items){
+	function Menu(holder,opts){
+		if(!opts) opts = {};
 		var ul = document.createElement('ul');
 		ul.setAttribute('role','menu');
 		ul.style.display = "none";
-		ul.id = id;
+		if(opts.id) ul.id = opts.id;
 		holder.appendChild(ul);
 		this.get = function(){ return ul; };
-		this.addItems = function(items){
-			var i,a;
-			for(i = 0; i < items.length; i++) a = new MenuItem(this,items[i]);
+		this.addItems = function(items,ctx){
+			var i,a,item,id;
+			if(typeof items==="string") items = items.split(/,/);
+			for(i = 0; i < items.length; i++){
+				item = items[i];
+				if(typeof item==="string" && item in OI.CSVEditorMenuOptions){
+					id = item;
+					item = OI.CSVEditorMenuOptions[item];
+					item.id = 'oi-menu-'+id;
+				}
+				item['this'] = ctx||this;
+				a = new MenuItem(this,item);
+			}
 			return this;
 		};
 		this.show = function(){
@@ -624,7 +618,6 @@
 			if(bb.left+bb.width > holder.offsetWidth+bbh.left) ul.style.transform = 'translate3d(-100%,0,0)';
 			return this;
 		};
-		this.addItems(items);
 		return this;
 	}
 
