@@ -40,15 +40,15 @@
 					<li>Shift columns</li>
 				</ul>
 				</li>
-				<li><a href="#install">Easy to install</a></li>
+				<li><a href="#use">Easy to use</a></li>
 				<li><a href="#self-host">Self-hostable</a></li>
-				<li><a href="#page-load">Lightweight</a> - <span class="size-total">??</span>kB required to view a CSV compared to 7.5MB (1.88MB gzipped) for <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
-				<li>Progressive enhancement - attach to a link with an initial load of <span class="size-initial">??</span>kB</li>
+				<li><a href="#page-load">Lightweight</a> - an initial load of <span class="size-initial">??</span>kB rising to <span class="size-total">??</span>kB to view/edit a CSV compared to 7.5MB (1.88MB gzipped) for the full-featured <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
+				<li><a href="#progressive-enhancement">Progressive enhancement</a></li>
 				<li>Open source</li>
-				<li>No tracking analytics</li>
+				<li>No tracking/analytics</li>
 			</ul>
 
-			<h2 id="install">Add it to your site</h2>
+			<h2 id="use">Easy to use</h2>
 			<div class="b5-bg padded padded-bottom">
 				<p>With just two lines of code, users will be able to open CSVs in a basic viewer/editor.</p>
 				<ol>
@@ -61,12 +61,20 @@
 					<li>Done!</li>
 				</ol>
 			</div>
-			
-			<h2 id="page-load">Lightweight</h2>
-			<p>The initial load (<a href="dist/oi.csv.js">oi.csv.js</a>) is <span class="size-initial">??</span>kB. We only load the rest of the code - a further <span class="size-editor">??</span>kB - if someone starts viewing a CSV. By using standard anchor tags, if Javascript is disabled - or fails due to network issues - people will still get the CSV.</p>
 
 			<h2 id="self-host">Self-hosting</h2>
-			<p>To host it yourself, you need <a href="dist/oi.csv.js">oi.csv.js</a> and <a href="dist/oi.csv.editor.js">oi.csv.editor.js</a> stored in the same directory.</p>
+			<p>To host it yourself, you need to save <a href="dist/oi.csv.js">oi.csv.js</a> and <a href="dist/oi.csv.editor.js">oi.csv.editor.js</a> in the same directory.</p>
+
+			<h2 id="page-load">Lightweight</h2>
+			<p>The initial load (<a href="dist/oi.csv.js">oi.csv.js</a>) is <span class="size-initial">??</span>kB. We only load the rest of the code - a further <span class="size-editor">??</span>kB - if someone starts viewing a CSV.</p>
+			
+			<h2 id="progressive-enhancement">Progressive enhancement</h2>
+			<p>The two recommended ways to use the editor are:</p>
+			<ul>
+				<li>Links to a CSV file</li>
+				<li>Inline CSV in a <code>textarea</code></li>
+			</ul>
+			<p>That way, if Javascript is disabled - or fails due to network issues - people will still get the CSV contents.</p>
 
 			<h2>Options</h2>
 			<ul>
