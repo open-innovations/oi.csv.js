@@ -42,7 +42,7 @@
 				</li>
 				<li><a href="#use">Easy to use</a></li>
 				<li><a href="#self-host">Self-hostable</a></li>
-				<li><a href="#page-load">Lightweight</a> - an initial load of <span class="size-initial">??</span>kB rising to <span class="size-total">??</span>kB to view/edit a CSV compared to 7.5MB (1.88MB gzipped) for the full-featured <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
+				<li><a href="#page-load">Lightweight</a> - an initial load of <span class="size-initial">??</span> rising to <span class="size-total">??</span> to view/edit a CSV compared to 7.5MB (1.88MB gzipped) for the full-featured <a href="https://www.getgrist.com/csv-viewer/">Grist CSV Viewer</a></li>
 				<li><a href="#progressive-enhancement">Progressive enhancement</a></li>
 				<li>Open source</li>
 				<li>No tracking/analytics</li>
@@ -66,7 +66,7 @@
 			<p>To host it yourself, you need to save <a href="dist/oi.csv.js">oi.csv.js</a> and <a href="dist/oi.csv.editor.js">oi.csv.editor.js</a> in the same directory.</p>
 
 			<h2 id="page-load">Lightweight</h2>
-			<p>The initial load (<a href="dist/oi.csv.js">oi.csv.js</a>) is <span class="size-initial">??</span>kB. We only load the rest of the code - a further <span class="size-editor">??</span>kB - if someone starts viewing a CSV.</p>
+			<p>The initial load (<a href="dist/oi.csv.js">oi.csv.js</a>) is <span class="size-initial">??</span>. We only load the rest of the code - a further <span class="size-editor">??</span> - if someone starts viewing a CSV.</p>
 			
 			<h2 id="progressive-enhancement">Progressive enhancement</h2>
 			<p>The two recommended ways to use the editor are:</p>
@@ -489,38 +489,40 @@ York,9,17,#F9BC26,14,18,10,12,4,202898,756701,121329,308399,72620,York,
 	<script>
 	document.querySelectorAll('.v').forEach(function(el){ el.innerHTML = ' v'+OI.CSVs.version; });
 	function getSize(file,fn){
-		var size = 0,headers;
+		var size = 0,headers,gzip = 0;
 		fetch(file,{}).then(response => {
 			if(!response.ok) throw new Error('Network response was not OK');
 			headers = response.headers;
 			return response.text();
 		}).then(txt => {
-		console.log(headers);
-			size = headers['content-length']||txt.length;
-			if(typeof fn==="function") fn.call(this,size);
+			gzip = headers['content-length']||txt.length;
+			size = gzip||txt.length;
+			if(typeof fn==="function") fn.call(this,size,gzip);
 		}).catch(e => {
 			console.error('There has been a problem loading '+file);
 		});
 		return this;
 	}
-	var total = 0;
-	getSize('dist/oi.csv.js',function(size){
+	var total = 0,totalz = 0;
+	getSize('dist/oi.csv.js',function(size,gzip){
 		total += size;
+		totalz += gzip;
 		document.querySelectorAll('.size-initial').forEach(function(el){
-			el.innerHTML = (size/1000).toFixed(1);
+			el.innerHTML = (size/1000).toFixed(1)+'kB'+(gzip!=size ? ' ('+((gzip/1000).toFixed(1))+'kB gzipped)' : '');
 		});
-		updateTotal(total);
+		updateTotal(total,totalz);
 	});
-	getSize('dist/oi.csv.editor.js',function(size){
+	getSize('dist/oi.csv.editor.js',function(size,gzip){
 		total += size;
+		totalz += gzip;
 		document.querySelectorAll('.size-editor').forEach(function(el){
-			el.innerHTML = (size/1000).toFixed(1);
+			el.innerHTML = (size/1000).toFixed(1)+'kB'+(gzip!=size ? ' ('+((gzip/1000).toFixed(1))+'kB gzipped)' : '');
 		});
-		updateTotal(total);
+		updateTotal(total,totalz);
 	});
-	function updateTotal(size){
+	function updateTotal(size,gzip){
 		document.querySelectorAll('.size-total').forEach(function(el){
-			el.innerHTML = (size/1000).toFixed(1);
+			el.innerHTML = (size/1000).toFixed(1)+'kB'+(gzip!=size ? ' ('+((gzip/1000).toFixed(1))+'kB gzipped)' : '');
 		});
 	}
 	</script>
