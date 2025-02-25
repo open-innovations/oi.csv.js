@@ -170,6 +170,21 @@
 			}
 			return this;
 		};
+		this.duplicate = function(dir,i){
+			if(dir=="col"){
+				this.deselectAll();
+				// Make a new column
+				var o = clone(this.order[i-1]);
+				o.value += ' (Copy)';
+				this.order.splice(i,0,o);
+				// Duplicate each row
+				for(var r = 0; r < this.data.length; r++){
+					this.data[r].values[o.value] = this.data[r].values[this.order[i-1].value]||"";
+				}
+				this.updateTable();
+			}
+			return this;
+		};
 		this.loadData = function(){
 			var url,m;
 			if(_url){
@@ -345,7 +360,7 @@
 				table.addEventListener('focusout',function(e){
 					_obj.updateByDom(e.target);
 				});
-				menu = (new Menu(holder)).addItems('select,deselect,sortup,sortdown,moveleft,moveright,stripnonnumeric,separator,delete',this);
+				menu = (new Menu(holder)).addItems('select,deselect,sortup,sortdown,moveleft,moveright,duplicate,stripnonnumeric,separator,delete',this);
 			}else{
 				msg.log('No data loaded.');
 			}
@@ -559,6 +574,13 @@
 				this.select("col",c,false,false);
 				this.delete();
 				this.setFocus(c);
+			}
+		},
+		'duplicate':{
+			'type':'button','title':'Duplicate column','icon':'<path d="M5,1h10v10h-10v-8.5h1.5v7h7v-7h-8.5zM1,5h3v1.5h-1.5v7h7v-1.5h1.5v3h-10v-10z"/>',
+			'fn': function(el){
+				var c = getCol(el);
+				this.duplicate("col",c);
 			}
 		},
 		'separator':{
