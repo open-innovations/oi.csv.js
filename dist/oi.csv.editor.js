@@ -26,12 +26,12 @@
 	${mb} button { font-size:1em; padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
 	${mb} button svg { width: 1em; height: 1em; vertical-align: -.125em; }
 	${t} { border-collapse: separate; }
-	${t} td.row { text-align: right; }
+	${t} [scope=row] { text-align: right; }
 	${t} td, ${t} th { border-right: 0; border-top: 0; border-color: var(--border); }
 	${t} thead { position: sticky; top: 0; }
 	${t} th, ${t} td { border-color: var(--border); }
 	${t} tr:hover { background: var(--hover); }
-	${t} th, ${t} td.row { cursor: pointer; background: var(--bg); }
+	${t} th, ${t} td[scope=row] { cursor: pointer; background: var(--bg); }
 	${t} th > div { display: flex; align-items: center; position: relative; }
 	${t} th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; white-space: nowrap; }
 	${t} th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
@@ -312,14 +312,14 @@
 
 			html = '';
 			if(this.data.length > 0){
-				th = '<th class="row"></th>';
+				th = '<th scope="row"></th>';
 				nc = this.order.length;
 				for(c = 0; c < nc; c++){
-					th += '<th data-col="'+(c+1)+'"><div><span class="heading" tabindex="0" contenteditable>'+this.order[c].value+'</span><span class="menu" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span></div></th>';
+					th += '<th scope="col" data-col="'+(c+1)+'"><div><span class="heading" tabindex="0" contenteditable>'+this.order[c].value+'</span><span class="menu" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span></div></th>';
 				}
 				html += '<thead><tr data-row="0">'+th+'</tr></thead><tbody>';
 				for(r = 0; r < this.data.length; r++){
-					tr = '<td class="row" tabindex="0">'+(r+1)+'</td>';
+					tr = '<th scope="row" tabindex="0">'+(r+1)+'</th>';
 					for(c = 0; c < nc; c++){
 						tr += '<td data-col="'+(c+1)+'" contenteditable>'+this.data[r].values[this.order[c].value]+'</td>';
 					}
@@ -338,7 +338,7 @@
 					el.addEventListener('click',function(e){ if(e.target==el || el==e.target.closest('.menu')){ _obj.toggleMenu(el); } });
 					el.addEventListener('keypress',function(e){ if(e.key === "Enter" && e.target==el){ e.preventDefault(); el.click(); } });
 				});
-				table.querySelectorAll('td.row').forEach(function(el,i){
+				table.querySelectorAll('[scope=row]').forEach(function(el,i){
 					el.addEventListener('click',function(e){ _obj.toggleSelect("row",getRow(el),e.shiftKey,e.ctrlKey); });
 					el.addEventListener('keydown',function(e){ if(e.key=="Enter"){ e.preventDefault(); _obj.toggleSelect("row",getRow(el),e.shiftKey,e.ctrlKey); } });
 				});
