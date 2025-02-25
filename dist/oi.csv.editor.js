@@ -241,16 +241,17 @@
 			return this.updateData(raw);
 		};
 		this.updateData = function(csv){
-			var o,r,c,data,out;
-			out = CSV2JSON(csv);
-			this.data = out.data;
+			var o,r,c,data,rows,head;
+			//out = CSV2JSON(csv);
+			rows = CSVToArray(csv);
+			head = rows.splice(0,1)[0];
 			// Reshape the data
-			data = new Array(this.data.length);
-			for(r = 0; r < this.data.length; r++) data[r] = {'cols':this.data[r].cols};
+			data = new Array(rows.length);
+			for(r = 0; r < rows.length; r++) data[r] = {'cols':rows[r]};
 			this.order = [];
-			if(out.header.length > 0){
-				for(c = 0; c < out.header.length; c++){
-					o = {'value':out.header[c],'column':c};
+			if(head.length > 0){
+				for(c = 0; c < head.length; c++){
+					o = {'value':head[c],'column':c};
 					this.order.push(o);
 				}
 			}
@@ -709,28 +710,19 @@
 		};
 	}
 
-	// Simple CSV to JSON parser v3.4
-	function CSV2JSON(str,opts){
-		// Convert \r\n to \n, remove final newline, and split by newlines
-		var lines = str.replace(/[\n\r]{2}/g,"\n").replace(/[\n\r]+$/g,"").split(/\n/);
-		var header = [],cols,i,c,data = [],datum,v;
-		for(i = 0; i < lines.length; i++){
-			cols = lines[i].split(/,(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/);
-			if(i==0){
-				header = cols;
-				for(c = 0; c < header.length; c++) header[c] = cols[c].replace(/(^\"|\"$)/g,"");
-			}else{
-				datum = {'order':header,'cols':[]};
-				for(c = 0; c < header.length; c++){
-					v = cols[c].replace(/(^\"|\"$)/g,"");
-					if(v=="True" || v=="true") v = true;
-					if(v=="False" || v=="false") v = false;
-					datum.cols[c] = v;
-				}
-				data.push(datum);
-			}
+	function CSVToArray (CSV_string, delimiter) {
+		delimiter = (delimiter || ",");
+		var pattern = new RegExp(("(\\" + delimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + delimiter + "\\r\\n]*))"), "gi");
+		var rows = [[]];
+		var matches = false;
+		while(matches = pattern.exec( CSV_string )){
+			var matched_delimiter = matches[1];
+			if(matched_delimiter.length && matched_delimiter !== delimiter) rows.push([]);
+			var matched_value;
+			matched_value = (matches[2]) ? matches[2].replace(new RegExp( "\"\"", "g" ), "\"") : matches[3];
+			rows[rows.length - 1].push(matched_value);
 		}
-		return {'header':header,'data':data};
+		return rows;
 	}
 	root.OI = OI||root.OI||{};
 
