@@ -241,15 +241,16 @@
 			return this.updateData(raw);
 		};
 		this.updateData = function(csv){
-			var o,r,c,data;
-			this.data = CSV2JSON(csv);
+			var o,r,c,data,out;
+			out = CSV2JSON(csv);
+			this.data = out.data;
 			// Reshape the data
 			data = new Array(this.data.length);
 			for(r = 0; r < this.data.length; r++) data[r] = {'cols':this.data[r].cols};
 			this.order = [];
-			if(this.data.length > 0){
-				for(c = 0; c < this.data[0].order.length; c++){
-					o = {'value':this.data[0].order[c],'column':c};
+			if(out.header.length > 0){
+				for(c = 0; c < out.header.length; c++){
+					o = {'value':out.header[c],'column':c};
 					this.order.push(o);
 				}
 			}
@@ -334,7 +335,7 @@
 			}
 
 			html = '';
-			if(this.data.length > 0){
+			if(this.order.length > 0){
 				th = '<th scope="row"></th>';
 				nc = this.order.length;
 				for(c = 0; c < nc; c++){
@@ -708,7 +709,7 @@
 		};
 	}
 
-	// Simple CSV to JSON parser v3.3
+	// Simple CSV to JSON parser v3.4
 	function CSV2JSON(str,opts){
 		// Convert \r\n to \n, remove final newline, and split by newlines
 		var lines = str.replace(/[\n\r]{2}/g,"\n").replace(/[\n\r]+$/g,"").split(/\n/);
@@ -729,7 +730,7 @@
 				data.push(datum);
 			}
 		}
-		return data;
+		return {'header':header,'data':data};
 	}
 	root.OI = OI||root.OI||{};
 
