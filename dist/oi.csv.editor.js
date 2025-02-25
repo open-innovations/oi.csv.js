@@ -242,10 +242,8 @@
 		};
 		this.updateData = function(csv){
 			var o,r,c,data,rows,head;
-			//out = CSV2JSON(csv);
 			rows = CSVToArray(csv);
 			head = rows.splice(0,1)[0];
-			// Reshape the data
 			data = new Array(rows.length);
 			for(r = 0; r < rows.length; r++) data[r] = {'cols':rows[r]};
 			this.order = [];
