@@ -176,10 +176,11 @@
 				// Make a new column
 				var o = clone(this.order[i-1]);
 				o.value += ' (Copy)';
+				o.column = this.data[0].cols.length;
 				this.order.splice(i,0,o);
 				// Duplicate each row
 				for(var r = 0; r < this.data.length; r++){
-					this.data[r].values[o.value] = this.data[r].values[this.order[i-1].value]||"";
+					this.data[r].cols.push(this.data[r].cols[this.order[i-1].column]||"");
 				}
 				this.updateTable();
 			}
@@ -240,11 +241,10 @@
 			this.data = CSV2JSON(csv);
 			// Reshape the data
 			data = new Array(this.data.length);
-			for(r = 0; r < this.data.length; r++) data[r] = this.data[r].cols;
-			for(r = 0; r < data.length; r++) data[r] = {'values':data[r]};
+			for(r = 0; r < this.data.length; r++) data[r] = {'cols':this.data[r].cols};
 			this.order = [];
 			for(c = 0; c < this.data[0].order.length; c++){
-				o = {'value':this.data[0].order[c]};
+				o = {'value':this.data[0].order[c],'column':c};
 				this.order.push(o);
 			}
 			this.data = data;
@@ -254,27 +254,27 @@
 		};
 		this.sortBy = function(dir,i,asc){
 			if(dir=="col"){
-				var o = this.order[i-1].value;
+				var o = this.order[i-1].column;
 				this.data = this.data.sort((a,b)=>{
 					var a2,b2;
 
 					// If we have values for only one cell we return
-					if(a.values[o]=="" && b.values[o]) return 1;
-					if(b.values[o]=="" && a.values[o]) return -1;
+					if(a.cols[o]=="" && b.cols[o]) return 1;
+					if(b.cols[o]=="" && a.cols[o]) return -1;
 
 					// Check if numeric, string-like or date-like
-					a2 = parseFloat(a.values[o]);
-					b2 = parseFloat(b.values[o]);
+					a2 = parseFloat(a.cols[o]);
+					b2 = parseFloat(b.cols[o]);
 
-					if(a2==a.values[o] && b2==b.values[o]){
+					if(a2==a.cols[o] && b2==b.cols[o]){
 						// Keep as numbers
 					}else{
-						a2 = new Date(a.values[o]);
-						b2 = new Date(b.values[o]);
+						a2 = new Date(a.cols[o]);
+						b2 = new Date(b.cols[o]);
 						if(isNaN(a2) || isNaN(b2)){
 							// Back to strings
-							a2 = a.values[o].toUpperCase();
-							b2 = b.values[o].toUpperCase();
+							a2 = a.cols[o].toUpperCase();
+							b2 = b.cols[o].toUpperCase();
 						}
 					}
 					if(a2 < b2) return (asc ? 1 : -1);
@@ -302,7 +302,8 @@
 			if(dir=="col"){
 				if(c >= 0 && c < this.order.length){
 					for(var r = 0; r < this.data.length; r++){
-						this.data[r].values[this.order[c].value] = ((this.data[r].values[this.order[c].value]||"")+"").replace(regex,'');
+						// Update value
+						this.data[r].cols[this.order[c].column] = ((this.data[r].cols[this.order[c].column]||"")+"").replace(regex,'');
 					}
 					this.updateTable();
 				}
@@ -336,7 +337,7 @@
 				for(r = 0; r < this.data.length; r++){
 					tr = '<th scope="row" tabindex="0">'+(r+1)+'</th>';
 					for(c = 0; c < nc; c++){
-						tr += '<td data-col="'+(c+1)+'" contenteditable>'+this.data[r].values[this.order[c].value]+'</td>';
+						tr += '<td data-col="'+(c+1)+'" contenteditable>'+this.data[r].cols[this.order[c].column]+'</td>';
 					}
 					html += '<tr data-row="'+(r+1)+'">'+tr+'</tr>';
 				}
@@ -383,17 +384,12 @@
 					update = true;
 					this.order[pos.col].value = v;
 					nc = this.order.length;
-					// Loop over data and rename variables
-					for(r = 0; r < this.data.length; r++){
-						this.data[r].values[v] = this.data[r].values[old];
-						delete this.data[r].values[old];
-					}
 					this.updateCSV();
 				}
 			}else{
-				if(this.data[pos.row].values[this.order[pos.col].value] != v){
+				if(this.data[pos.row].cols[this.order[pos.col].column] != v){
 					update = true;
-					this.data[pos.row].values[this.order[pos.col].value] = v;
+					this.data[pos.row].cols[this.order[pos.col].column] = v;
 					this.updateCSV();
 				}
 			}
@@ -432,9 +428,9 @@
 			csv += '\n';
 			for(r = 0; r < this.data.length; r++){
 				for(c = 0; c < this.order.length; c++){
-					v = this.data[r].values[this.order[c].value];
+					v = this.data[r].cols[this.order[c].column];
 					needsquotes = (typeof v==="string" && v.indexOf(",")>=0);
-					csv += (c > 0 ? ',':'')+(needsquotes ? '"':'')+this.data[r].values[this.order[c].value]+(needsquotes ? '"':'');
+					csv += (c > 0 ? ',':'')+(needsquotes ? '"':'')+v+(needsquotes ? '"':'');
 				}
 				csv += '\n';
 			}
@@ -703,7 +699,7 @@
 		};
 	}
 
-	// Simple CSV to JSON parser v3.2
+	// Simple CSV to JSON parser v3.3
 	function CSV2JSON(str,opts){
 		// Convert \r\n to \n, remove final newline, and split by newlines
 		var lines = str.replace(/[\n\r]{2}/g,"\n").replace(/[\n\r]+$/g,"").split(/\n/);
@@ -714,13 +710,13 @@
 				header = cols;
 				for(c = 0; c < header.length; c++) header[c] = cols[c].replace(/(^\"|\"$)/g,"");
 			}else{
-				datum = {'order':header,'cols':{}};
+				datum = {'order':header,'cols':[]};
 				for(c = 0; c < header.length; c++){
 					v = cols[c].replace(/(^\"|\"$)/g,"");
 					if(parseFloat(v)==v) v = parseFloat(v);
 					if(v=="True" || v=="true") v = true;
 					if(v=="False" || v=="false") v = false;
-					datum.cols[header[c]] = v;
+					datum.cols[c] = v;
 				}
 				data.push(datum);
 			}
