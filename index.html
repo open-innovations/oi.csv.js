@@ -497,7 +497,7 @@ York,9,17,#F9BC26,14,18,10,12,4,202898,756701,121329,308399,72620,York,
 		}).then(txt => {
 			gzip = headers['content-length']||txt.length;
 			size = gzip||txt.length;
-			console.log(size,gzip);
+			console.log(size,gzip,headers);
 			if(typeof fn==="function") fn.call(this,size,gzip);
 		}).catch(e => {
 			console.error('There has been a problem loading '+file);
