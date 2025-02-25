@@ -216,7 +216,6 @@
 					if(opts.src && document.getElementById(opts.src)){
 						a = document.getElementById(opts.src);
 						a.addEventListener('change',function(e){
-							console.log('change');
 							// Update the data
 							_obj.updateData(e.target.value);
 						});

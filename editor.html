@@ -79,6 +79,7 @@
 				input.value = e.target.result;
 				if(!activated) document.getElementById('activate').click();
 				output.classList.remove('hovering');
+				input.dispatchEvent(new Event('change'));
 			});
 			reader.onerror = function(e){ console.error('Failed to read file'); };
 		});
