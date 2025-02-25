@@ -64,6 +64,9 @@
 		var _original = lnk.innerHTML;
 		this._focussed = false;
 
+		this.reset = function(){
+			return this.updateData(this._csvoriginal);
+		};
 		// Add a note after
 		this.open = function(){
 			_open = true;
@@ -225,6 +228,7 @@
 		};
 		this.processData = function(txt){
 			raw = txt;
+			this._csvoriginal = (txt+(txt[txt-length-1]!="\n" ? "\n":"")).replace(/\r\n/g,"\n");
 			if(opts.target && document.getElementById(opts.target)){
 				el = document.getElementById(opts.target);
 			}
@@ -319,9 +323,10 @@
 				holder = el.querySelector('.oi-viz-table-holder');
 				wrapper = el.querySelector('.oi-viz-wrapper');
 				menubar = el.querySelector('.oi-menu-bar');
-				addButton(menubar,{'label':'Save CSV','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7.5l1,-1 1,1 -2.75,3 -2.75,-3 1,-1 1,1 v-7.5zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV','click':function(){ _obj.saveCSV(); }});
-				addButton(menubar,{'label':'Undo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M14,8v-2.5l-1,-1h-6.5l-1,1v5l1,1h3.5l-1,-1 1,-1 3,2.75 -3,2.75 -1,-1 1,-1h-4l-2,-2v-6l2,-2h8l2,2v3z" /></svg> Undo','click':function(){_obj.loadMemory(1);}});
-				addButton(menubar,{'label':'Redo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,8v-3l2,-2h8l2,2v6l-2,2h-3.5l1,1 -1,1 -3,-2.75 3,-2.75 1,1 -1,1h3l1,-1v-5l-1,-1h-7l-1,1v3z" /></svg> Redo','click':function(){_obj.loadMemory(-1);}});
+				addButton(menubar,{'label':'Save CSV','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M7.25,2h1.5v7h2l-2.75,3.5 -2.75,-3.5h2v-7zM1,15 v-4h1.5v3h11v-3h1.5v4h-14z" /></svg> Save CSV','click':function(){ _obj.saveCSV(); }});
+				addButton(menubar,{'label':'Undo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M10,10h2.5l1,-1v-1l-1,-1h-6v2l-3.5,-2.75 3.5,-2.75v2h7l1.5,1.5v3l-1.5,1.5h-4z" /></svg> Undo','click':function(){_obj.loadMemory(1);}});
+				addButton(menubar,{'label':'Redo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M6,10h-2.5l-1,-1v-1l1,-1h6v2l3.5,-2.75 -3.5,-2.75v2h-7l-1.5,1.5v3l1.5,1.5h4z" /></svg> Redo','click':function(){_obj.loadMemory(-1);}});
+				addButton(menubar,{'label':'Reset','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,8v-3l2,-2h8l2,2v6l-2,2h-3v2l-3.5,-2.75 3.5,-2.75v2h2.5l1,-1v-5l-1,-1h-7l-1,1v3z" /></svg> Reset','click':function(){_obj.reset();}});
 				table.addEventListener('mouseover',function(){ _obj._focussed = true; });
 				table.addEventListener('mouseout',function(){ _obj._focussed = false; });
 			}
@@ -441,6 +446,8 @@
 			file = _url||"data.csv";
 			file = file.substring(file.lastIndexOf("\/")+1,);
 			type = "text/csv";
+
+			if(this._csv!=this._csvoriginal) file = file.replace(/\.csv/,'_modified.csv');
 
 			var textFileAsBlob = new Blob([this._csv||""], {type:type});
 			function destroyClickedElement(event){ document.body.removeChild(event.target); }
@@ -713,7 +720,6 @@
 				datum = {'order':header,'cols':[]};
 				for(c = 0; c < header.length; c++){
 					v = cols[c].replace(/(^\"|\"$)/g,"");
-					if(parseFloat(v)==v) v = parseFloat(v);
 					if(v=="True" || v=="true") v = true;
 					if(v=="False" || v=="false") v = false;
 					datum.cols[c] = v;
