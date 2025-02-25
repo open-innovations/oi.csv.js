@@ -77,16 +77,17 @@
 
 			<h2>Examples</h2>
 			<h3>Example 1</h3>
-			<p>Try it by <a href="test-data.csv" data-oi-csv data-oi-csv-collapse="hiding the CSV" data-oi-csv-target="output1">editing a CSV</a> below.</p>
+			<p>In this first example we will make a link that initialises the CSV Editor. If Javascript fails - for whatever reason - it will simply behave as a link to the CSV file.</p>
+			<p><a href="test-data.csv" data-oi-csv data-oi-csv-collapse="Hide the CSV editor" data-oi-csv-target="output1">Edit the CSV file</a></p>
 			<div id="output1" style="background: #f9f9f9;display:block;text-align:center;">CSV content will go here</div>
 			
 			<h3>Example 2</h3>
-			<p>In this example we create an anchor tag that has <code>data-oi-csv-load</code> set to force the CSV file to be loaded automatically.</p>
-			<p><a href="test-data.csv" class="button c9-bg" data-oi-csv data-oi-csv-load data-oi-csv-collapse="Hide CSV editor" data-oi-csv-target="output2">Edit CSV</a></p>
+			<p>This example is identical to the one above except the link has a <code>data-oi-csv-load</code> attribute to force the CSV file to be loaded automatically.</p>
+			<p><a href="test-data.csv" data-oi-csv data-oi-csv-load data-oi-csv-collapse="Hide the CSV editor" data-oi-csv-target="output2">Edit the CSV file</a></p>
 			<div id="output2"></div>
 
 			<h3>Example 3</h3>
-			<p>Get CSV content from a <code>&lt;textarea&gt;</code> and output the result to the page. The <code>&lt;textarea&gt;</code> is kept in-sync with the table.</p>
+			<p>In this example we will include the CSV content inline in a <code>&lt;textarea&gt;</code> and use this as the source for the CSV Editor. Therefore we use a <code>button</code> rather than a link to activate the CSV Editor. The <code>&lt;textarea&gt;</code> is kept in-sync with the table.</p>
 			<textarea id="csv3">
 id,q,r,colour,count 2018-19,count 2019-20,count 2020-21,count 2021-22,count 2022-23,sum 2018-19,sum 2019-20,sum 2020-21,sum 2021-22,sum 2022-23,las,Date
 Amber Valley,7,11,#00B6FF,6,5,5,3,3,97371,127286,74171,206532,124866,Amber Valley,7 July 2024
