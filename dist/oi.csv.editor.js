@@ -21,7 +21,7 @@
 	var mb = '.oi-menu-bar';
 	var mi = 'li[role=menuitem]';
 	styles.innerHTML = `
-	.oi-viz-wrapper { --bg: #efefef; --border: silver; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); }
+	.oi-viz-wrapper { --bg: #efefef; --border: silver; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); display: flex; flex-direction: column; width: 100%; }
 	${mb} { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); text-align: left; display: flex; gap: 0.25em; }
 	${mb} button { font-size:1em; padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
 	${mb} button svg { width: 1em; height: 1em; vertical-align: -.125em; }
@@ -216,6 +216,7 @@
 					if(opts.src && document.getElementById(opts.src)){
 						a = document.getElementById(opts.src);
 						a.addEventListener('change',function(e){
+							console.log('change');
 							// Update the data
 							_obj.updateData(e.target.value);
 						});
@@ -247,9 +248,11 @@
 			data = new Array(this.data.length);
 			for(r = 0; r < this.data.length; r++) data[r] = {'cols':this.data[r].cols};
 			this.order = [];
-			for(c = 0; c < this.data[0].order.length; c++){
-				o = {'value':this.data[0].order[c],'column':c};
-				this.order.push(o);
+			if(this.data.length > 0){
+				for(c = 0; c < this.data[0].order.length; c++){
+					o = {'value':this.data[0].order[c],'column':c};
+					this.order.push(o);
+				}
 			}
 			this.data = data;
 			this.selected = {'row':new Array(this.data.length),'col':new Array(this.order.length)};

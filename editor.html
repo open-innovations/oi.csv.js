@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSV Editor example | Open Innovations</title>
+	<link rel="icon" href="resources/oi-square-black.svg" />
+	<link rel="StyleSheet" href="resources/style.css" type="text/css" />
+	<style>
+	.container {
+		display: flex;
+		height: 100vh;
+		max-height: 100vh;
+		flex-direction: column;
+	}
+	#main { flex-grow: 1; }
+	#main textarea { display: block; width: 100%; height: 200px; }
+	header h1 { padding: 1rem; display: flex; flex-grow: 1; align-items: center; gap: 0.5rem; }
+	header a:last-child { line-height: unset; }
+	footer p:last-child { margin-bottom: 0; }
+	#output { width: 100%; height: 100%; display: flex; }
+	.hidden { display: none; }
+	.oi-viz-table-holder { max-height: unset; }
+	.hovering { background: rgba(0,0,0,0.3); }
+	.info { display: flex; height: 100%; width: 100%; align-items: center; justify-content: center;}
+	</style>
+	<script src="dist/oi.csv.js"></script>
+</head>
+<body class="b1-bg">
+
+	<div class="container">
+
+		<header class="b1-bg">
+			<h1><a href="https://open-innovations.org/"><svg width="1.5rem" height="1.5rem" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="#1DD3A7"><circle r="32" mask="url(#oi-person)"></circle></g></svg></a> <a href="/">CSV Editor</a></h1>
+		</header>
+
+		<div id="main" class="b6-bg" style="min-height: 400px;">
+			<div class="hidden">
+				<textarea id="input"></textarea>
+				<button id="activate" data-oi-csv data-oi-csv-src="input" data-oi-csv-target="output" class="c9-bg">Edit as table</button>
+			</div>
+			<div id="output"><div class="info">Drop a CSV file here</div></div>
+		</div>
+
+		<footer class="b1-bg padded">
+			<p>&copy; 2024-2025 Stuart Lowe / Open Innovations (MIT licence).</p>
+		</footer>
+	</div>
+	<script>
+	var OI = OI || {};
+	if(!OI.ready){
+		OI.ready = function(fn){
+			// Version 1.1
+			if(document.readyState != 'loading') fn();
+			else document.addEventListener('DOMContentLoaded', fn);
+		};
+	}
+	OI.ready(function(){
+		var activated = false;
+		const target = document.getElementById("main");
+		const input = document.getElementById('input');
+		const output = document.getElementById('output');
+		target.addEventListener("dragover", (event) => {
+			// prevent default to allow drop
+			event.preventDefault();
+		});
+		target.addEventListener("dragover", (event) => {
+			output.classList.add('hovering');
+		});
+		target.addEventListener("dragleave", (event) => {
+			output.classList.remove('hovering');
+		});
+		target.addEventListener("drop", (event) => {
+			// prevent default action (open as a link for some elements)
+			event.stopPropagation();
+			event.preventDefault();
+			var files = event.dataTransfer.files;		
+			var reader = new FileReader();
+			reader.readAsText(files[0], "UTF-8");
+			reader.addEventListener('load',function(e){
+				input.value = e.target.result;
+				if(!activated) document.getElementById('activate').click();
+				output.classList.remove('hovering');
+			});
+			reader.onerror = function(e){ console.error('Failed to read file'); };
+		});
+		if(input.value){
+			document.getElementById('activate').click();
+			activated = true;
+		}
+	});
+		
+	</script>
+
+</body>
+</html>
