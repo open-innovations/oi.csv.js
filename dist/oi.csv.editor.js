@@ -32,9 +32,9 @@
 	${t} th, ${t} td { border-color: var(--border); }
 	${t} tr:hover { background: var(--hover); }
 	${t} th, ${t} td[scope=row] { cursor: pointer; background: var(--bg); }
-	${t} th > div { display: flex; align-items: center; position: relative; }
-	${t} th .heading { display: inline-block; cursor: text; padding-inline: 0.25em; flex-grow: 1; white-space: nowrap; }
-	${t} th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); }
+	${t} th > div { display: flex; align-items: center; position: relative; gap: 0.5rem; }
+	${t} th .heading { display: inline-block; cursor: text; flex-grow: 1; white-space: nowrap; }
+	${t} th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); padding: 0; }
 	${t} th .menu:focus { outline: 2px solid var(--select-border); }
 	${t} .selected { background: var(--select); }
 	${t} .selected:hover { background: var(--select-hover); }
@@ -335,7 +335,7 @@
 			var c,r,th,tr,nc,html,menubar;
 
 			if(!table){
-				el.innerHTML = '<div class="oi-viz-wrapper"><div class="oi-menu-bar"></div><div class="oi-viz-table-holder"><table class="oi-viz-table"></table></div></div>';
+				el.innerHTML = '<div class="oi-viz-wrapper"><div class="oi-menu-bar"></div><div class="oi-viz-table-holder"><table class="oi-viz-table" aria-label="CSV"></table></div></div>';
 				table = el.querySelector('table');
 				holder = el.querySelector('.oi-viz-table-holder');
 				wrapper = el.querySelector('.oi-viz-wrapper');
@@ -353,7 +353,7 @@
 				th = '<th scope="row"></th>';
 				nc = this.order.length;
 				for(c = 0; c < nc; c++){
-					th += '<th scope="col" data-col="'+(c+1)+'"><div><span class="heading" tabindex="0" contenteditable>'+this.order[c].value+'</span><span class="menu" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></span></div></th>';
+					th += '<th scope="col" data-col="'+(c+1)+'"><div><span class="heading" tabindex="0" contenteditable>'+this.order[c].value+'</span><button class="menu" tabindex="0" aria-label="Column options"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg></button></div></th>';
 				}
 				html += '<thead><tr data-row="0">'+th+'</tr></thead><tbody>';
 				for(r = 0; r < this.data.length; r++){
