@@ -1,0 +1,15 @@
+{
+	"name": "OI CSV Editor",
+	"short_name": "CSV Editor",
+	"start_url": "https://open-innovations.github.io/oi.csv.js/editor",
+	"display": "standalone",
+	"icons": [{
+		"src": "resources/icon_192.png",
+		"type": "image/png",
+		"sizes": "192x192"
+	},{
+		"src": "resources/icon_512.png",
+		"type": "image/png",
+		"sizes": "512x512"
+	}]
+}
