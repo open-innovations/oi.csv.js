@@ -51,7 +51,7 @@
 	document.head.prepend(styles);
 
 	OI.CSVEditor = function(lnk,opts){
-		var n,v,raw,msg,_url,el,loading,table,menu,holder,wrapper,_obj,_open = false,memory = [],_memory = 0;
+		var n,v,raw,msg,_url,el,loading,table,menu,holder,wrapper,rows,_obj,_open = false,memory = [],_memory = 0;
 		if(!opts) opts = {};
 
 		n = "OI CSVEditor";
@@ -104,29 +104,35 @@
 			if(col) col.querySelector('.menu').focus();
 			return this;
 		};
-		this.delete = function(){
-			var c,r,changes = 0,lastdel = -1;
-			// Delete any rows
-			for(r = this.selected.row.length-1; r >= 0; r--){
-				if(this.selected.row[r]){
-					// Delete row in data
-					this.data.splice(r-1,1);
-					this.selected.row.splice(r,1);
+		this.delete = function(dir,i){
+			var c,r,changes = 0,selchange = 0,lastdel = -1;
+			if(dir){
+				if(dir=="col"){
+					this.order.splice(i-1,1);
+					this.selected.col.splice(i,1);
 					changes++;
 				}
-			}
-			for(c = this.selected.col.length-1; c >= 0; c--){
-				if(this.selected.col[c]){
-					// Delete column in order
-					this.order.splice(c-1,1);
-					this.selected.col.splice(c,1);
-					lastdel = c;
-					changes++;
+			}else{
+				// Delete any rows
+				for(r = this.selected.row.length-1; r >= 0; r--){
+					if(this.selected.row[r]){
+						// Delete row in data
+						this.data.splice(r-1,1);
+						this.selected.row.splice(r,1);
+						changes++;
+					}
+				}
+				for(c = this.selected.col.length-1; c >= 0; c--){
+					if(this.selected.col[c]){
+						// Delete column in order
+						this.order.splice(c-1,1);
+						this.selected.col.splice(c,1);
+						lastdel = c;
+						changes++;
+					}
 				}
 			}
-			if(changes > 0){
-				this.updateTable();
-			}
+			if(changes > 0) this.updateTable();
 			return this;
 		};
 		this.toggleSelect = function(dir,i,shift,ctrl){
@@ -179,10 +185,9 @@
 				colgroup.innerHTML = group;
 				// Update row styles
 				for(r = 0; r < this.selected.row.length; r++){
-					tr = table.querySelector('[data-row="'+r+'"]');
-					if(tr){
-						if(this.selected.row[r]) tr.classList.add('selected','selected-row');
-						else tr.classList.remove('selected','selected-row');
+					if(r < rows.length){
+						if(this.selected.row[r]) rows[r].classList.add('selected','selected-row');
+						else rows[r].classList.remove('selected','selected-row');
 					}
 				}
 			}
@@ -256,11 +261,11 @@
 			return this.updateData(raw);
 		};
 		this.updateData = function(csv){
-			var o,r,c,data,rows,head;
-			rows = CSVToArray(csv);
-			head = rows.splice(0,1)[0];
-			data = new Array(rows.length);
-			for(r = 0; r < rows.length; r++) data[r] = {'cols':rows[r]};
+			var o,r,c,data,csvrows,head;
+			csvrows = CSVToArray(csv);
+			head = csvrows.splice(0,1)[0];
+			data = new Array(csvrows.length);
+			for(r = 0; r < csvrows.length; r++) data[r] = {'cols':csvrows[r]};
 			this.order = [];
 			if(head.length > 0){
 				for(c = 0; c < head.length; c++){
@@ -332,7 +337,7 @@
 			return this;
 		};
 		this.updateTable = function(nosave){
-			var c,r,th,tr,nc,html,menubar;
+			var c,r,th,tr,nc,html,menubar,i,sel;
 
 			if(!table){
 				el.innerHTML = '<div class="oi-viz-wrapper"><div class="oi-menu-bar"></div><div class="oi-viz-table-holder"><table class="oi-viz-table" aria-label="CSV"></table></div></div>';
@@ -366,6 +371,7 @@
 				html += '</tbody>';
 
 				table.innerHTML = html;
+				rows = table.querySelectorAll('tr');
 				table.querySelectorAll('th').forEach(function(el,i){
 					el.addEventListener('click',function(e){ if(el==e.originalTarget){ _obj.toggleSelect("col",getCol(el),e.shiftKey,e.ctrlKey); } });
 				});
@@ -388,6 +394,11 @@
 				msg.log('No data loaded.');
 			}
 			this.updateCSV(nosave);
+			sel = 0;
+			for(i = 0; i < this.selected.col.length; i++){
+				if(this.selected.col[i]) sel++;
+			}
+			if(sel > 0) this.updateSelection();
 			return this;
 		};
 		this.updateByDom = function(e){
@@ -589,10 +600,8 @@
 		'delete':{
 			'type':'button','title':'Delete column','icon': '<path d="M1,2h5v-1h4v1h5v1.5h-1v11.5h-12v-11.5h1.5v10h9v-10h-11.5M5.5,5h1.5v7h-1.5v-7M9,5h1.5v7h-1.5v-7z"/>',
 			'fn': function(el){
-				this.deselectAll();
 				var c = getCol(el);
-				this.select("col",c,false,false);
-				this.delete();
+				this.delete("col",c);
 				this.setFocus(c);
 			}
 		},
