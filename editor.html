@@ -56,7 +56,7 @@
 		</div>
 
 		<footer class="b1-bg">
-			<p>&copy; 2025 <a href="https://open-innovations.org/">Open Innovations</a> (<a href="https://github.com/open-innovations/oi.csv.js/">MIT licence</a>).</p>
+			<p><a href="editor-about.html">About</a> | &copy; 2025 <a href="https://open-innovations.org/">Open Innovations</a> (<a href="https://github.com/open-innovations/oi.csv.js/">MIT licence</a>).</p>
 		</footer>
 	</div>
 
@@ -98,6 +98,7 @@
 			target.classList.remove('active');
 			activated = false;
 			document.querySelector('div.clear').remove();
+			input.value = '';
 		}
 		target.addEventListener("dragover", (event) => { event.preventDefault(); });
 		target.addEventListener("dragover", (event) => { target.classList.add('hovering'); });

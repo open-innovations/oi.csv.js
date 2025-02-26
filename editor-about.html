@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8" />
+	<link rel="manifest" href="manifest.json" />
+	<title>CSV Editor | Open Innovations</title>
+	<link rel="icon" href="resources/oi-square-5.svg" />
+	<link rel="StyleSheet" href="resources/style-editor.css" type="text/css" />
+	<style>
+	</style>
+	<script src="dist/oi.csv.js"></script>
+</head>
+<body class="b1-bg">
+	<header>
+		<div class="b1-bg">
+			<div class="holder padded" style="text-align:center;">
+				<a href="https://open-innovations.org/"><svg width="80" height="80" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="#1DD3A7"><circle r="32" mask="url(#oi-person)"></circle></g></svg></a>
+				<h1>CSV Editor: about</h1>
+			</div>
+		</div>
+	</header>
+
+	<div class="b6-bg">
+		<div class="holder doublepadded">
+			<h2>About</h2>
+			<p>The CSV Editor is a simple tool made by <a href="https://open-innovations.org/">Open Innovations</a>. The aim is to create a basic CSV editor that uses as little bandwidth as possible. As such, it won't have all the bells and whistles of more fully-fledged CSV editors (<a href="https://www.getgrist.com/csv-viewer/">GRIST</a>, Google Sheets, Excel etc). But that also means it should load incredibly quickly regardless of your connection.</p>
+			<p>Because we actually care about privacy, it works entirely in the browser; none of the data from your CSV file leaves your device. We don't host your data; you deal with that.</p>
+		</div>
+	</div>
+
+	<footer class="b1-bg">
+		<div class="holder doublepadded">
+
+			<h2>Credits</h2>
+			<p>&copy; 2024-2025 Stuart Lowe, <a href="https://open-innovations.org/">Open Innovations</a> (<a href="https://github.com/open-innovations/oi.csv.js/">MIT licence</a>).</p>
+		</div>
+	</footer>
+
+	<script src="https://open-innovations.org/resources/oi.log.js"></script>
+	<script>
+	OI.log.setup({'id':'odileeds','target':['open-innovations.github.io']}).add('action=view');
+	</script>
+</body>
+</html>
