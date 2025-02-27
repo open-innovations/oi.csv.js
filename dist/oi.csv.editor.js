@@ -501,7 +501,7 @@
 	${mb} button svg { width: 1em; height: 1em; vertical-align: -.125em; }
 	${t} { border-collapse: separate; }
 	${t} [scope=row] { text-align: right; }
-	${t} td, ${t} th { border-right: 0; border-top: 0; border-color: var(--border); }
+	${t} td, ${t} th { border-right: 0; border-top: 0; border-color: var(--border); white-space: nowrap; padding: 0.25em 0.5em; }
 	${t} thead { position: sticky; top: 0; }
 	${t} th, ${t} td { border-color: var(--border); }
 	${t} tr:hover { background: var(--hover); }
