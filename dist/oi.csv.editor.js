@@ -1,6 +1,6 @@
 /**
 	Open Innovations tool for editing CSV files in the browser
-	Version 0.2.1
+	Version 0.2.2
  */
 /*jshint esversion: 6 */
 (function(root){
@@ -14,48 +14,11 @@
 		};
 	}
 
-	// Add default CSS
-	var styles = document.createElement('style');
-	var t = '.oi-viz-table';
-	var th = '.oi-viz-table-holder';
-	var mb = '.oi-menu-bar';
-	var mi = 'li[role=menuitem]';
-	styles.innerHTML = `
-	.oi-viz-wrapper { --bg: #efefef; --border: silver; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); display: flex; flex-direction: column; width: 100%; }
-	${mb} { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); text-align: left; display: flex; gap: 0.25em; }
-	${mb} button { font-size:1em; padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
-	${mb} button svg { width: 1em; height: 1em; vertical-align: -.125em; }
-	${t} { border-collapse: separate; }
-	${t} [scope=row] { text-align: right; }
-	${t} td, ${t} th { border-right: 0; border-top: 0; border-color: var(--border); }
-	${t} thead { position: sticky; top: 0; }
-	${t} th, ${t} td { border-color: var(--border); }
-	${t} tr:hover { background: var(--hover); }
-	${t} th, ${t} td[scope=row] { cursor: pointer; background: var(--bg); }
-	${t} th > div { display: flex; align-items: center; position: relative; gap: 0.5rem; }
-	${t} th .heading { display: inline-block; cursor: text; flex-grow: 1; white-space: nowrap; }
-	${t} th .menu { width: 1em; height: 1em; line-height:1em; border-radius: 100%; background: rgba(0,0,0,0.1); padding: 0; }
-	${t} th .menu:focus { outline: 2px solid var(--select-border); }
-	${t} .selected { background: var(--select); }
-	${t} .selected:hover { background: var(--select-hover); }
-	${th} { overflow: auto; max-width: 100%; max-height: 80vh; position: relative; }
-	${th} ul[role=menu] { position: relative; z-index: 1100; list-style: none; margin: 0; padding: 4px; list-style: none; display: flex; flex-wrap: wrap; box-sizing: border-box; gap: 4px; background: #efefef; border: 1px solid rgba(0,0,0,0.3); border-radius: 4px; position: absolute; top: 0; left: 0; flex-direction: column; min-width: 192px; box-shadow: 1px 1px 4px rgba(0,0,0,0.2); }
-	${th} ${mi} { white-space: nowrap; display:block; cursor: pointer; background: transparent; }
-	${th} ${mi} .button { cursor: pointer; width: 100%; line-height: 1rem; margin-right: 1px; padding: 0.5em; text-align: left; display: flex; flex-direction: row; gap: 0.5rem; align-items: center; }
-	${th} ${mi} .button:focus { background: #222!important; color: #fff!important; cursor: auto; }
-	${th} ${mi} .button svg { height: 1rem; width: 1rem; }
-	${th} ${mi} .button .key { flex-grow: 1; text-align: right; color: #80868b; font-weight: bold; }
-	${th} ${mi} .button:disabled, ${th} ${mi} .button:disabled > * { opacity: 0.6; color: inherit!important; }
-	${th} li.separator { line-height: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.3); }
-	`;
-	document.head.prepend(styles);
-
 	OI.CSVEditor = function(lnk,opts){
-		var n,v,raw,msg,_url,el,loading,table,menu,holder,wrapper,rows,_obj,_open = false,memory = [],_memory = 0;
 		if(!opts) opts = {};
-
+		var n,v,raw,msg,_url,el,loading,table,menu,holder,wrapper,rows,_obj,_open = false,memory = [],_memory = 0;
 		n = "OI CSVEditor";
-		v = "0.2.1";
+		v = "0.2.2";
 		msg = new OI.logger(n+' v'+v,{});
 		msg.info('Init',lnk);
 		_obj = this;
@@ -526,6 +489,43 @@
 		return this;
 	};
 
+	// Add default CSS
+	var styles = document.createElement('style');
+	var t = '.oi-viz-table';
+	var th = '.oi-viz-table-holder';
+	var mb = '.oi-menu-bar';
+	var mi = 'li[role=menuitem]';
+	styles.innerHTML = `
+	.oi-viz-wrapper { --text: #222222; --bg: #efefef; --border: silver; --hover: rgba(249, 188, 38,0.4); --select: rgba(11, 87, 208, 0.2); --select-hover: rgba(11, 87, 208, 0.4); --select-border: rgba(11, 87, 208, 1); display: flex; flex-direction: column; width: 100%; }
+	.oi-viz-wrapper button { font-size: 1em; }
+	${mb} { background: var(--bg); padding: 0.25rem; border: 1px solid var(--border); text-align: left; display: flex; gap: 0.25em; }
+	${mb} button { padding: 0.25em 0.5em; line-height: 0; line-height: 1.5rem; border-radius: 2px; background: #ddd; }
+	${mb} button svg { width: 1em; height: 1em; vertical-align: -.125em; }
+	${t} { border-collapse: separate; }
+	${t} [scope=row] { text-align: right; }
+	${t} td, ${t} th { border-right: 0; border-top: 0; border-color: var(--border); }
+	${t} thead { position: sticky; top: 0; }
+	${t} th, ${t} td { border-color: var(--border); }
+	${t} tr:hover { background: var(--hover); }
+	${t} th, ${t} td[scope=row] { cursor: pointer; background: var(--bg); color: var(--text); }
+	${t} th > div { display: flex; align-items: center; position: relative; gap: 0.5rem; }
+	${t} th .heading { display: inline-block; cursor: text; flex-grow: 1; white-space: nowrap; }
+	${t} th .menu { width: 1em; height: 1em; border-radius: 100%; background: rgba(0,0,0,0.1); padding: 0; border: 0; display: flex; align-items: center; justify-content: center; }
+	${t} th .menu:focus { outline: 2px solid var(--select-border); }
+	${t} .selected { background: var(--select); }
+	${t} .selected:hover { background: var(--select-hover); }
+	${th} { overflow: auto; max-width: 100%; max-height: 80vh; position: relative; }
+	${th} ul[role=menu] { position: relative; z-index: 1100; list-style: none; margin: 0; padding: 4px; list-style: none; display: flex; flex-wrap: wrap; box-sizing: border-box; gap: 4px; background: #efefef; border: 1px solid rgba(0,0,0,0.3); border-radius: 4px; position: absolute; top: 0; left: 0; flex-direction: column; min-width: 192px; box-shadow: 1px 1px 4px rgba(0,0,0,0.2); }
+	${th} ${mi} { white-space: nowrap; display:block; cursor: pointer; background: transparent; }
+	${th} ${mi} .button { cursor: pointer; width: 100%; border: 0; line-height: 1rem; margin-right: 1px; padding: 0.5em; text-align: left; display: flex; flex-direction: row; gap: 0.5rem; align-items: center; background: transparent; }
+	${th} ${mi} .button:focus,${th} ${mi} .button:hover { background: #222!important; color: #fff!important; cursor: auto; }
+	${th} ${mi} .button svg { height: 1rem; width: 1rem; }
+	${th} ${mi} .button .key { flex-grow: 1; text-align: right; color: #80868b; font-weight: bold; }
+	${th} ${mi} .button:disabled, ${th} ${mi} .button:disabled > * { opacity: 0.6; color: inherit!important; }
+	${th} li.separator { line-height: 0; border: 0; border-top: 1px solid rgba(0,0,0,0.3); }
+	`;
+	document.head.prepend(styles);
+
 	function getRow(el){ return parseInt((el.hasAttribute('data-row') ? el : el.closest('[data-row]')).getAttribute('data-row')); }
 	function getCol(el){ var cel = (el.hasAttribute('data-col') ? el : el.closest('[data-col]'))||el; return parseInt(cel.getAttribute('data-col')); }
 	function getPos(el){ return {'col':getCol(el),'row':getRow(el)}; }
@@ -666,7 +666,7 @@
 			ul.style.transform = "translate3d(-1em,0,0)";
 			var bb = ul.getBoundingClientRect();
 			var bbh = holder.getBoundingClientRect();
-			if(bb.left+bb.width > holder.offsetWidth+bbh.left) ul.style.transform = 'translate3d(-100%,0,0)';
+			if(bb.right > bbh.right) ul.style.transform = 'translate3d(-'+Math.ceil(bb.right-bbh.right+24)+'px,0,0)';
 			return this;
 		};
 		return this;
