@@ -4,7 +4,7 @@
 /*jshint esversion: 6 */
 (function(root){
 	var name = "OI CSVEditor";
-	var version = "0.2.2";
+	var version = "0.2.3";
 	var OI = root.OI || {};
 	if(!OI.ready){
 		OI.ready = function(fn){
@@ -16,7 +16,7 @@
 
 	OI.CSVEditor = function(lnk,opts){
 		if(!opts) opts = {};
-		var raw,msg,_url,el,loading,table,menu,holder,wrapper,rows,_obj,_open = false,memory = [],_memory = 0;
+		var raw,msg,_url,el,loading,table,menu,menubar,holder,wrapper,rows,_obj,_open = false,memory = [],_memory = 0;
 		msg = new OI.logger(name+' v'+version);
 		msg.info('Init',lnk);
 		_obj = this;
@@ -66,7 +66,7 @@
 			return this;
 		};
 		this.delete = function(dir,i){
-			var c,r,changes = 0,selchange = 0,lastdel = -1;
+			var c,r,changes = 0,lastdel = -1;
 			if(dir){
 				if(dir=="col"){
 					this.order.splice(i-1,1);
@@ -130,7 +130,7 @@
 			return this.updateSelection();
 		};
 		this.updateSelection = function(){
-			var colgroup,group,c,r,tr;
+			var colgroup,group,c,r;
 			if(table){
 				// Update column styles
 				colgroup = table.querySelector('colgroup');
@@ -364,9 +364,11 @@
 		};
 		this.updateByDom = function(e){
 			var pos = getPos(e);
-			var r,nc,old,update = false,v;
-			if(e.classList.contains('menu')) v = e.closest('th').querySelector('.heading').innerHTML;
-			else v = e.innerHTML;
+			var nc,old,update = false,v,vel;
+			if(e.hasAttribute('contenteditable')) vel = e;
+			else vel = e.closest('th').querySelector('.heading');
+			if(vel) v = vel.innerHTML;
+			else return this;
 			if(isNaN(pos.row) || isNaN(pos.col)) return this;
 			// 0-index
 			pos.row--;
@@ -399,12 +401,6 @@
 			}
 
 			if(!nosave){
-				// Store memory
-				if(_memory > 0){
-					// Remove any memory before the current location (like over-write)
-					//memory = memory.slice(_memory,);
-					console.log('remove memory',_memory);
-				}
 				// Store the current situation
 				memory.unshift({'data':clone(this.data),'order':clone(this.order)});
 				// Remove old steps
