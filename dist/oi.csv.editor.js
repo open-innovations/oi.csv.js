@@ -310,8 +310,9 @@
 				addButton(menubar,{'label':'Undo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M10,10h2.5l1,-1v-1l-1,-1h-6v2l-3.5,-2.75 3.5,-2.75v2h7l1.5,1.5v3l-1.5,1.5h-4z" /></svg> Undo','click':function(){_obj.loadMemory(1);}});
 				addButton(menubar,{'label':'Redo','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M6,10h-2.5l-1,-1v-1l1,-1h6v2l3.5,-2.75 -3.5,-2.75v2h-7l-1.5,1.5v3l1.5,1.5h4z" /></svg> Redo','click':function(){_obj.loadMemory(-1);}});
 				addButton(menubar,{'label':'Reset','html':'<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M2,8v-3l2,-2h8l2,2v6l-2,2h-3v2l-3.5,-2.75 3.5,-2.75v2h2.5l1,-1v-5l-1,-1h-7l-1,1v3z" /></svg> Reset','click':function(){_obj.reset();}});
-				table.addEventListener('mouseover',function(){ _obj._focussed = true; });
-				table.addEventListener('mouseout',function(){ _obj._focussed = false; });
+				table.addEventListener('focus',function(e){ _obj._focussed = true; },true);
+				table.addEventListener('mouseenter',function(e){ _obj._focussed = false; },false);
+				table.addEventListener('mouseleave',function(e){ _obj._focussed = false; },false);
 			}
 
 			html = '';
