@@ -9,6 +9,30 @@
 	<link rel="icon" href="resources/oi-square-5.svg" />
 	<link rel="StyleSheet" href="resources/style-editor.css" type="text/css" />
 	<script src="dist/oi.csv.js"></script>
+	<style>	
+	.container {
+		display: flex;
+		height: 100vh;
+		max-height: 100vh;
+		flex-direction: column;
+	}
+	#main { flex-grow: 1; }
+	#main textarea { display: block; width: 100%; height: 200px; }
+	header { padding: 0.5rem 1rem; }
+	header { display: flex; align-items: center; gap: 0.5rem; }
+	header h1 { display: flex; align-items: center; gap: 0.5rem; line-height: calc(2rem + 4px); }
+	header h1 + * { margin-top: 0; flex-grow: 1; text-align: right; }
+	header button { border-radius: 2px; }
+	header a:last-child { line-height: unset; }
+	.main-panel { width: 100%; height: 100%; position: relative; background: white; color: black; }
+	.loader { display: flex; height: 100%; width: 100%; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; text-align:center; }
+	#standard_files { position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; opacity: 0.01; }
+	#output { width: 100%; height: 100%; display: flex; position: absolute; left: 0; top: 0; }
+	.oi-viz-table-holder { max-height: unset; height: 100%; }
+	.hovering { border: 4px dashed grey; }
+	.active .loader, .hidden { display: none; }
+	header a.more-info { display: inline-block; background: white; color: black; border-radius: 100%; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; font-style: italic; }
+	</style>
 </head>
 <body class="b1-bg">
 
@@ -16,6 +40,7 @@
 
 		<header class="b1-bg">
 			<h1><a href="https://open-innovations.org/" aria-label="Open Innovations"><svg width="1.5rem" height="1.5rem" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="#1DD3A7"><circle r="32" mask="url(#oi-person)"></circle></g></svg></a> <span>CSV Editor</span></h1>
+			<div><a href="editor-about.html" class="more-info">i</a></div>
 		</header>
 
 		<div id="main" class="b6-bg" style="min-height: 400px;">
@@ -31,86 +56,82 @@
 				<div id="output"></div>
 			</div>
 		</div>
-
-		<footer class="b1-bg">
-			<p><a href="editor-about.html">About</a> | &copy; 2025 <a href="https://open-innovations.org/">Open Innovations</a> (<a href="https://github.com/open-innovations/oi.csv.js/">MIT licence</a>).</p>
-		</footer>
 	</div>
 
-	<script>
-	var OI = OI || {};
-	if(!OI.ready){
-		OI.ready = function(fn){
-			// Version 1.1
-			if(document.readyState != 'loading') fn();
-			else document.addEventListener('DOMContentLoaded', fn);
-		};
+<script>
+var OI = OI || {};
+if(!OI.ready){
+	OI.ready = function(fn){
+		// Version 1.1
+		if(document.readyState != 'loading') fn();
+		else document.addEventListener('DOMContentLoaded', fn);
+	};
+}
+function getEl(id){ return document.getElementById(id); }
+OI.ready(function(){
+	var activated = false;
+	const target = getEl("main");
+	const input = getEl('input');
+	const output = getEl('output');
+	
+	function activate(){
+		if(!activated){
+			getEl('activate').click();
+			// Make clear button
+			var clear = document.createElement('div'),btn = document.createElement('button');
+			clear.classList.add('clear');
+			btn.classList.add('c5-bg');
+			btn.innerHTML = 'New';
+			btn.addEventListener('click',reset);
+			clear.appendChild(btn);
+			document.querySelector('header > *:last-child').before(clear);
+		}
+
+		target.classList.remove('hovering');
+		target.classList.add('active');
+		activated = true;
 	}
-	function getEl(id){ return document.getElementById(id); }
-	OI.ready(function(){
-		var activated = false;
-		const target = getEl("main");
-		const input = getEl('input');
-		const output = getEl('output');
-		
-		function activate(){
-			if(!activated){
-				getEl('activate').click();
-				// Make clear button
-				var clear = document.createElement('div'),btn = document.createElement('button');
-				clear.classList.add('clear');
-				btn.classList.add('c5-bg');
-				btn.innerHTML = 'New';
-				btn.addEventListener('click',reset);
-				clear.appendChild(btn);
-				document.querySelector('header').appendChild(clear);
-			}
-
-			target.classList.remove('hovering');
-			target.classList.add('active');
-			activated = true;
-		}
-		function reset(){
-			OI.CSVs.list[0].editor.clear();
-			target.classList.remove('active');
-			activated = false;
-			document.querySelector('div.clear').remove();
-			input.value = '';
-		}
-		target.addEventListener("dragover", (event) => { event.preventDefault(); });
-		target.addEventListener("dragover", (event) => { target.classList.add('hovering'); });
-		target.addEventListener("dragleave", (event) => { target.classList.remove('hovering'); });
-		target.addEventListener("drop", (event) => {
-			// prevent default action (open as a link for some elements)
-			event.stopPropagation();
-			event.preventDefault();
-			handleFileSelect(event);
-		});
-		
-		getEl('standard_files').addEventListener('change',function(evt){
-			evt.stopPropagation();
-			evt.preventDefault();
-			return handleFileSelect(evt);
-		}, false);
-
-		if(input.value) activate();
-
-		function handleFileSelect(event){
-			var files;
-			if(event.dataTransfer && event.dataTransfer.files) files = event.dataTransfer.files; // FileList object.
-			if(!files && event.target && event.target.files) files = event.target.files;
-			var reader = new FileReader();
-			reader.readAsText(files[0], "UTF-8");
-			reader.addEventListener('load',function(e){
-				input.value = e.target.result;
-				activate();
-				input.dispatchEvent(new Event('change'));
-			});
-			reader.onerror = function(e){ console.error('Failed to read file'); };
-			return;
-		}
+	function reset(){
+		OI.CSVs.list[0].editor.clear();
+		target.classList.remove('active');
+		activated = false;
+		document.querySelector('div.clear').remove();
+		input.value = '';
+	}
+	target.addEventListener("dragover", (event) => { event.preventDefault(); });
+	target.addEventListener("dragover", (event) => { target.classList.add('hovering'); });
+	target.addEventListener("dragleave", (event) => { target.classList.remove('hovering'); });
+	target.addEventListener("drop", (event) => {
+		// prevent default action (open as a link for some elements)
+		event.stopPropagation();
+		event.preventDefault();
+		handleFileSelect(event);
 	});
-	</script>
+	
+	getEl('standard_files').addEventListener('change',function(evt){
+		evt.stopPropagation();
+		evt.preventDefault();
+		return handleFileSelect(evt);
+	}, false);
+
+	if(input.value) activate();
+
+	function handleFileSelect(event){
+		var files;
+		if(event.dataTransfer && event.dataTransfer.files) files = event.dataTransfer.files; // FileList object.
+		if(!files && event.target && event.target.files) files = event.target.files;
+		var reader = new FileReader();
+		reader.readAsText(files[0], "UTF-8");
+		reader.addEventListener('load',function(e){
+			input.value = e.target.result;
+			activate();
+			input.dispatchEvent(new Event('change'));
+		});
+		reader.onerror = function(e){ console.error('Failed to read file'); };
+		return;
+	}
+});
+</script>
 
 	<script src="https://open-innovations.org/resources/oi.log.js"></script>
 	<script>
