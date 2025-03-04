@@ -1,36 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8" />
+	<meta name="description" content="A very basic, browser-based, privacy-conscious, CSV editor">
 	<link rel="manifest" href="manifest.json" />
 	<title>CSV Editor | Open Innovations</title>
 	<link rel="icon" href="resources/oi-square-5.svg" />
 	<link rel="StyleSheet" href="resources/style-editor.css" type="text/css" />
-	<style>
-	.container {
-		display: flex;
-		height: 100vh;
-		max-height: 100vh;
-		flex-direction: column;
-	}
-	#main { flex-grow: 1; }
-	#main textarea { display: block; width: 100%; height: 200px; }
-	header,footer { padding: 0.5rem 1rem; }
-	header { display: flex; align-items: center; }
-	header h1 { display: flex; align-items: center; gap: 0.5rem; line-height: calc(2rem + 4px); }
-	header h1 + * { margin-top: 0; flex-grow: 1; text-align: right; }
-	header button { border-radius: 2px; }
-	header a:last-child { line-height: unset; }
-	footer p:last-child { margin-bottom: 0; }
-	.main-panel { width: 100%; height: 100%; position: relative; }
-	.loader { display: flex; height: 100%; width: 100%; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; text-align:center; }
-	#standard_files { position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; opacity: 0.01; }
-	#output { width: 100%; height: 100%; display: flex; position: absolute; left: 0; top: 0; }
-	.oi-viz-table-holder { max-height: unset; height: 100%; }
-	.hovering { border: 4px dashed grey; }
-	.active .loader, .hidden { display: none; }
-	</style>
 	<script src="dist/oi.csv.js"></script>
 </head>
 <body class="b1-bg">
@@ -38,7 +15,7 @@
 	<div class="container">
 
 		<header class="b1-bg">
-			<h1><a href="https://open-innovations.org/"><svg width="1.5rem" height="1.5rem" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="#1DD3A7"><circle r="32" mask="url(#oi-person)"></circle></g></svg></a> <span>CSV Editor</span></h1>
+			<h1><a href="https://open-innovations.org/" aria-label="Open Innovations"><svg width="1.5rem" height="1.5rem" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="#1DD3A7"><circle r="32" mask="url(#oi-person)"></circle></g></svg></a> <span>CSV Editor</span></h1>
 		</header>
 
 		<div id="main" class="b6-bg" style="min-height: 400px;">
