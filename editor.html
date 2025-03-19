@@ -32,6 +32,9 @@
 	.hovering { border: 4px dashed grey; }
 	.active .loader, .hidden { display: none; }
 	header a.more-info { display: inline-block; background: white; color: black; border-radius: 100%; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; font-style: italic; }
+	#progress { width: 100%; display: flex; }
+	#progress.active { height: 4px; }
+	.progress-inner { width: 0; height: 100%; background: #1dd3a7; }
 	</style>
 </head>
 <body class="b1-bg">
@@ -42,7 +45,7 @@
 			<h1><a href="https://open-innovations.org/" aria-label="Open Innovations"><svg width="1.5rem" height="1.5rem" overflow="auto" viewBox="-32 -32 64 64" xmlns="http://www.w3.org/2000/svg"><mask id="oi-person"><path d="m-32-32h64v64h-12v-24a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v24h-36zm44 27m-8 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0" fill="#fff"></path></mask><g id="oi-logo" fill="#1DD3A7"><circle r="32" mask="url(#oi-person)"></circle></g></svg></a> <span>CSV Editor</span></h1>
 			<div><a href="editor-about.html" class="more-info">i</a></div>
 		</header>
-
+		<div id="progress"><div class="progress-inner"></div></div>
 		<div id="main" class="b6-bg" style="min-height: 400px;">
 			<div class="hidden">
 				<textarea id="input"></textarea>
@@ -71,20 +74,22 @@ function getEl(id){ return document.getElementById(id); }
 OI.ready(function(){
 	var activated = false;
 	const target = getEl("main");
-	const input = getEl('input');
-	const output = getEl('output');
+	const inputEl = getEl("input");
+	const output = getEl("output");
 	
 	function activate(){
 		if(!activated){
 			getEl('activate').click();
-			// Make clear button
-			var clear = document.createElement('div'),btn = document.createElement('button');
-			clear.classList.add('clear');
-			btn.classList.add('c5-bg');
-			btn.innerHTML = 'New';
-			btn.addEventListener('click',reset);
-			clear.appendChild(btn);
-			document.querySelector('header > *:last-child').before(clear);
+			if(!document.querySelector('div.clear')){
+				// Make clear button
+				var clear = document.createElement('div'),btn = document.createElement('button');
+				clear.classList.add('clear');
+				btn.classList.add('c5-bg');
+				btn.innerHTML = 'New';
+				btn.addEventListener('click',reset);
+				clear.appendChild(btn);
+				document.querySelector('header > *:last-child').before(clear);
+			}
 		}
 
 		target.classList.remove('hovering');
@@ -96,7 +101,7 @@ OI.ready(function(){
 		target.classList.remove('active');
 		activated = false;
 		document.querySelector('div.clear').remove();
-		input.value = '';
+		inputEl.value = '';
 	}
 	target.addEventListener("dragover", (event) => { event.preventDefault(); });
 	target.addEventListener("dragover", (event) => { target.classList.add('hovering'); });
@@ -107,29 +112,70 @@ OI.ready(function(){
 		event.preventDefault();
 		handleFileSelect(event);
 	});
-	
-	getEl('standard_files').addEventListener('change',function(evt){
-		evt.stopPropagation();
-		evt.preventDefault();
-		return handleFileSelect(evt);
-	}, false);
 
-	if(input.value) activate();
+	if(inputEl.value) activate();
 
-	function handleFileSelect(event){
-		var files;
-		if(event.dataTransfer && event.dataTransfer.files) files = event.dataTransfer.files; // FileList object.
-		if(!files && event.target && event.target.files) files = event.target.files;
-		var reader = new FileReader();
-		reader.readAsText(files[0], "UTF-8");
-		reader.addEventListener('load',function(e){
-			input.value = e.target.result;
+	function ChunkedFileReader(input,opts){
+		if(!opts) opts = {};
+		if(!input){
+			console.error('No <input> provided');
+			return this;
+		}
+		var chunk = (typeof opts.chunk==="number" ? opts.chunk : 65536);
+		var delay = (typeof opts.delay==="number" ? opts.delay : 20);
+		this.read = function(input){
+			var myFile,size,i,blob,reader;
+			i = 0;
+			if(input.files && input.files[0]){
+				myFile = input.files[0];
+				size = myFile.size;
+				if(typeof opts.init==="function") opts.init.call(opts.this||_obj,{'size':size,'file':input.files[0]});
+				function readChunk(i){
+					blob = myFile.slice(i, i + chunk);
+					reader = new FileReader();
+					reader.addEventListener('load',function(e){
+						if(typeof opts.readChunk==="function") opts.readChunk.call(opts.this||_obj,e.target.result,i,i+chunk,size);
+						if(typeof opts.progress==="function") opts.progress.call(opts.this||_obj,e.target.result,i,i+chunk,size);
+						i += chunk;
+						if(i < size) setTimeout(readChunk,delay,i);
+						else{
+							if(typeof opts.complete==="function") opts.complete.call(opts.this||_obj,{'size':size,'file':input.files[0]});
+						}
+					});
+					reader.readAsBinaryString(blob);
+				}
+				// Start reading
+				readChunk(i);
+			}
+			return this;
+		};
+
+		var _obj = this;
+		input.addEventListener("change",function(){ _obj.read(this); });
+
+		return this;
+	}
+	var p = document.getElementById('progress');
+	var pi = p.querySelector('.progress-inner');
+	ChunkedFileReader(getEl('standard_files'),{
+		'chunk': 100000,
+		'init': function(arg){
+			this.txt = '';
+			p.classList.add('active');
+			pi.style.width = 0;
+		},
+		'progress': function(chunk,start,end,len){
+			this.txt += chunk;
+			var pc = Math.min(100,(100*end/len)).toFixed(1)+'%';
+			pi.style.width = pc;
+		},
+		'complete': function(arg){
+			p.classList.remove('active');
+			input.value = this.txt;
 			activate();
 			input.dispatchEvent(new Event('change'));
-		});
-		reader.onerror = function(e){ console.error('Failed to read file'); };
-		return;
-	}
+		}
+	});
 });
 </script>
 
